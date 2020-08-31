@@ -27,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFiles", "SolutionFi
 		SolutionFiles\Build_BTDF_BenDemoBizTalk.bat = SolutionFiles\Build_BTDF_BenDemoBizTalk.bat
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ben.Demo.BizTalk.Pipelines", "Ben.Demo.BizTalk.Pipelines\Ben.Demo.BizTalk.Pipelines.btproj", "{9065C85A-B6F7-4064-BE0D-B623C94967DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,12 @@ Global
 		{2BEF8E1E-162F-4C16-89E9-D6D87747B24F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BEF8E1E-162F-4C16-89E9-D6D87747B24F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2BEF8E1E-162F-4C16-89E9-D6D87747B24F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{9065C85A-B6F7-4064-BE0D-B623C94967DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9065C85A-B6F7-4064-BE0D-B623C94967DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9065C85A-B6F7-4064-BE0D-B623C94967DD}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9065C85A-B6F7-4064-BE0D-B623C94967DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9065C85A-B6F7-4064-BE0D-B623C94967DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9065C85A-B6F7-4064-BE0D-B623C94967DD}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

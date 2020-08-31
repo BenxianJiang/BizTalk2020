@@ -14,7 +14,7 @@
     <IncludeOrchestrations>True</IncludeOrchestrations>
     <IncludeTransforms>True</IncludeTransforms>
     <IncludeComponents>True</IncludeComponents>
-    <IncludePipelines>False</IncludePipelines>
+    <IncludePipelines>True</IncludePipelines>
 	<!-- Deploying log4net and log4net.Ext.Serializable from External Assemblies -->
 	<!-- Leaving this True so that the regkeys are created?-->
     <Includelog4net>False</Includelog4net>
@@ -33,8 +33,8 @@
     <!--     1) Increment ProductVersion -->
     <!--     2) Generate a new GUID and update ProductId with the new GUID -->
     <!--   This allows the new MSI to automatically uninstall (not undeploy!) the old MSI and install the new one. -->
-    <ProductVersion>1.1.01</ProductVersion>
-    <ProductId>081B0B6D-671E-4FCB-9C72-6A3F079AF309</ProductId>
+    <ProductVersion>1.1.02</ProductVersion>
+    <ProductId>147DDD3D-F4F3-4097-AE1E-318F9DFB6DFD</ProductId>
     <!-- BizTalk App Version Upgrade -->
     <ProductName>Ben.Demo.BizTalk for BizTalk</ProductName>
     <Manufacturer>Deployment Framework User</Manufacturer>
@@ -94,6 +94,12 @@
       <LocationPath>..\$(ProjectName).Components\bin\$(Configuration)</LocationPath>
     </Components>
  </ItemGroup>
+
+	<ItemGroup>
+		<Components Include="Ben.Demo.BizTalk.Pipelines.dll">
+			<LocationPath>..\$(ProjectName).Pipelines\bin\$(Configuration)</LocationPath>
+		</Components>
+	</ItemGroup>
 
   <!-- !!! TODO !!! -->
   <Import Project="$(DeploymentFrameworkTargetsPath)BizTalkDeploymentFramework.targets" />
