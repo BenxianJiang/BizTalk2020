@@ -1,0 +1,195 @@
+﻿#if __DESIGNER_DATA
+#error Do not define __DESIGNER_DATA.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<om:MetaModel MajorVersion="1" MinorVersion="3" Core="2b131234-7959-458d-834f-2dc0769ce683" ScheduleModel="66366196-361d-448d-976f-cab5e87496d2" xmlns:om="http://schemas.microsoft.com/BizTalk/2003/DesignerData">
+    <om:Element Type="Module" OID="29acbf6f-7e4f-4822-8693-66322b5faccb" LowerBound="1.1" HigherBound="42.1">
+        <om:Property Name="ReportToAnalyst" Value="True" />
+        <om:Property Name="Name" Value="Ben.Demo.BizTalk.Orchestrations" />
+        <om:Property Name="Signal" Value="False" />
+        <om:Element Type="PortType" OID="e8a8b070-f782-45ae-a751-8c0051d55f40" ParentLink="Module_PortType" LowerBound="4.1" HigherBound="11.1">
+            <om:Property Name="Synchronous" Value="False" />
+            <om:Property Name="TypeModifier" Value="Internal" />
+            <om:Property Name="ReportToAnalyst" Value="True" />
+            <om:Property Name="Name" Value="PortType_CustomerIn" />
+            <om:Property Name="Signal" Value="False" />
+            <om:Element Type="OperationDeclaration" OID="692b04af-d750-4bd7-b011-512e24f73f2a" ParentLink="PortType_OperationDeclaration" LowerBound="6.1" HigherBound="10.1">
+                <om:Property Name="OperationType" Value="OneWay" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="Operation_1" />
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="MessageRef" OID="f4b7213a-b954-4ab8-a3c0-e144f11c93c6" ParentLink="OperationDeclaration_RequestMessageRef" LowerBound="8.13" HigherBound="8.50">
+                    <om:Property Name="Ref" Value="Ben.Demo.BizTalk.Schemas.SimpleSchema" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Request" />
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+        </om:Element>
+        <om:Element Type="PortType" OID="7eb48295-2d8c-41dc-b1c3-246f3cf8e1c6" ParentLink="Module_PortType" LowerBound="11.1" HigherBound="18.1">
+            <om:Property Name="Synchronous" Value="False" />
+            <om:Property Name="TypeModifier" Value="Internal" />
+            <om:Property Name="ReportToAnalyst" Value="True" />
+            <om:Property Name="Name" Value="PortType_CustomerOut" />
+            <om:Property Name="Signal" Value="False" />
+            <om:Element Type="OperationDeclaration" OID="a1cedbe9-b1f2-4274-8a9a-1b983ac10436" ParentLink="PortType_OperationDeclaration" LowerBound="13.1" HigherBound="17.1">
+                <om:Property Name="OperationType" Value="OneWay" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="Operation_1" />
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="MessageRef" OID="9b2ef7be-1b7f-4ee3-888d-331ad8e8d387" ParentLink="OperationDeclaration_RequestMessageRef" LowerBound="15.13" HigherBound="15.50">
+                    <om:Property Name="Ref" Value="Ben.Demo.BizTalk.Schemas.SimpleSchema" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Request" />
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+        </om:Element>
+        <om:Element Type="ServiceDeclaration" OID="45b41353-652d-4afb-b86c-92f1e0a445be" ParentLink="Module_ServiceDeclaration" LowerBound="18.1" HigherBound="41.1">
+            <om:Property Name="InitializedTransactionType" Value="False" />
+            <om:Property Name="IsInvokable" Value="False" />
+            <om:Property Name="TypeModifier" Value="Internal" />
+            <om:Property Name="ReportToAnalyst" Value="True" />
+            <om:Property Name="Name" Value="WelcomeCustomer" />
+            <om:Property Name="Signal" Value="False" />
+            <om:Element Type="ServiceBody" OID="a9fcd03c-604a-42df-810e-891fc41ea80b" ParentLink="ServiceDeclaration_ServiceBody">
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="Receive" OID="b7f57795-1c54-44b8-85c1-13bcdba26a59" ParentLink="ServiceBody_Statement" LowerBound="29.1" HigherBound="31.1">
+                    <om:Property Name="Activate" Value="True" />
+                    <om:Property Name="PortName" Value="Port_CustomerIn" />
+                    <om:Property Name="MessageName" Value="MsgIn" />
+                    <om:Property Name="OperationName" Value="Operation_1" />
+                    <om:Property Name="OperationMessageName" Value="Request" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Receive_1" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+                <om:Element Type="Construct" OID="728b4a62-11ff-43ed-8a5b-976d761fa6c0" ParentLink="ServiceBody_Statement" LowerBound="31.1" HigherBound="37.1">
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="ConstructMessage_1" />
+                    <om:Property Name="Signal" Value="True" />
+                    <om:Element Type="Transform" OID="36156ba9-af98-4b17-a244-29529d68c5e2" ParentLink="ComplexStatement_Statement" LowerBound="34.1" HigherBound="36.1">
+                        <om:Property Name="ClassName" Value="Ben.Demo.BizTalk.Maps.MapSayWelcome" />
+                        <om:Property Name="ReportToAnalyst" Value="True" />
+                        <om:Property Name="Name" Value="Transform_1" />
+                        <om:Property Name="Signal" Value="True" />
+                        <om:Element Type="MessagePartRef" OID="fb789858-8e60-45be-a435-9aff516e29f3" ParentLink="Transform_InputMessagePartRef" LowerBound="35.75" HigherBound="35.80">
+                            <om:Property Name="MessageRef" Value="MsgIn" />
+                            <om:Property Name="ReportToAnalyst" Value="True" />
+                            <om:Property Name="Name" Value="MessagePartReference_1" />
+                            <om:Property Name="Signal" Value="False" />
+                        </om:Element>
+                        <om:Element Type="MessagePartRef" OID="757bd4e4-eb5a-46d2-89f7-638949f647b7" ParentLink="Transform_OutputMessagePartRef" LowerBound="35.28" HigherBound="35.34">
+                            <om:Property Name="MessageRef" Value="MsgOut" />
+                            <om:Property Name="ReportToAnalyst" Value="True" />
+                            <om:Property Name="Name" Value="MessagePartReference_2" />
+                            <om:Property Name="Signal" Value="False" />
+                        </om:Element>
+                    </om:Element>
+                    <om:Element Type="MessageRef" OID="6df3ac81-7d9b-4839-9049-8b5aee428053" ParentLink="Construct_MessageRef" LowerBound="32.23" HigherBound="32.29">
+                        <om:Property Name="Ref" Value="MsgOut" />
+                        <om:Property Name="ReportToAnalyst" Value="True" />
+                        <om:Property Name="Signal" Value="False" />
+                    </om:Element>
+                </om:Element>
+                <om:Element Type="Send" OID="dc5b3b7b-0cc1-445e-9bb8-8d7d82e6107d" ParentLink="ServiceBody_Statement" LowerBound="37.1" HigherBound="39.1">
+                    <om:Property Name="PortName" Value="Port_CustomerOut" />
+                    <om:Property Name="MessageName" Value="MsgOut" />
+                    <om:Property Name="OperationName" Value="Operation_1" />
+                    <om:Property Name="OperationMessageName" Value="Request" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Send_1" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+            </om:Element>
+            <om:Element Type="PortDeclaration" OID="7d588a69-b4b6-4b07-bcbc-7f57b15b42fd" ParentLink="ServiceDeclaration_PortDeclaration" LowerBound="21.1" HigherBound="23.1">
+                <om:Property Name="PortModifier" Value="Implements" />
+                <om:Property Name="Orientation" Value="Left" />
+                <om:Property Name="PortIndex" Value="-1" />
+                <om:Property Name="IsWebPort" Value="False" />
+                <om:Property Name="OrderedDelivery" Value="False" />
+                <om:Property Name="DeliveryNotification" Value="None" />
+                <om:Property Name="Type" Value="Ben.Demo.BizTalk.Orchestrations.PortType_CustomerIn" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="Port_CustomerIn" />
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="LogicalBindingAttribute" OID="c62909ab-622a-417d-a9f8-9f6041546cb8" ParentLink="PortDeclaration_CLRAttribute" LowerBound="21.1" HigherBound="22.1">
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+            <om:Element Type="PortDeclaration" OID="d52b181a-ed60-4b5e-8416-4c8cc1a072e6" ParentLink="ServiceDeclaration_PortDeclaration" LowerBound="23.1" HigherBound="25.1">
+                <om:Property Name="PortModifier" Value="Uses" />
+                <om:Property Name="Orientation" Value="Left" />
+                <om:Property Name="PortIndex" Value="-1" />
+                <om:Property Name="IsWebPort" Value="False" />
+                <om:Property Name="OrderedDelivery" Value="False" />
+                <om:Property Name="DeliveryNotification" Value="None" />
+                <om:Property Name="Type" Value="Ben.Demo.BizTalk.Orchestrations.PortType_CustomerOut" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="Port_CustomerOut" />
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="LogicalBindingAttribute" OID="5d06d687-f6ce-4360-a635-b79293ef070e" ParentLink="PortDeclaration_CLRAttribute" LowerBound="23.1" HigherBound="24.1">
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+            <om:Element Type="MessageDeclaration" OID="56890d8e-755d-4076-b177-7eb406eac538" ParentLink="ServiceDeclaration_MessageDeclaration" LowerBound="25.1" HigherBound="26.1">
+                <om:Property Name="Type" Value="Ben.Demo.BizTalk.Schemas.SimpleSchema" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="MsgIn" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="MessageDeclaration" OID="4e99b4e7-53d7-4ad2-82d1-67801339e8ff" ParentLink="ServiceDeclaration_MessageDeclaration" LowerBound="26.1" HigherBound="27.1">
+                <om:Property Name="Type" Value="Ben.Demo.BizTalk.Schemas.SimpleSchema" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="MsgOut" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+        </om:Element>
+    </om:Element>
+</om:MetaModel>
+#endif // __DESIGNER_DATA
+[Microsoft.XLANGs.BaseTypes.BPELExportable(false)]
+module Ben.Demo.BizTalk.Orchestrations
+{
+    internal porttype PortType_CustomerIn
+    {
+        oneway Operation_1
+        {
+            Ben.Demo.BizTalk.Schemas.SimpleSchema
+        };
+    };
+    internal porttype PortType_CustomerOut
+    {
+        oneway Operation_1
+        {
+            Ben.Demo.BizTalk.Schemas.SimpleSchema
+        };
+    };
+    [Microsoft.XLANGs.BaseTypes.BPELExportable(false)]
+    internal service WelcomeCustomer
+    {
+        [Microsoft.XLANGs.BaseTypes.LogicalBinding()]
+        port implements PortType_CustomerIn Port_CustomerIn;
+        [Microsoft.XLANGs.BaseTypes.LogicalBinding()]
+        port uses PortType_CustomerOut Port_CustomerOut;
+        message Ben.Demo.BizTalk.Schemas.SimpleSchema MsgIn;
+        message Ben.Demo.BizTalk.Schemas.SimpleSchema MsgOut;
+        body ()
+        {
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("b7f57795-1c54-44b8-85c1-13bcdba26a59")]
+            activate receive (Port_CustomerIn.Operation_1, MsgIn);
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("728b4a62-11ff-43ed-8a5b-976d761fa6c0")]
+            construct MsgOut
+            {
+                [Microsoft.XLANGs.BaseTypes.DesignerPosition("36156ba9-af98-4b17-a244-29529d68c5e2")]
+                transform (MsgOut) = Ben.Demo.BizTalk.Maps.MapSayWelcome (MsgIn);
+            }
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("dc5b3b7b-0cc1-445e-9bb8-8d7d82e6107d")]
+            send (Port_CustomerOut.Operation_1, MsgOut);
+        }
+    }
+}
+

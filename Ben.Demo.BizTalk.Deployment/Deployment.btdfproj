@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+  Deployment Framework for BizTalk
+  Copyright (C) 2008-14 Thomas F. Abraham, 2004-08 Scott Colestock
+-->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Installer" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+    <Platform Condition="'$(Platform)' == ''">x86</Platform>
+    <SchemaVersion>1.0</SchemaVersion>
+    <ProjectName>Ben.Demo.BizTalk</ProjectName>
+    <ProjectVersion>1.0</ProjectVersion>
+    <IncludeSSO>True</IncludeSSO>
+    <IncludeOrchestrations>True</IncludeOrchestrations>
+    <IncludeTransforms>True</IncludeTransforms>
+    <IncludeComponents>True</IncludeComponents>
+    <IncludePipelines>False</IncludePipelines>
+	<!-- Deploying log4net and log4net.Ext.Serializable from External Assemblies -->
+	<!-- Leaving this True so that the regkeys are created?-->
+    <Includelog4net>False</Includelog4net>
+    <UsingMasterBindings>True</UsingMasterBindings>
+    <RequireXmlPreprocessDirectives>False</RequireXmlPreprocessDirectives>
+    <ApplyXmlEscape>True</ApplyXmlEscape>
+    <SkipIISReset>True</SkipIISReset>
+    <IISResetTime>120</IISResetTime>
+    <IncludeVocabAndRules>False</IncludeVocabAndRules>
+    <BizTalkAppDescription>BizTalk Application For Ben Demo Release 1.0</BizTalkAppDescription>
+  </PropertyGroup>
+  <PropertyGroup>
+    <!-- Properties related to building an MSI for server deployments -->
+    <!-- BizTalk App Version Upgrade -->
+    <!--   For each new product release to be deployed to your BizTalk servers: -->
+    <!--     1) Increment ProductVersion -->
+    <!--     2) Generate a new GUID and update ProductId with the new GUID -->
+    <!--   This allows the new MSI to automatically uninstall (not undeploy!) the old MSI and install the new one. -->
+    <ProductVersion>1.1.01</ProductVersion>
+    <ProductId>081B0B6D-671E-4FCB-9C72-6A3F079AF309</ProductId>
+    <!-- BizTalk App Version Upgrade -->
+    <ProductName>Ben.Demo.BizTalk for BizTalk</ProductName>
+    <Manufacturer>Deployment Framework User</Manufacturer>
+    <PackageDescription>Ben.Demo.BizTalk</PackageDescription>
+    <PackageComments>Ben.Demo.BizTalk</PackageComments>
+    <!-- NEVER change the ProductUpgradeCode. -->
+    <ProductUpgradeCode>F80B6CED-7648-4062-9817-6941B4D5E3FA</ProductUpgradeCode>
+  </PropertyGroup>
+  <!-- Under TFS Team Build, set CustomizableOutDir property to true in TFS 2005/2008/2010 UpgradeTemplate. -->
+  <!-- With a workflow build, copy the default template then modify the MSBuild task for the solution build. Set OutDir to blank and -->
+  <!-- CommandLineArguments to String.Format("/p:SkipInvalidConfigurations=true;TeamBuildOutDir=""{0}"" {1}", BinariesDirectory, MSBuildArguments). -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <DeploymentFrameworkTargetsPath>$(MSBuildExtensionsPath)\DeploymentFrameworkForBizTalk\5.0\</DeploymentFrameworkTargetsPath>
+    <OutputPath Condition="'$(TeamBuildOutDir)' == ''">bin\Debug\</OutputPath>
+    <OutputPath Condition="'$(TeamBuildOutDir)' != ''">$(TeamBuildOutDir)</OutputPath>
+    <DeployPDBsToGac>false</DeployPDBsToGac>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <DeploymentFrameworkTargetsPath>$(MSBuildExtensionsPath)\DeploymentFrameworkForBizTalk\5.0\</DeploymentFrameworkTargetsPath>
+    <OutputPath Condition="'$(TeamBuildOutDir)' == ''">bin\Release\</OutputPath>
+    <OutputPath Condition="'$(TeamBuildOutDir)' != ''">$(TeamBuildOutDir)</OutputPath>
+    <DeployPDBsToGac>false</DeployPDBsToGac>
+    <Includelog4net>True</Includelog4net>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Server'">
+    <DeploymentFrameworkTargetsPath>Framework\</DeploymentFrameworkTargetsPath>
+    <!-- Get our PDBs into the GAC so we get file/line number information in stack traces. -->
+    <DeployPDBsToGac>true</DeployPDBsToGac>
+  </PropertyGroup>
+  <PropertyGroup>
+    <CustomProperty_IntegratedManagemendPipeline>True</CustomProperty_IntegratedManagemendPipeline>
+  </PropertyGroup>
+  
+  <!-- !!! TODO !!! -->
+  <!-- Add ItemGroup elements that contain one or more Schemas, Orchestrations, Transforms, etc. elements that describe -->
+  <!-- the specific artifacts in your solution that need to be deployed. Use IntelliSense as a guide. -->
+  <ItemGroup>
+    <Schemas Include="Ben.Demo.BizTalk.Schemas.dll">
+      <LocationPath>..\$(ProjectName).Schemas\bin\$(Configuration)</LocationPath>
+    </Schemas>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Transforms Include="Ben.Demo.BizTalk.Maps.dll">
+      <LocationPath>..\$(ProjectName).Maps\bin\$(Configuration)</LocationPath>
+    </Transforms>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Orchestrations Include="Ben.Demo.BizTalk.Orchestrations.dll">
+      <LocationPath>..\$(ProjectName).Orchestrations\bin\$(Configuration)</LocationPath>
+    </Orchestrations>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Components Include="Ben.Demo.BizTalk.Components.dll">
+      <LocationPath>..\$(ProjectName).Components\bin\$(Configuration)</LocationPath>
+    </Components>
+ </ItemGroup>
+
+  <!-- !!! TODO !!! -->
+  <Import Project="$(DeploymentFrameworkTargetsPath)BizTalkDeploymentFramework.targets" />
+</Project>
