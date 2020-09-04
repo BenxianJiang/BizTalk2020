@@ -193,6 +193,22 @@
     <Cell><Data ss:Type="String">C:\xxx\Ben.Demo.BizTalk\FileIn</Data></Cell>
     <Cell><Data ss:Type="String">C:\Ben\Ben.Demo.BizTalk\FileIn</Data></Cell>
    </Row>
+	  <Row ss:AutoFitHeight="0" ss:StyleID="s77">
+		  <Cell>
+			  <Data ss:Type="String">DownloadWcfServiceURL</Data>
+		  </Cell>
+		  <Cell>
+			  <Data ss:Type="String">http://localhost/Ben.Demo.WcfService/DownloadService.svc</Data>
+		  </Cell>
+	  </Row>
+	  <Row ss:AutoFitHeight="0" ss:StyleID="s77">
+		  <Cell>
+			  <Data ss:Type="String">UploadWcfServiceURL</Data>
+		  </Cell>
+		  <Cell>
+			  <Data ss:Type="String">http://localhost/Ben.Demo.WcfService/UploadService.svc</Data>
+		  </Cell>
+	  </Row>
    <Row ss:AutoFitHeight="0" ss:StyleID="s77" ss:Span="35"/>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
