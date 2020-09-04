@@ -90,6 +90,13 @@
       <Name>Ben.Demo.BizTalk.Components</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Pipeline Include="DocumentInjectorSendPipeline.btp">
+      <TypeName>DocumentInjectorSendPipeline</TypeName>
+      <Namespace>Ben.Demo.BizTalk.Pipelines</Namespace>
+      <SubType>Task</SubType>
+    </Pipeline>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\BizTalk\BizTalkC.targets" />
 </Project>

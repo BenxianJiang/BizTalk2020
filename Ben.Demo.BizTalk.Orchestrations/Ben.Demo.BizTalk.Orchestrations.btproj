@@ -85,14 +85,21 @@
       <Project>{2bef8e1e-162f-4c16-89e9-d6d87747b24f}</Project>
       <Name>Ben.Demo.BizTalk.Maps</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ben.Demo.BizTalk.Pipelines\Ben.Demo.BizTalk.Pipelines.btproj">
+      <Project>{9065c85a-b6f7-4064-be0d-b623c94967dd}</Project>
+      <Name>Ben.Demo.BizTalk.Pipelines</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ben.Demo.BizTalk.Schemas\Ben.Demo.BizTalk.Schemas.btproj">
       <Project>{a484de36-e4ab-460f-a72e-74df1e7df0bb}</Project>
       <Name>Ben.Demo.BizTalk.Schemas</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <XLang Include="WelcomeCustomer.odx">
-      <TypeName>WelcomeCustomer</TypeName>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <XLang Include="DocumentUploadDownload.odx">
+      <TypeName>DocumentUploadDownload</TypeName>
       <Namespace>Ben.Demo.BizTalk.Orchestrations</Namespace>
       <SubType>Task</SubType>
     </XLang>

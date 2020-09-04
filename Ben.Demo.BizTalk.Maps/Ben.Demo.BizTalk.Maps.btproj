@@ -77,13 +77,6 @@
     <None Include="Ben.Demo.BizTalk.snk" />
   </ItemGroup>
   <ItemGroup>
-    <Map Include="MapSayWelcome.btm">
-      <TypeName>MapSayWelcome</TypeName>
-      <Namespace>Ben.Demo.BizTalk.Maps</Namespace>
-      <SubType>Task</SubType>
-    </Map>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Ben.Demo.BizTalk.Components\Ben.Demo.BizTalk.Components.csproj">
       <Project>{ebe02b9f-1a35-4012-9668-fb2d6c8633f6}</Project>
       <Name>Ben.Demo.BizTalk.Components</Name>
@@ -92,6 +85,27 @@
       <Project>{a484de36-e4ab-460f-a72e-74df1e7df0bb}</Project>
       <Name>Ben.Demo.BizTalk.Schemas</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Map Include="MapUploadResponse_To_DownloadRequest.btm">
+      <TypeName>MapUploadResponse_To_DownloadRequest</TypeName>
+      <Namespace>Ben.Demo.BizTalk.Maps</Namespace>
+      <SubType>Task</SubType>
+    </Map>
+  </ItemGroup>
+  <ItemGroup>
+    <Map Include="MapDownloadResponse_To_SimpleOutput.btm">
+      <TypeName>MapDownloadResponse_To_SimpleOutput</TypeName>
+      <Namespace>Ben.Demo.BizTalk.Maps</Namespace>
+      <SubType>Task</SubType>
+    </Map>
+  </ItemGroup>
+  <ItemGroup>
+    <Map Include="MapArticleIn_To_UploadRequest.btm">
+      <TypeName>MapArticleIn_To_UploadRequest</TypeName>
+      <Namespace>Ben.Demo.BizTalk.Maps</Namespace>
+      <SubType>Task</SubType>
+    </Map>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\BizTalk\BizTalkC.targets" />

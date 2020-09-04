@@ -81,7 +81,54 @@
     </Schema>
   </ItemGroup>
   <ItemGroup>
+    <Schema Include="ArticleSchema.xsd">
+      <TypeName>ArticleSchema</TypeName>
+      <Namespace>Ben.Demo.BizTalk.Schemas</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
     <None Include="Ben.Demo.BizTalk.snk" />
+    <Schema Include="WcfService\DownloadService_ben_demo_wcf_documentservice.xsd">
+      <Namespace>Ben.Demo.BizTalk.Schemas.WcfService</Namespace>
+      <TypeName>DownloadService_ben_demo_wcf_documentservice</TypeName>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="WcfService\DownloadService_schemas_datacontract_org_2004_07_Ben_Demo_WcfService.xsd">
+      <Namespace>Ben.Demo.BizTalk.Schemas.WcfService</Namespace>
+      <TypeName>DownloadService_schemas_datacontract_org_2004_07_Ben_Demo_WcfService</TypeName>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="WcfService\DownloadService_schemas_microsoft_com_2003_10_Serialization.xsd">
+      <Namespace>Ben.Demo.BizTalk.Schemas.WcfService</Namespace>
+      <TypeName>DownloadService_schemas_microsoft_com_2003_10_Serialization</TypeName>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="WcfService\UploadService_ben_demo_wcf_documentservice.xsd">
+      <Namespace>Ben.Demo.BizTalk.Schemas.WcfService</Namespace>
+      <TypeName>UploadService_ben_demo_wcf_documentservice</TypeName>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="WcfService\UploadService_schemas_datacontract_org_2004_07_Ben_Demo_WcfService.xsd">
+      <Namespace>Ben.Demo.BizTalk.Schemas.WcfService</Namespace>
+      <TypeName>UploadService_schemas_datacontract_org_2004_07_Ben_Demo_WcfService</TypeName>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="WcfService\UploadService_schemas_microsoft_com_2003_10_Serialization.xsd">
+      <Namespace>Ben.Demo.BizTalk.Schemas.WcfService</Namespace>
+      <TypeName>UploadService_schemas_microsoft_com_2003_10_Serialization</TypeName>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="BenRequestResponse.xsd">
+      <TypeName>BenRequestResponse</TypeName>
+      <Namespace>Ben.Demo.BizTalk.Schemas</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="WcfService\DownloadService.BindingInfo.xml" />
+    <Content Include="WcfService\DownloadService_Custom.BindingInfo.xml" />
+    <Content Include="WcfService\UploadService.BindingInfo.xml" />
+    <Content Include="WcfService\UploadService_Custom.BindingInfo.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\BizTalk\BizTalkC.targets" />

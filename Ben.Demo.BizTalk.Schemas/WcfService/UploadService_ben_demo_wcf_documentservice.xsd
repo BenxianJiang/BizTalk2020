@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://ben.demo.wcf/documentservice" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation=".\UploadService_schemas_datacontract_org_2004_07_Ben_Demo_WcfService.xsd" namespace="http://schemas.datacontract.org/2004/07/Ben.Demo.WcfService" />
+  <xs:element name="UploadDocuments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Ben.Demo.WcfService" minOccurs="0" name="documents" nillable="true" type="q1:ArrayOfDocument" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadDocumentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Ben.Demo.WcfService" minOccurs="0" name="UploadDocumentsResult" nillable="true" type="q2:ArrayOfDocument" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
