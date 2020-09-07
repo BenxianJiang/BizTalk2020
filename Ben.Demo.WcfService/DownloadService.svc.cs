@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using System.IO;
+using MyLogger = DXC.Util.Logger;
 
 namespace Ben.Demo.WcfService
 {
@@ -15,6 +16,11 @@ namespace Ben.Demo.WcfService
     {
         List<Document> IDownloadService.DownloadDocuments(List<Document> request)
         {
+            //Use DXC Logger
+            MyLogger.Logger dLogger = new MyLogger.Logger(@"C:\Ben\Log4Net\log4net.config", "Ben.Demo", Guid.NewGuid().ToString());
+
+            dLogger.Info("Donload begin");
+
             List<Document> docs = new List<Document>();
 
             foreach(var doc in request)
@@ -28,6 +34,8 @@ namespace Ben.Demo.WcfService
 
                 docs.Add(docResp);
             }
+
+            dLogger.Info("Download end");
 
             return docs;
         }
