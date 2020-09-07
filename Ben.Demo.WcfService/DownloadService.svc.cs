@@ -17,7 +17,7 @@ namespace Ben.Demo.WcfService
         List<Document> IDownloadService.DownloadDocuments(List<Document> request)
         {
             //Use DXC Logger
-            MyLogger.Logger dLogger = new MyLogger.Logger(@"C:\Ben\Log4Net\log4net.config", "Ben.Demo", Guid.NewGuid().ToString());
+            MyLogger.Logger dLogger = new MyLogger.Logger(@"C:\Ben\Log4Net\log4net.config", "Ben.Demo.WCF", Guid.NewGuid().ToString());
 
             dLogger.Info("Donload begin");
 

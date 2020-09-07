@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using MyLogger = DXC.Util.Logger;
 
 
 namespace Ben.Demo.WcfService
@@ -17,6 +18,10 @@ namespace Ben.Demo.WcfService
     {
         List<Document> IUploadService.UploadDocuments(List<Document> documents)
         {
+            //Use DXC Logger
+            MyLogger.Logger dLogger = new MyLogger.Logger(@"C:\Ben\Log4Net\log4net.config", "Ben.Demo.WCF", Guid.NewGuid().ToString());
+            dLogger.Info("UploadDocuments begin");
+
             List<Document> docs = new List<Document>();
             //store documents into file
 
@@ -32,6 +37,8 @@ namespace Ben.Demo.WcfService
 
                 docs.Add(docResp);
             }
+
+            dLogger.Info("UploadDocuments finish");
 
             return docs;
         }

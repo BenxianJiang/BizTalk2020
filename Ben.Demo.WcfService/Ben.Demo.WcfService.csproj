@@ -41,8 +41,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DXC.Util.Logger">
-      <HintPath>..\..\..\..\Ben\Log4Net\DXC.Util.Logger.dll</HintPath>
+    <Reference Include="DXC.Util.Logger, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ac169d43644e3dbd, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\DXC.Util.Logger\v4.0_1.0.0.0__ac169d43644e3dbd\DXC.Util.Logger.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />

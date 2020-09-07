@@ -40,6 +40,14 @@
     <AssemblyOriginatorKeyFile>Ben.Demo.BizTalk.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Windows\assembly\GAC_MSIL\log4net\1.2.10.0__1b44e1d426115821\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net.Ext.Serializable, Version=1.0.0.2, Culture=neutral, PublicKeyToken=02e779351b902449, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Windows\assembly\GAC_MSIL\log4net.Ext.Serializable\1.0.0.2__02e779351b902449\log4net.Ext.Serializable.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
