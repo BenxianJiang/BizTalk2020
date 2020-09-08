@@ -112,6 +112,20 @@
       <SubType>Task</SubType>
     </XLang>
   </ItemGroup>
+  <ItemGroup>
+    <XLang Include="ArticleUpload.odx">
+      <TypeName>ArticleUpload</TypeName>
+      <Namespace>Ben.Demo.BizTalk.Orchestrations</Namespace>
+      <SubType>Task</SubType>
+    </XLang>
+  </ItemGroup>
+  <ItemGroup>
+    <XLang Include="ArticleDownload.odx">
+      <TypeName>ArticleDownload</TypeName>
+      <Namespace>Ben.Demo.BizTalk.Orchestrations</Namespace>
+      <SubType>Task</SubType>
+    </XLang>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\BizTalk\BizTalkC.targets" />
 </Project>

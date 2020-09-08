@@ -1,0 +1,209 @@
+﻿#if __DESIGNER_DATA
+#error Do not define __DESIGNER_DATA.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<om:MetaModel MajorVersion="1" MinorVersion="3" Core="2b131234-7959-458d-834f-2dc0769ce683" ScheduleModel="66366196-361d-448d-976f-cab5e87496d2" xmlns:om="http://schemas.microsoft.com/BizTalk/2003/DesignerData">
+    <om:Element Type="Module" OID="25e8df6b-38ae-4ced-8b32-59d19e84c927" LowerBound="1.1" HigherBound="53.1">
+        <om:Property Name="ReportToAnalyst" Value="True" />
+        <om:Property Name="Name" Value="Ben.Demo.BizTalk.Orchestrations" />
+        <om:Property Name="Signal" Value="False" />
+        <om:Element Type="ServiceDeclaration" OID="d495b8e2-5300-4a3e-916c-c498995dfba0" ParentLink="Module_ServiceDeclaration" LowerBound="11.1" HigherBound="52.1">
+            <om:Property Name="InitializedTransactionType" Value="False" />
+            <om:Property Name="IsInvokable" Value="False" />
+            <om:Property Name="TypeModifier" Value="Internal" />
+            <om:Property Name="ReportToAnalyst" Value="True" />
+            <om:Property Name="Name" Value="ArticleUpload" />
+            <om:Property Name="Signal" Value="False" />
+            <om:Element Type="VariableDeclaration" OID="a5453f51-cced-4eea-a4be-af8cb5f46f83" ParentLink="ServiceDeclaration_VariableDeclaration" LowerBound="18.1" HigherBound="19.1">
+                <om:Property Name="UseDefaultConstructor" Value="False" />
+                <om:Property Name="Type" Value="System.String" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="instanceId" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="VariableDeclaration" OID="5ad7d4cd-7550-427d-9504-c0d17424a8de" ParentLink="ServiceDeclaration_VariableDeclaration" LowerBound="19.1" HigherBound="20.1">
+                <om:Property Name="UseDefaultConstructor" Value="False" />
+                <om:Property Name="Type" Value="log4net.Ext.Serializable.SLog" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="bizLogger" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="VariableDeclaration" OID="3677add1-c02d-4c49-898e-01b20249efa5" ParentLink="ServiceDeclaration_VariableDeclaration" LowerBound="20.1" HigherBound="21.1">
+                <om:Property Name="UseDefaultConstructor" Value="True" />
+                <om:Property Name="Type" Value="log4net.helpers.PropertiesCollectionEx" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="bizLoggerProp" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="VariableDeclaration" OID="4ac621e7-e8ac-45d1-8cbb-736562864d33" ParentLink="ServiceDeclaration_VariableDeclaration" LowerBound="21.1" HigherBound="22.1">
+                <om:Property Name="UseDefaultConstructor" Value="True" />
+                <om:Property Name="Type" Value="System.Xml.XmlDocument" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="xmlDoc" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="MessageDeclaration" OID="3a825ec1-df67-4acc-836c-e0da6cd16acf" ParentLink="ServiceDeclaration_MessageDeclaration" LowerBound="16.1" HigherBound="17.1">
+                <om:Property Name="Type" Value="Ben.Demo.BizTalk.Schemas.BizService.BizTalkServiceInstance_ben_demo_biztalk_schemas_bizarticle" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="MsgArticleUploadReq" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="MessageDeclaration" OID="c5be85d1-bb84-4dcf-96f7-d7de62396b1a" ParentLink="ServiceDeclaration_MessageDeclaration" LowerBound="17.1" HigherBound="18.1">
+                <om:Property Name="Type" Value="Ben.Demo.BizTalk.Schemas.BizService.BizTalkServiceInstance_ben_demo_biztalk_schemas_bizarticle" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="MsgArticleUploadResp" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="ServiceBody" OID="c4abd01e-f472-4b65-807b-54147494d842" ParentLink="ServiceDeclaration_ServiceBody">
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="Receive" OID="a829fba5-b053-44d1-888a-121aa71af442" ParentLink="ServiceBody_Statement" LowerBound="24.1" HigherBound="29.1">
+                    <om:Property Name="Activate" Value="True" />
+                    <om:Property Name="PortName" Value="Port_Receive_BiztalkService_ArticleUpload" />
+                    <om:Property Name="MessageName" Value="MsgArticleUploadReq" />
+                    <om:Property Name="OperationName" Value="UploadDocument" />
+                    <om:Property Name="OperationMessageName" Value="Request" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Receive_1" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+                <om:Element Type="VariableAssignment" OID="d7ad84c5-fd98-4e39-abcd-eebe5eba555b" ParentLink="ServiceBody_Statement" LowerBound="29.1" HigherBound="40.1">
+                    <om:Property Name="Expression" Value="instanceId = ArticleUpload(Microsoft.XLANGs.BaseTypes.InstanceId);&#xD;&#xA;bizLogger = log4net.Ext.Serializable.SLogManager.GetLogger(&quot;Ben.Demo.BizTalk&quot;, log4net.helpers.CallersTypeName.Name);&#xD;&#xA;bizLogger.RegistryConfigurator();&#xD;&#xA;bizLoggerProp.Set(&quot;InstanceId&quot;, instanceId);&#xD;&#xA;&#xD;&#xA;bizLogger.Debug(bizLoggerProp, &quot;Article Upload Start ====&quot;);&#xD;&#xA;&#xD;&#xA;xmlDoc = MsgArticleUploadReq;&#xD;&#xA;&#xD;&#xA;bizLogger.Debug(bizLoggerProp, &quot;Received Upload Msg = &quot; + xmlDoc.OuterXml);" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Expression_1" />
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+                <om:Element Type="Construct" OID="b60407d1-bb09-4500-9595-f5ddcececec7" ParentLink="ServiceBody_Statement" LowerBound="40.1" HigherBound="46.1">
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="ConstructMessage_1" />
+                    <om:Property Name="Signal" Value="True" />
+                    <om:Element Type="MessageAssignment" OID="945bb25f-5fe5-474d-92ff-ddde21f2a1de" ParentLink="ComplexStatement_Statement" LowerBound="43.1" HigherBound="45.1">
+                        <om:Property Name="Expression" Value="MsgArticleUploadResp = MsgArticleUploadReq;" />
+                        <om:Property Name="ReportToAnalyst" Value="False" />
+                        <om:Property Name="Name" Value="MessageAssignment_1" />
+                        <om:Property Name="Signal" Value="True" />
+                    </om:Element>
+                    <om:Element Type="MessageRef" OID="0a6a644c-d6ea-4097-9cdd-14027605b73a" ParentLink="Construct_MessageRef" LowerBound="41.23" HigherBound="41.43">
+                        <om:Property Name="Ref" Value="MsgArticleUploadResp" />
+                        <om:Property Name="ReportToAnalyst" Value="True" />
+                        <om:Property Name="Signal" Value="False" />
+                    </om:Element>
+                </om:Element>
+                <om:Element Type="Send" OID="d1e36193-ca23-404a-807a-03e72dcd4761" ParentLink="ServiceBody_Statement" LowerBound="46.1" HigherBound="48.1">
+                    <om:Property Name="PortName" Value="Port_Receive_BiztalkService_ArticleUpload" />
+                    <om:Property Name="MessageName" Value="MsgArticleUploadResp" />
+                    <om:Property Name="OperationName" Value="UploadDocument" />
+                    <om:Property Name="OperationMessageName" Value="Response" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Send_1" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+                <om:Element Type="VariableAssignment" OID="b54ac4bb-caf1-46eb-8d5b-1ca4386bc0db" ParentLink="ServiceBody_Statement" LowerBound="48.1" HigherBound="50.1">
+                    <om:Property Name="Expression" Value="bizLogger.Debug(bizLoggerProp, &quot;Article Upload End ====&quot;);" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Expression_2" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+            </om:Element>
+            <om:Element Type="PortDeclaration" OID="9b9a386c-e778-44a0-9acf-ea0ea4fd166f" ParentLink="ServiceDeclaration_PortDeclaration" LowerBound="14.1" HigherBound="16.1">
+                <om:Property Name="PortModifier" Value="Implements" />
+                <om:Property Name="Orientation" Value="Left" />
+                <om:Property Name="PortIndex" Value="-1" />
+                <om:Property Name="IsWebPort" Value="False" />
+                <om:Property Name="OrderedDelivery" Value="False" />
+                <om:Property Name="DeliveryNotification" Value="None" />
+                <om:Property Name="Type" Value="Ben.Demo.BizTalk.Orchestrations.PortType_Receive_BiztalkService_ArticleUpload" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="Port_Receive_BiztalkService_ArticleUpload" />
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="LogicalBindingAttribute" OID="0be72aeb-87d4-411e-acf3-9554a285d298" ParentLink="PortDeclaration_CLRAttribute" LowerBound="14.1" HigherBound="15.1">
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+        </om:Element>
+        <om:Element Type="PortType" OID="7b5a1461-bc2c-4ad6-a859-a5cf019b2345" ParentLink="Module_PortType" LowerBound="4.1" HigherBound="11.1">
+            <om:Property Name="Synchronous" Value="True" />
+            <om:Property Name="TypeModifier" Value="Internal" />
+            <om:Property Name="ReportToAnalyst" Value="True" />
+            <om:Property Name="Name" Value="PortType_Receive_BiztalkService_ArticleUpload" />
+            <om:Property Name="Signal" Value="False" />
+            <om:Element Type="OperationDeclaration" OID="a7580a75-43d8-4a01-84dc-bf436d1d32a5" ParentLink="PortType_OperationDeclaration" LowerBound="6.1" HigherBound="10.1">
+                <om:Property Name="OperationType" Value="RequestResponse" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="UploadDocument" />
+                <om:Property Name="Signal" Value="True" />
+                <om:Element Type="MessageRef" OID="62a59dad-9dbc-4561-9ff8-d6765e4edb24" ParentLink="OperationDeclaration_RequestMessageRef" LowerBound="8.13" HigherBound="8.107">
+                    <om:Property Name="Ref" Value="Ben.Demo.BizTalk.Schemas.BizService.BizTalkServiceInstance_ben_demo_biztalk_schemas_bizarticle" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Request" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+                <om:Element Type="MessageRef" OID="faab54ed-f215-4a20-9df0-0f6773bfe889" ParentLink="OperationDeclaration_ResponseMessageRef" LowerBound="8.109" HigherBound="8.203">
+                    <om:Property Name="Ref" Value="Ben.Demo.BizTalk.Schemas.BizService.BizTalkServiceInstance_ben_demo_biztalk_schemas_bizarticle" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Response" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+            </om:Element>
+        </om:Element>
+    </om:Element>
+</om:MetaModel>
+#endif // __DESIGNER_DATA
+[Microsoft.XLANGs.BaseTypes.BPELExportable(false)]
+module Ben.Demo.BizTalk.Orchestrations
+{
+    internal porttype PortType_Receive_BiztalkService_ArticleUpload
+    {
+        requestresponse UploadDocument
+        {
+            Ben.Demo.BizTalk.Schemas.BizService.BizTalkServiceInstance_ben_demo_biztalk_schemas_bizarticle, Ben.Demo.BizTalk.Schemas.BizService.BizTalkServiceInstance_ben_demo_biztalk_schemas_bizarticle
+        };
+    };
+    [Microsoft.XLANGs.BaseTypes.BPELExportable(false)]
+    internal service ArticleUpload
+    {
+        [Microsoft.XLANGs.BaseTypes.LogicalBinding()]
+        port implements PortType_Receive_BiztalkService_ArticleUpload Port_Receive_BiztalkService_ArticleUpload;
+        message Ben.Demo.BizTalk.Schemas.BizService.BizTalkServiceInstance_ben_demo_biztalk_schemas_bizarticle MsgArticleUploadReq;
+        message Ben.Demo.BizTalk.Schemas.BizService.BizTalkServiceInstance_ben_demo_biztalk_schemas_bizarticle MsgArticleUploadResp;
+        System.String instanceId;
+        log4net.Ext.Serializable.SLog bizLogger;
+        log4net.helpers.PropertiesCollectionEx bizLoggerProp;
+        System.Xml.XmlDocument xmlDoc;
+        body ()
+        {
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("a829fba5-b053-44d1-888a-121aa71af442")]
+            activate receive (Port_Receive_BiztalkService_ArticleUpload.UploadDocument, MsgArticleUploadReq);
+            instanceId = "";
+            bizLoggerProp = new log4net.helpers.PropertiesCollectionEx();
+            xmlDoc = new System.Xml.XmlDocument();
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("d7ad84c5-fd98-4e39-abcd-eebe5eba555b")]
+            instanceId = ArticleUpload(Microsoft.XLANGs.BaseTypes.InstanceId);
+            bizLogger = log4net.Ext.Serializable.SLogManager.GetLogger("Ben.Demo.BizTalk", log4net.helpers.CallersTypeName.Name);
+            bizLogger.RegistryConfigurator();
+            bizLoggerProp.Set("InstanceId", instanceId);
+            
+            bizLogger.Debug(bizLoggerProp, "Article Upload Start ====");
+            
+            xmlDoc = MsgArticleUploadReq;
+            
+            bizLogger.Debug(bizLoggerProp, "Received Upload Msg = " + xmlDoc.OuterXml);
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("b60407d1-bb09-4500-9595-f5ddcececec7")]
+            construct MsgArticleUploadResp
+            {
+                [Microsoft.XLANGs.BaseTypes.DesignerPosition("945bb25f-5fe5-474d-92ff-ddde21f2a1de")]
+                MsgArticleUploadResp = MsgArticleUploadReq;
+            }
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("d1e36193-ca23-404a-807a-03e72dcd4761")]
+            send (Port_Receive_BiztalkService_ArticleUpload.UploadDocument, MsgArticleUploadResp);
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("b54ac4bb-caf1-46eb-8d5b-1ca4386bc0db")]
+            bizLogger.Debug(bizLoggerProp, "Article Upload End ====");
+        }
+    }
+}
+

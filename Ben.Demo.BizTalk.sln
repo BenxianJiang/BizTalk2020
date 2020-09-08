@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ben.Demo.BizTalk.Pipelines"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ben.Demo.WcfService", "Ben.Demo.WcfService\Ben.Demo.WcfService.csproj", "{32C38CEC-BD13-4435-905F-E779F2D79B16}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ben.Demo.UnitTest", "Ben.Demo.UnitTest\Ben.Demo.UnitTest.csproj", "{B50B5615-9FF7-45B3-B029-F2FD8D12ED39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +68,10 @@ Global
 		{32C38CEC-BD13-4435-905F-E779F2D79B16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32C38CEC-BD13-4435-905F-E779F2D79B16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32C38CEC-BD13-4435-905F-E779F2D79B16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B50B5615-9FF7-45B3-B029-F2FD8D12ED39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B50B5615-9FF7-45B3-B029-F2FD8D12ED39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B50B5615-9FF7-45B3-B029-F2FD8D12ED39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B50B5615-9FF7-45B3-B029-F2FD8D12ED39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
