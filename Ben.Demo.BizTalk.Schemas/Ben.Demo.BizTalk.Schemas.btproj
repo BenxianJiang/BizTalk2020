@@ -81,14 +81,9 @@
     </Schema>
   </ItemGroup>
   <ItemGroup>
-    <Schema Include="BizService\BizTalkServiceInstance_ben_demo_biztalk_schemas_bizarticle.xsd">
-      <Namespace>Ben.Demo.BizTalk.Schemas.BizService</Namespace>
-      <TypeName>BizTalkServiceInstance_ben_demo_biztalk_schemas_bizarticle</TypeName>
-      <SubType>Task</SubType>
-    </Schema>
-    <Schema Include="BizService\BizTalkServiceInstance_schemas_microsoft_com_Message.xsd">
-      <Namespace>Ben.Demo.BizTalk.Schemas.BizService</Namespace>
-      <TypeName>BizTalkServiceInstance_schemas_microsoft_com_Message</TypeName>
+    <Schema Include="BizArticle.xsd">
+      <TypeName>BizArticle</TypeName>
+      <Namespace>Ben.Demo.BizTalk.Schemas</Namespace>
       <SubType>Task</SubType>
     </Schema>
     <Schema Include="ArticleSchema.xsd">
@@ -135,8 +130,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="BizService\BizTalkServiceInstance.BindingInfo.xml" />
-    <Content Include="BizService\BizTalkServiceInstance_Custom.BindingInfo.xml" />
     <Content Include="WcfService\DownloadService.BindingInfo.xml" />
     <Content Include="WcfService\DownloadService_Custom.BindingInfo.xml" />
     <Content Include="WcfService\UploadService.BindingInfo.xml" />

@@ -46,14 +46,14 @@
                 <om:Property Name="Signal" Value="True" />
             </om:Element>
             <om:Element Type="MessageDeclaration" OID="3a825ec1-df67-4acc-836c-e0da6cd16acf" ParentLink="ServiceDeclaration_MessageDeclaration" LowerBound="16.1" HigherBound="17.1">
-                <om:Property Name="Type" Value="Ben.Demo.BizTalk.Schemas.BizService.BizTalkServiceInstance_ben_demo_biztalk_schemas_bizarticle" />
+                <om:Property Name="Type" Value="Ben.Demo.BizTalk.Schemas.BizArticle" />
                 <om:Property Name="ParamDirection" Value="In" />
                 <om:Property Name="ReportToAnalyst" Value="True" />
                 <om:Property Name="Name" Value="MsgArticleUploadReq" />
                 <om:Property Name="Signal" Value="True" />
             </om:Element>
             <om:Element Type="MessageDeclaration" OID="c5be85d1-bb84-4dcf-96f7-d7de62396b1a" ParentLink="ServiceDeclaration_MessageDeclaration" LowerBound="17.1" HigherBound="18.1">
-                <om:Property Name="Type" Value="Ben.Demo.BizTalk.Schemas.BizService.BizTalkServiceInstance_ben_demo_biztalk_schemas_bizarticle" />
+                <om:Property Name="Type" Value="Ben.Demo.BizTalk.Schemas.BizArticle" />
                 <om:Property Name="ParamDirection" Value="In" />
                 <om:Property Name="ReportToAnalyst" Value="True" />
                 <om:Property Name="Name" Value="MsgArticleUploadResp" />
@@ -137,14 +137,14 @@
                 <om:Property Name="ReportToAnalyst" Value="True" />
                 <om:Property Name="Name" Value="UploadDocument" />
                 <om:Property Name="Signal" Value="True" />
-                <om:Element Type="MessageRef" OID="62a59dad-9dbc-4561-9ff8-d6765e4edb24" ParentLink="OperationDeclaration_RequestMessageRef" LowerBound="8.13" HigherBound="8.107">
-                    <om:Property Name="Ref" Value="Ben.Demo.BizTalk.Schemas.BizService.BizTalkServiceInstance_ben_demo_biztalk_schemas_bizarticle" />
+                <om:Element Type="MessageRef" OID="62a59dad-9dbc-4561-9ff8-d6765e4edb24" ParentLink="OperationDeclaration_RequestMessageRef" LowerBound="8.13" HigherBound="8.48">
+                    <om:Property Name="Ref" Value="Ben.Demo.BizTalk.Schemas.BizArticle" />
                     <om:Property Name="ReportToAnalyst" Value="True" />
                     <om:Property Name="Name" Value="Request" />
                     <om:Property Name="Signal" Value="True" />
                 </om:Element>
-                <om:Element Type="MessageRef" OID="faab54ed-f215-4a20-9df0-0f6773bfe889" ParentLink="OperationDeclaration_ResponseMessageRef" LowerBound="8.109" HigherBound="8.203">
-                    <om:Property Name="Ref" Value="Ben.Demo.BizTalk.Schemas.BizService.BizTalkServiceInstance_ben_demo_biztalk_schemas_bizarticle" />
+                <om:Element Type="MessageRef" OID="faab54ed-f215-4a20-9df0-0f6773bfe889" ParentLink="OperationDeclaration_ResponseMessageRef" LowerBound="8.50" HigherBound="8.85">
+                    <om:Property Name="Ref" Value="Ben.Demo.BizTalk.Schemas.BizArticle" />
                     <om:Property Name="ReportToAnalyst" Value="True" />
                     <om:Property Name="Name" Value="Response" />
                     <om:Property Name="Signal" Value="True" />
@@ -161,7 +161,7 @@ module Ben.Demo.BizTalk.Orchestrations
     {
         requestresponse UploadDocument
         {
-            Ben.Demo.BizTalk.Schemas.BizService.BizTalkServiceInstance_ben_demo_biztalk_schemas_bizarticle, Ben.Demo.BizTalk.Schemas.BizService.BizTalkServiceInstance_ben_demo_biztalk_schemas_bizarticle
+            Ben.Demo.BizTalk.Schemas.BizArticle, Ben.Demo.BizTalk.Schemas.BizArticle
         };
     };
     [Microsoft.XLANGs.BaseTypes.BPELExportable(false)]
@@ -169,8 +169,8 @@ module Ben.Demo.BizTalk.Orchestrations
     {
         [Microsoft.XLANGs.BaseTypes.LogicalBinding()]
         port implements PortType_Receive_BiztalkService_ArticleUpload Port_Receive_BiztalkService_ArticleUpload;
-        message Ben.Demo.BizTalk.Schemas.BizService.BizTalkServiceInstance_ben_demo_biztalk_schemas_bizarticle MsgArticleUploadReq;
-        message Ben.Demo.BizTalk.Schemas.BizService.BizTalkServiceInstance_ben_demo_biztalk_schemas_bizarticle MsgArticleUploadResp;
+        message Ben.Demo.BizTalk.Schemas.BizArticle MsgArticleUploadReq;
+        message Ben.Demo.BizTalk.Schemas.BizArticle MsgArticleUploadResp;
         System.String instanceId;
         log4net.Ext.Serializable.SLog bizLogger;
         log4net.helpers.PropertiesCollectionEx bizLoggerProp;

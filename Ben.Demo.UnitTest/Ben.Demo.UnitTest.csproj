@@ -62,17 +62,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Connected Services\BizArticleService\Ben.Demo.UnitTest.BizArticleService.BizArticlesArticle.datasource">
+    <None Include="Connected Services\BizArticleService\Ben.Demo.UnitTest.BizArticleService.BizArticles.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\BizArticleService\Ben.Demo.UnitTest.BizArticleService.DownloadResponse.datasource">
+    <None Include="Connected Services\BizArticleService\Ben.Demo.UnitTest.BizArticleService.DownloadDocumentResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\BizArticleService\Ben.Demo.UnitTest.BizArticleService.UploadResponse.datasource">
+    <None Include="Connected Services\BizArticleService\Ben.Demo.UnitTest.BizArticleService.UploadDocumentResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\BizArticleService\BizArticleService.xsd" />
-    <None Include="Connected Services\BizArticleService\BizTalkServiceInstance1.wsdl" />
+    <None Include="Connected Services\BizArticleService\BizTalkServiceInstance.wsdl" />
     <None Include="Data\UploadFile.pdf" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -93,9 +92,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\BizArticleService\BizArticleService.disco" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

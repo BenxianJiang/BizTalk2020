@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 
 namespace Ben.Demo.UnitTest
 {
@@ -11,33 +12,32 @@ namespace Ben.Demo.UnitTest
         [TestMethod]
         public void UploadTestMethod()
         {
+            //make sure the behaviour of BizTalk Receive WCF service in IIS (web.config) set to True!!!
             string filePath = @"C:\GitHub\Ben\Ben.Demo.BizTalk\Ben.Demo.UnitTest\Data\UploadFile.pdf";
 
-            BizArticleService.BizArticleServiceClient client = new BizArticleService.BizArticleServiceClient("CustomBinding_ITwoWayAsync");
+            BizArticleService.ArticleServiceClient client = new BizArticleService.ArticleServiceClient("CustomBinding_ITwoWayAsync");
 
-            List<BizArticleService.BizArticlesArticle> arts = new List<BizArticleService.BizArticlesArticle>();
-            BizArticleService.BizArticlesArticle art = new BizArticleService.BizArticlesArticle();
-            art.ArticleName = "article 1";
-            art.ArticleContent = File.ReadAllBytes(filePath);
-            arts.Add(art);
+            //List<BizArticleService.BizArticlesBizArticle> arts = new List<BizArticleService.BizArticlesBizArticle>();
+            BizArticleService.BizArticlesBizArticle art = new BizArticleService.BizArticlesBizArticle();
+            art.BizArticleName = "article 1";
+            art.BizArticleContent = File.ReadAllBytes(filePath);
+            //arts.Add(art);
 
-            art.ArticleName = "Article 2";
-            art.ArticleContent = File.ReadAllBytes(filePath);
-            arts.Add(art);
+            //art.BizArticleName = "Article 2";
+            //art.BizArticleContent = File.ReadAllBytes(filePath);
+            //arts.Add(art);
 
-            BizArticleService.BizArticlesArticle[] req = arts.ToArray();
+            BizArticleService.BizArticles req = new BizArticleService.BizArticles();
+            req.BizArticle = art;
 
             //for windows authentication
             client.ClientCredentials.Windows.ClientCredential = System.Net.CredentialCache.DefaultNetworkCredentials;
             //or use client.ClientCredentials.Windows.ClientCredential = new System.Net.NetworkCredential("userName", "password", "domain");
 
-            client.Upload(ref req);
+            //make sure the behaviour of BizTalk Receive WCF service in IIS (web.config) set to True!!!
+            client.UploadDocument(ref req);
 
-            foreach(var r  in req)
-            {
-                var name = r.ArticleName;
-                var content = r.ArticleContent;
-            }
+            byte[] content = req.BizArticle.BizArticleContent;
         }
     }
 }

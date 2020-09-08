@@ -12,24 +12,24 @@ namespace Ben.Demo.UnitTest.BizArticleService {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://Ben.Demo.BizTalk.Schemas.BizArticle", ConfigurationName="BizArticleService.BizArticleService")]
-    public interface BizArticleService {
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://Ben.Demo.BizTalk.Schemas.BizArticle", ConfigurationName="BizArticleService.ArticleService")]
+    public interface ArticleService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="Upload", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="UploadDocument", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        Ben.Demo.UnitTest.BizArticleService.UploadResponse Upload(Ben.Demo.UnitTest.BizArticleService.UploadRequest request);
+        Ben.Demo.UnitTest.BizArticleService.UploadDocumentResponse UploadDocument(Ben.Demo.UnitTest.BizArticleService.UploadDocumentRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
-        [System.ServiceModel.OperationContractAttribute(Action="Upload", ReplyAction="*")]
-        System.Threading.Tasks.Task<Ben.Demo.UnitTest.BizArticleService.UploadResponse> UploadAsync(Ben.Demo.UnitTest.BizArticleService.UploadRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="UploadDocument", ReplyAction="*")]
+        System.Threading.Tasks.Task<Ben.Demo.UnitTest.BizArticleService.UploadDocumentResponse> UploadDocumentAsync(Ben.Demo.UnitTest.BizArticleService.UploadDocumentRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="Download", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="DownloadDocument", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        Ben.Demo.UnitTest.BizArticleService.DownloadResponse Download(Ben.Demo.UnitTest.BizArticleService.DownloadRequest request);
+        Ben.Demo.UnitTest.BizArticleService.DownloadDocumentResponse DownloadDocument(Ben.Demo.UnitTest.BizArticleService.DownloadDocumentRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
-        [System.ServiceModel.OperationContractAttribute(Action="Download", ReplyAction="*")]
-        System.Threading.Tasks.Task<Ben.Demo.UnitTest.BizArticleService.DownloadResponse> DownloadAsync(Ben.Demo.UnitTest.BizArticleService.DownloadRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="DownloadDocument", ReplyAction="*")]
+        System.Threading.Tasks.Task<Ben.Demo.UnitTest.BizArticleService.DownloadDocumentResponse> DownloadDocumentAsync(Ben.Demo.UnitTest.BizArticleService.DownloadDocumentRequest request);
     }
     
     /// <remarks/>
@@ -38,33 +38,65 @@ namespace Ben.Demo.UnitTest.BizArticleService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://Ben.Demo.BizTalk.Schemas.BizArticle")]
-    public partial class BizArticlesArticle : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class BizArticles : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private string articleNameField;
-        
-        private byte[] articleContentField;
+        private BizArticlesBizArticle bizArticleField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string ArticleName {
+        public BizArticlesBizArticle BizArticle {
             get {
-                return this.articleNameField;
+                return this.bizArticleField;
             }
             set {
-                this.articleNameField = value;
-                this.RaisePropertyChanged("ArticleName");
+                this.bizArticleField = value;
+                this.RaisePropertyChanged("BizArticle");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://Ben.Demo.BizTalk.Schemas.BizArticle")]
+    public partial class BizArticlesBizArticle : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string bizArticleNameField;
+        
+        private byte[] bizArticleContentField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public string BizArticleName {
+            get {
+                return this.bizArticleNameField;
+            }
+            set {
+                this.bizArticleNameField = value;
+                this.RaisePropertyChanged("BizArticleName");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="base64Binary", Order=1)]
-        public byte[] ArticleContent {
+        public byte[] BizArticleContent {
             get {
-                return this.articleContentField;
+                return this.bizArticleContentField;
             }
             set {
-                this.articleContentField = value;
-                this.RaisePropertyChanged("ArticleContent");
+                this.bizArticleContentField = value;
+                this.RaisePropertyChanged("BizArticleContent");
             }
         }
         
@@ -81,16 +113,15 @@ namespace Ben.Demo.UnitTest.BizArticleService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class UploadRequest {
+    public partial class UploadDocumentRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://Ben.Demo.BizTalk.Schemas.BizArticle", Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("Article", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
-        public Ben.Demo.UnitTest.BizArticleService.BizArticlesArticle[] BizArticles;
+        public Ben.Demo.UnitTest.BizArticleService.BizArticles BizArticles;
         
-        public UploadRequest() {
+        public UploadDocumentRequest() {
         }
         
-        public UploadRequest(Ben.Demo.UnitTest.BizArticleService.BizArticlesArticle[] BizArticles) {
+        public UploadDocumentRequest(Ben.Demo.UnitTest.BizArticleService.BizArticles BizArticles) {
             this.BizArticles = BizArticles;
         }
     }
@@ -98,16 +129,15 @@ namespace Ben.Demo.UnitTest.BizArticleService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class UploadResponse {
+    public partial class UploadDocumentResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://Ben.Demo.BizTalk.Schemas.BizArticle", Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("Article", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
-        public Ben.Demo.UnitTest.BizArticleService.BizArticlesArticle[] BizArticles;
+        public Ben.Demo.UnitTest.BizArticleService.BizArticles BizArticles;
         
-        public UploadResponse() {
+        public UploadDocumentResponse() {
         }
         
-        public UploadResponse(Ben.Demo.UnitTest.BizArticleService.BizArticlesArticle[] BizArticles) {
+        public UploadDocumentResponse(Ben.Demo.UnitTest.BizArticleService.BizArticles BizArticles) {
             this.BizArticles = BizArticles;
         }
     }
@@ -115,16 +145,15 @@ namespace Ben.Demo.UnitTest.BizArticleService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class DownloadRequest {
+    public partial class DownloadDocumentRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://Ben.Demo.BizTalk.Schemas.BizArticle", Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("Article", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
-        public Ben.Demo.UnitTest.BizArticleService.BizArticlesArticle[] BizArticles;
+        public Ben.Demo.UnitTest.BizArticleService.BizArticles BizArticles;
         
-        public DownloadRequest() {
+        public DownloadDocumentRequest() {
         }
         
-        public DownloadRequest(Ben.Demo.UnitTest.BizArticleService.BizArticlesArticle[] BizArticles) {
+        public DownloadDocumentRequest(Ben.Demo.UnitTest.BizArticleService.BizArticles BizArticles) {
             this.BizArticles = BizArticles;
         }
     }
@@ -132,77 +161,76 @@ namespace Ben.Demo.UnitTest.BizArticleService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class DownloadResponse {
+    public partial class DownloadDocumentResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://Ben.Demo.BizTalk.Schemas.BizArticle", Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("Article", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
-        public Ben.Demo.UnitTest.BizArticleService.BizArticlesArticle[] BizArticles;
+        public Ben.Demo.UnitTest.BizArticleService.BizArticles BizArticles;
         
-        public DownloadResponse() {
+        public DownloadDocumentResponse() {
         }
         
-        public DownloadResponse(Ben.Demo.UnitTest.BizArticleService.BizArticlesArticle[] BizArticles) {
+        public DownloadDocumentResponse(Ben.Demo.UnitTest.BizArticleService.BizArticles BizArticles) {
             this.BizArticles = BizArticles;
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface BizArticleServiceChannel : Ben.Demo.UnitTest.BizArticleService.BizArticleService, System.ServiceModel.IClientChannel {
+    public interface ArticleServiceChannel : Ben.Demo.UnitTest.BizArticleService.ArticleService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class BizArticleServiceClient : System.ServiceModel.ClientBase<Ben.Demo.UnitTest.BizArticleService.BizArticleService>, Ben.Demo.UnitTest.BizArticleService.BizArticleService {
+    public partial class ArticleServiceClient : System.ServiceModel.ClientBase<Ben.Demo.UnitTest.BizArticleService.ArticleService>, Ben.Demo.UnitTest.BizArticleService.ArticleService {
         
-        public BizArticleServiceClient() {
+        public ArticleServiceClient() {
         }
         
-        public BizArticleServiceClient(string endpointConfigurationName) : 
+        public ArticleServiceClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public BizArticleServiceClient(string endpointConfigurationName, string remoteAddress) : 
+        public ArticleServiceClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public BizArticleServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public ArticleServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public BizArticleServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public ArticleServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Ben.Demo.UnitTest.BizArticleService.UploadResponse Ben.Demo.UnitTest.BizArticleService.BizArticleService.Upload(Ben.Demo.UnitTest.BizArticleService.UploadRequest request) {
-            return base.Channel.Upload(request);
+        Ben.Demo.UnitTest.BizArticleService.UploadDocumentResponse Ben.Demo.UnitTest.BizArticleService.ArticleService.UploadDocument(Ben.Demo.UnitTest.BizArticleService.UploadDocumentRequest request) {
+            return base.Channel.UploadDocument(request);
         }
         
-        public void Upload(ref Ben.Demo.UnitTest.BizArticleService.BizArticlesArticle[] BizArticles) {
-            Ben.Demo.UnitTest.BizArticleService.UploadRequest inValue = new Ben.Demo.UnitTest.BizArticleService.UploadRequest();
+        public void UploadDocument(ref Ben.Demo.UnitTest.BizArticleService.BizArticles BizArticles) {
+            Ben.Demo.UnitTest.BizArticleService.UploadDocumentRequest inValue = new Ben.Demo.UnitTest.BizArticleService.UploadDocumentRequest();
             inValue.BizArticles = BizArticles;
-            Ben.Demo.UnitTest.BizArticleService.UploadResponse retVal = ((Ben.Demo.UnitTest.BizArticleService.BizArticleService)(this)).Upload(inValue);
+            Ben.Demo.UnitTest.BizArticleService.UploadDocumentResponse retVal = ((Ben.Demo.UnitTest.BizArticleService.ArticleService)(this)).UploadDocument(inValue);
             BizArticles = retVal.BizArticles;
         }
         
-        public System.Threading.Tasks.Task<Ben.Demo.UnitTest.BizArticleService.UploadResponse> UploadAsync(Ben.Demo.UnitTest.BizArticleService.UploadRequest request) {
-            return base.Channel.UploadAsync(request);
+        public System.Threading.Tasks.Task<Ben.Demo.UnitTest.BizArticleService.UploadDocumentResponse> UploadDocumentAsync(Ben.Demo.UnitTest.BizArticleService.UploadDocumentRequest request) {
+            return base.Channel.UploadDocumentAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Ben.Demo.UnitTest.BizArticleService.DownloadResponse Ben.Demo.UnitTest.BizArticleService.BizArticleService.Download(Ben.Demo.UnitTest.BizArticleService.DownloadRequest request) {
-            return base.Channel.Download(request);
+        Ben.Demo.UnitTest.BizArticleService.DownloadDocumentResponse Ben.Demo.UnitTest.BizArticleService.ArticleService.DownloadDocument(Ben.Demo.UnitTest.BizArticleService.DownloadDocumentRequest request) {
+            return base.Channel.DownloadDocument(request);
         }
         
-        public void Download(ref Ben.Demo.UnitTest.BizArticleService.BizArticlesArticle[] BizArticles) {
-            Ben.Demo.UnitTest.BizArticleService.DownloadRequest inValue = new Ben.Demo.UnitTest.BizArticleService.DownloadRequest();
+        public void DownloadDocument(ref Ben.Demo.UnitTest.BizArticleService.BizArticles BizArticles) {
+            Ben.Demo.UnitTest.BizArticleService.DownloadDocumentRequest inValue = new Ben.Demo.UnitTest.BizArticleService.DownloadDocumentRequest();
             inValue.BizArticles = BizArticles;
-            Ben.Demo.UnitTest.BizArticleService.DownloadResponse retVal = ((Ben.Demo.UnitTest.BizArticleService.BizArticleService)(this)).Download(inValue);
+            Ben.Demo.UnitTest.BizArticleService.DownloadDocumentResponse retVal = ((Ben.Demo.UnitTest.BizArticleService.ArticleService)(this)).DownloadDocument(inValue);
             BizArticles = retVal.BizArticles;
         }
         
-        public System.Threading.Tasks.Task<Ben.Demo.UnitTest.BizArticleService.DownloadResponse> DownloadAsync(Ben.Demo.UnitTest.BizArticleService.DownloadRequest request) {
-            return base.Channel.DownloadAsync(request);
+        public System.Threading.Tasks.Task<Ben.Demo.UnitTest.BizArticleService.DownloadDocumentResponse> DownloadDocumentAsync(Ben.Demo.UnitTest.BizArticleService.DownloadDocumentRequest request) {
+            return base.Channel.DownloadDocumentAsync(request);
         }
     }
 }

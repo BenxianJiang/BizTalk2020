@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9439bb30-dfb8-4845-a79a-b516d9b82779" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3ca86bed-297b-45e3-a105-606e6b3b3ac6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,12 +19,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost/BizTalkWcfServiceArticleUploadDownload/BizArticleService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://vboxwin2019/BenDemoBizTalkArticleWcfService/ArticleService.svc?singleWsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="BizTalkServiceInstance1.wsdl" MetadataType="Wsdl" ID="ff1b1039-c798-436e-81f3-618728570cbc" SourceId="1" SourceUrl="http://vboxwin2019/BizTalkWcfServiceArticleUploadDownload/BizArticleService.svc?wsdl" />
-    <MetadataFile FileName="BizArticleService.xsd" MetadataType="Schema" ID="4125cc48-9fb6-435b-b9ca-3a7d2aa2bbe6" SourceId="1" SourceUrl="http://vboxwin2019/BizTalkWcfServiceArticleUploadDownload/BizArticleService.svc?xsd=xsd2" />
-    <MetadataFile FileName="BizArticleService.disco" MetadataType="Disco" ID="21bb2b6a-1d04-416f-b08d-a6ffe7b6cbfa" SourceId="1" SourceUrl="http://vboxwin2019/BizTalkWcfServiceArticleUploadDownload/BizArticleService.svc?disco" />
+    <MetadataFile FileName="BizTalkServiceInstance.wsdl" MetadataType="Wsdl" ID="a6a272fc-0e98-4fb6-be8b-c7c0d0b26a3d" SourceId="1" SourceUrl="http://vboxwin2019/BenDemoBizTalkArticleWcfService/ArticleService.svc?singleWsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

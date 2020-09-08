@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="UCCLfvblkZvEfF0Is6mmngqmZBbtTFNhwwN2PbvHEIk=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="BPBJh9+llI6CpoDnaVt0eXInXPT/sQOt8AnMrDkD+8A=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="customBinding" name="CustomBinding_ITwoWayAsync">
       <properties>
@@ -154,10 +154,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="CustomBinding_ITwoWayAsync" contract="BizArticleService.BizArticleService" bindingType="customBinding" address="http://vboxwin2019/BizTalkWcfServiceArticleUploadDownload/BizArticleService.svc" bindingConfiguration="CustomBinding_ITwoWayAsync">
+    <endpoint name="CustomBinding_ITwoWayAsync" contract="BizArticleService.ArticleService" bindingType="customBinding" address="http://vboxwin2019/BenDemoBizTalkArticleWcfService/ArticleService.svc" bindingConfiguration="CustomBinding_ITwoWayAsync">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://vboxwin2019/BizTalkWcfServiceArticleUploadDownload/BizArticleService.svc</serializedValue>
+          <serializedValue>http://vboxwin2019/BenDemoBizTalkArticleWcfService/ArticleService.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -169,7 +169,7 @@
           <serializedValue>CustomBinding_ITwoWayAsync</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BizArticleService.BizArticleService</serializedValue>
+          <serializedValue>BizArticleService.ArticleService</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
