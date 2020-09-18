@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="urn:dxc.esb.aibp.wixservice/v1" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BizTalkServiceInstance" targetNamespace="urn:dxc.esb.aibp.wixservice/v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>
+    <CreationInfo Created="2020-09-18 17:05:53Z" />
+  </wsdl:documentation>
+  <wsp:Policy wsu:Id="CustomBinding_ITwoWayAsyncVoid_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsp:ExactlyOne>
+          <http:NegotiateAuthentication xmlns:http="http://schemas.microsoft.com/ws/06/2004/policy/http" />
+          <http:NtlmAuthentication xmlns:http="http://schemas.microsoft.com/ws/06/2004/policy/http" />
+        </wsp:ExactlyOne>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:dxc.esb.aibp.wixservice/v1/Imports">
+      <xsd:import schemaLocation="http://vboxwin2019:80/BiztalkWIXServices/V1/WIXService.svc?xsd=xsd2" namespace="urn:dxc.esb.aibp.canonical/v1" />
+      <xsd:import schemaLocation="http://vboxwin2019:80/BiztalkWIXServices/V1/WIXService.svc?xsd=xsd3" namespace="urn:dxc.esb.aibp.lixi.cal/v1" />
+      <xsd:import schemaLocation="http://vboxwin2019:80/BiztalkWIXServices/V1/WIXService.svc?xsd=xsd4" namespace="urn:dxc.esb.aibp.lixi.cal/v1" />
+      <xsd:import schemaLocation="http://vboxwin2019:80/BiztalkWIXServices/V1/WIXService.svc?xsd=xsd5" namespace="urn:dxc.esb.aibp.canonical/v1" />
+      <xsd:import schemaLocation="http://vboxwin2019:80/BiztalkWIXServices/V1/WIXService.svc?xsd=xsd6" namespace="urn:dxc.esb.aibp.canonical/v1" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="WIXService_UploadDocument_InputMessage">
+    <wsdl:part xmlns:q1="urn:dxc.esb.aibp.canonical/v1" name="part" element="q1:AIBPCanonical" />
+  </wsdl:message>
+  <wsdl:message name="WIXService_UploadDocument_OutputMessage">
+    <wsdl:part xmlns:q2="urn:dxc.esb.aibp.canonical/v1" name="part" element="q2:AIBPCanonical" />
+  </wsdl:message>
+  <wsdl:message name="WIXService_ReIndexDocument_InputMessage">
+    <wsdl:part xmlns:q3="urn:dxc.esb.aibp.canonical/v1" name="part" element="q3:AIBPCanonical" />
+  </wsdl:message>
+  <wsdl:message name="WIXService_ReIndexDocument_OutputMessage">
+    <wsdl:part xmlns:q4="urn:dxc.esb.aibp.canonical/v1" name="part" element="q4:AIBPCanonical" />
+  </wsdl:message>
+  <wsdl:portType name="WIXService">
+    <wsdl:documentation />
+    <wsdl:operation name="UploadDocument">
+      <wsdl:documentation />
+      <wsdl:input message="tns:WIXService_UploadDocument_InputMessage" />
+      <wsdl:output message="tns:WIXService_UploadDocument_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReIndexDocument">
+      <wsdl:documentation />
+      <wsdl:input message="tns:WIXService_ReIndexDocument_InputMessage" />
+      <wsdl:output message="tns:WIXService_ReIndexDocument_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CustomBinding_ITwoWayAsyncVoid" type="tns:WIXService">
+    <wsp:PolicyReference URI="#CustomBinding_ITwoWayAsyncVoid_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UploadDocument">
+      <wsdl:documentation />
+      <soap12:operation soapAction="UploadDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReIndexDocument">
+      <wsdl:documentation />
+      <soap12:operation soapAction="ReIndexDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" encodingStyle="http://www.w3.org/2003/05/soap-encoding" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BizTalkServiceInstance">
+    <wsdl:port name="CustomBinding_ITwoWayAsyncVoid" binding="tns:CustomBinding_ITwoWayAsyncVoid">
+      <soap12:address location="http://vboxwin2019/BiztalkWIXServices/V1/WIXService.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://vboxwin2019/BiztalkWIXServices/V1/WIXService.svc</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>VBOXWIN2019\Ben</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

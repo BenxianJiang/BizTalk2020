@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:dxc.esb.aibp.lixi.cal/v1" xmlns:b="http://schemas.microsoft.com/BizTalk/2003" targetNamespace="urn:dxc.esb.aibp.lixi.cal/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="http://vboxwin2019:80/BiztalkWIXServices/V1/WIXService.svc?xsd=xsd3" />
+</xs:schema>

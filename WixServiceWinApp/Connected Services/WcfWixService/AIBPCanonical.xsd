@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:dxc.esb.aibp.canonical/v1" xmlns:cal="urn:dxc.esb.aibp.lixi.cal/v1" xmlns:b="http://schemas.microsoft.com/BizTalk/2003" xmlns:ns0="https://ES.FS.WG.AIBP.Schemas.CustomPropertiesSchema" elementFormDefault="qualified" targetNamespace="urn:dxc.esb.aibp.canonical/v1" id="AIBPCanonical" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="http://vboxwin2019:80/BiztalkWIXServices/V1/WIXService.svc?xsd=xsd5" id="COMMON" />
+  <xs:include schemaLocation="http://vboxwin2019:80/BiztalkWIXServices/V1/WIXService.svc?xsd=xsd2" id="BASE" />
+  <xs:import schemaLocation="http://vboxwin2019:80/BiztalkWIXServices/V1/WIXService.svc?xsd=xsd4" namespace="urn:dxc.esb.aibp.lixi.cal/v1" />
+  <xs:annotation>
+    <xs:documentation>
+      This is the schema used internally by dxc (biztalk esb) and may be shared with other dxc partners, eg micro-focus. It is not exposed
+      to the originating parties (Decipha) as it is likley to contain biztalk specific data, such as elements used for routing and internal
+      decision making (inrule)
+    </xs:documentation>
+    <xs:appinfo>
+      <b:references xmlns:b="http://schemas.microsoft.com/BizTalk/2003">
+        <b:reference targetNamespace="urn:dxc.esb.aibp.lixi.cal/v1" />
+      </b:references>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="AIBPCanonical" type="CanonicalType">
+    <xs:annotation>
+      <xs:appinfo />
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="ControlType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MetadataFileName" type="xs:string" />
+      <xs:element minOccurs="0" name="Location" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The physical path to the article collection folder. It is assumed all articles will be located in the same folder. Or it may be
+            the logical name for the location, eg the zone name. In either case this will change as the collection is moved around different 
+            landing zones, eg biztalkzone, dcsmzone, ao-xzone etc.
+            Will be initialised by Biztalk from the source of the trigger message, or could even come from configuration.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="QueryResults" type="QueryResults" />
+      <xs:element minOccurs="0" name="Request" type="RequestType" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ProcessStep">
+        <xs:annotation>
+          <xs:documentation>
+            Not sure if this is needed, but would indicate what step the process is currently up to, eg Filtering, Indexing, Exception, STP. This and
+            Location are perhaps mutually redundant as there is likely a one to one relationship between them.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Received" />
+            <xs:enumeration value="SchemaValidationError" />
+            <xs:enumeration value="Exception" />
+            <xs:enumeration value="SentToAutoIndexing" />
+            <xs:enumeration value="Indexed" />
+            <xs:enumeration value="SentToSTP" />
+            <xs:enumeration value="QAStarted" />
+            <xs:enumeration value="QAFinished" />
+            <xs:enumeration value="Dispatcher" />
+            <xs:enumeration value="SentToManualIndexing" />
+            <xs:enumeration value="RulesProcessor" />
+            <xs:enumeration value="Support" />
+            <xs:enumeration value="Indexing" />
+            <xs:enumeration value="Email" />
+            <xs:enumeration value="GetSLSActivities" />
+            <xs:enumeration value="CreateSLSActivity" />
+            <xs:enumeration value="UpdateSLSActivity" />
+            <xs:enumeration value="GetCISDetailsByLoan" />
+            <xs:enumeration value="GetCISDetailsByCustomer" />
+            <xs:enumeration value="GetGOEAppDetails" />
+            <xs:enumeration value="UpdateGOEAppDetails" />
+            <xs:enumeration value="GetDCMSTransaction" />
+            <xs:enumeration value="CreateDCMSTransaction" />
+            <xs:enumeration value="GetSTAXActivities" />
+            <xs:enumeration value="GetESGLoanDetails" />
+            <xs:enumeration value="SetUpdateSLSActivity" />
+            <xs:enumeration value="GetGOEAppDetailsCompleted" />
+            <xs:enumeration value="GetDCMSTransactionCompleted" />
+            <xs:enumeration value="UpdateGOEAppDetailsCompleted" />
+            <xs:enumeration value="GetSLSActivitiesCompleted" />
+            <xs:enumeration value="CreateSLSActivityCompleted" />
+            <xs:enumeration value="UpdateSLSActivityCompleted" />
+            <xs:enumeration value="GetCISDetailsByLoanCompleted" />
+            <xs:enumeration value="GetCISDetailsByCustomerCompleted" />
+            <xs:enumeration value="CreateDCMSTransactionCompleted" />
+            <xs:enumeration value="SetUpdateSLSActivityCompleted" />
+            <xs:enumeration value="GetESGLoanDetailsCompleted" />
+            <xs:enumeration value="GetStaxDetails" />
+            <xs:enumeration value="GetStaxDetailsCompleted" />
+            <xs:enumeration value="AttachmentReceived" />
+            <xs:enumeration value="ManualIndexReceived" />
+            <xs:enumeration value="Re-IndexReceived" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="TransactionType" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionID" type="xs:string" />
+      <xs:element minOccurs="0" name="STAXID" type="xs:string" />
+      <xs:element minOccurs="0" name="ApplicationNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="IndexingLane" type="xs:string" />
+      <xs:element name="Routing">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" name="Handler" type="xs:string" />
+            <xs:element name="CurrentState" type="xs:string" />
+            <xs:element default="false" name="Auditable" type="xs:boolean" />
+            <xs:element minOccurs="0" maxOccurs="1" name="FutureRouting">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" maxOccurs="unbounded" name="Handler" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" name="TransitionStatus">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="SLSDCMS" />
+                  <xs:enumeration value="WIX" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="Notifications">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="Message" type="NotificationType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="Priority" type="xs:unsignedInt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RequestType">
+    <xs:sequence>
+      <xs:element name="Stream" type="StreamEnum">
+        <xs:annotation>
+          <xs:documentation>
+            The Stream of activity being requested, either an Origination or Servicing request
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:choice>
+        <xs:annotation>
+          <xs:documentation>
+            The specific activity being requested, can be either an origination activity or a servicing activity
+          </xs:documentation>
+        </xs:annotation>
+        <xs:element minOccurs="0" name="OriginationActivity" type="OriginationActivityType" />
+        <xs:element minOccurs="0" name="ServicingActivity" type="ServicingActivityType" />
+      </xs:choice>
+      <xs:element minOccurs="0" name="Team" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OriginationActivityType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OriginationType" type="OriginationTypeEnum" />
+      <xs:element minOccurs="0" name="TandCReceived" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LOVReceived" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ReqProPa00Received" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ApplicationStatus" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ApplicationTypeCd" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServicingActivityType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="ServicingType" type="ServicingTypeEnum" />
+      <xs:element name="AccountDetails" type="AccountDetailsType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SLSActivities">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="unbounded" name="Activity">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" maxOccurs="1" name="ActivityId" type="xs:string" />
+                  <xs:element minOccurs="0" name="BusinessActivity" type="xs:string" />
+                  <xs:element name="Operation">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="Create" />
+                        <xs:enumeration value="Update" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="CustomerId" type="xs:int" />
+                  <xs:element minOccurs="1" name="DocumentType" type="xs:string" />
+                  <xs:element minOccurs="0" name="Region" type="xs:string" />
+                  <xs:element minOccurs="1" name="State" type="xs:string" />
+                  <xs:element minOccurs="1" name="Division" type="xs:string" />
+                  <xs:element minOccurs="1" name="BsbNumber" type="xs:short" />
+                  <xs:element minOccurs="1" name="ManagerNumber" type="xs:short" />
+                  <xs:element minOccurs="1" name="Location" type="xs:int" />
+                  <xs:element minOccurs="1" name="ProcessGroup" type="xs:string" />
+                  <xs:element minOccurs="1" name="Operator" type="xs:string" />
+                  <xs:element minOccurs="0" name="Status" type="xs:string" />
+                  <xs:element minOccurs="1" name="Priority" type="xs:string" />
+                  <xs:element minOccurs="1" name="ActionBy" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="ApprovalDate" type="xs:dateTime" />
+                  <xs:element minOccurs="1" name="Comments" type="xs:string" />
+                  <xs:element minOccurs="0" maxOccurs="1" name="UniqueID" type="GUID" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CanonicalType">
+    <xs:sequence>
+      <xs:element name="Control" type="ControlType" />
+      <xs:element name="Collection" type="CanonicalCollection" />
+      <xs:element name="ProcessStatus" type="ProcessStatusType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AccountDetailsType">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="cal:Package" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="QueryResults">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="DCMS">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="Transaction" type="DCMSType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="SLS">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="Activity" type="SLSType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="STAX">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="Security">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ServicingActivityId" type="xs:string" />
+                  <xs:element name="RealestateFulladdress" type="xs:string" />
+                  <xs:element name="Description" type="xs:string" />
+                  <xs:element name="StaxName" type="xs:string" />
+                  <xs:element name="SecurityType" type="xs:string" />
+                  <xs:element name="ToBeRealeased" type="xs:string" />
+                  <xs:element name="CreatedOn" type="xs:string" />
+                  <xs:element name="TransactionId" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DCMSType">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="TransactionNumber" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="TransactionType" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="CreationDate" type="xs:dateTime" />
+      <xs:element name="CaseId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SLSType">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="ID" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="CustomerID" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ActivityType" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Division" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ProcessGroup" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="OperatorID" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Status" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Priority" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Location" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ActionBy" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="BSBNumber" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="DateCreated" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="RegionNumber" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Comments" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NotificationType">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="To" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CC" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="BCC" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="From" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Subject" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Body" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

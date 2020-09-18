@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AIBPCanonical>
+	<Control xmlns="urn:dxc.esb.aibp.canonical/v1">
+		<MetadataFileName>C:\AIBP\MetadataStore\D99A810B-9002-4083-B6BB-85A4681C6E56_provider.xml</MetadataFileName>
+		<Location>C:\AIBP\MetadataStore</Location>
+		<ProcessStep>Indexing</ProcessStep>
+		<TransactionType>RELEASE</TransactionType>
+		<TransactionID>800003544622</TransactionID>
+		<STAXID>SA9068</STAXID>
+		<ApplicationNumber />
+		<IndexingLane>Email_DCMS_L14@edscs-npe.local</IndexingLane>
+		<Routing>
+			<Handler>Indexing</Handler>
+			<CurrentState>GetDCMSTransactionCompleted</CurrentState>
+			<Auditable>true</Auditable>
+			<FutureRouting />
+		</Routing>
+	</Control>
+	<Collection xmlns="urn:dxc.esb.aibp.canonical/v1">
+		<RequestID xmlns="urn:dxc.esb.aibp.canonical/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">D99A810B-9002-4083-B6BB-85A4681C6E56</RequestID>
+		<Provider xmlns="urn:dxc.esb.aibp.canonical/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Decipha</Provider>
+		<Stream xmlns="urn:dxc.esb.aibp.canonical/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Servicing</Stream>
+		<Activity xmlns="urn:dxc.esb.aibp.canonical/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Releases</Activity>
+		<Priority xmlns="urn:dxc.esb.aibp.canonical/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Standard</Priority>
+		<Source xmlns="urn:dxc.esb.aibp.canonical/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">WIX-Attachment</Source>
+		<CollectionMeta xmlns="urn:dxc.esb.aibp.canonical/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<Channel>Email</Channel>
+		</CollectionMeta>
+		<Article xmlns="urn:dxc.esb.aibp.canonical/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<FileName>Test1.pdf</FileName>
+			<NumberOfPages>4</NumberOfPages>
+			<ArticleType>PSRF</ArticleType>
+			<OriginalType>C</OriginalType>
+			<Package xmlns="urn:dxc.esb.aibp.lixi.cal/v1">
+				<Attachment>
+					<InlineAttachment>XFxWQk9YV0lOMjAxOVxCZW5cZDAyYjI1YTgtMWM3NC00ZjJhLTkyNjAtM2Q2MDM1NzdhM2VmLnBkZg==</InlineAttachment>
+				</Attachment>
+				<Instructions>
+					<ApplicationInstructions>
+						<Submit />
+					</ApplicationInstructions>
+				</Instructions>
+				<Publisher LIXICode="Decipha1" />
+				<Recipient Description="DXC" LIXICode="DXC1" />
+				<SchemaVersion LIXITransactionType="CAL" LIXIVersion="2.6.22" />
+			</Package>
+		</Article>
+	</Collection>
+	<ProcessStatus xmlns="urn:dxc.esb.aibp.canonical/v1">
+		<Status xmlns="urn:dxc.esb.aibp.canonical/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Success</Status>
+		<MoreInfo xmlns="urn:dxc.esb.aibp.canonical/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+	</ProcessStatus>
+</AIBPCanonical>
