@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="YKIbv5JTi5VUW7NF4J/s83QbNm2srGMb4FViDVb77FU=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="Nk+iaO510VimKHb5Vbt/FvPwJlwRqCTJJkeP7uGmPp0=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="customBinding" name="CustomBinding_ITwoWayAsyncVoid">
+    <bindingConfiguration bindingType="customBinding" name="CustomBinding_ITwoWayAsync">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>CustomBinding_ITwoWayAsyncVoid</serializedValue>
+          <serializedValue>CustomBinding_ITwoWayAsync</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -154,7 +154,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="CustomBinding_ITwoWayAsyncVoid" contract="WcfWixService.WIXService" bindingType="customBinding" address="http://vboxwin2019/BiztalkWIXServices/V1/WIXService.svc" bindingConfiguration="CustomBinding_ITwoWayAsyncVoid">
+    <endpoint name="CustomBinding_ITwoWayAsync" contract="WcfWixService.WIXService" bindingType="customBinding" address="http://vboxwin2019/BiztalkWIXServices/V1/WIXService.svc" bindingConfiguration="CustomBinding_ITwoWayAsync">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://vboxwin2019/BiztalkWIXServices/V1/WIXService.svc</serializedValue>
@@ -166,7 +166,7 @@
           <serializedValue>customBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>CustomBinding_ITwoWayAsyncVoid</serializedValue>
+          <serializedValue>CustomBinding_ITwoWayAsync</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>WcfWixService.WIXService</serializedValue>
@@ -229,7 +229,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>CustomBinding_ITwoWayAsyncVoid</serializedValue>
+          <serializedValue>CustomBinding_ITwoWayAsync</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

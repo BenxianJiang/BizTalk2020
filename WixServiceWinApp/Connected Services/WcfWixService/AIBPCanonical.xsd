@@ -15,7 +15,7 @@
       </b:references>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="AIBPCanonical" type="CanonicalType">
+  <xs:element name="AIBPCanonical" type="AIBPCanonical">
     <xs:annotation>
       <xs:appinfo />
     </xs:annotation>
@@ -203,7 +203,7 @@
       </xs:element>
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="CanonicalType">
+  <xs:complexType name="AIBPCanonical">
     <xs:sequence>
       <xs:element name="Control" type="ControlType" />
       <xs:element name="Collection" type="CanonicalCollection" />

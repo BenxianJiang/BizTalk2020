@@ -27,10 +27,10 @@ namespace WixServiceWinApp
                 //Comment:
                 //use http://vboxwin2019/BiztalkWIXServices/V1/WIXService.svc?wsdl to generate proxy;
                 //Note - Dot NOT use singleWSDL!
-                //also manually change CanonicalType to AIBPCanonical in Reference.cs
+                //also manually change AIBPCanonical to AIBPCanonical in Reference.cs
                 //Update WixServiceClient object also in 
 
-                WcfWixService.WIXServiceClient client = new WcfWixService.WIXServiceClient("CustomBinding_ITwoWayAsyncVoid");
+                WcfWixService.WIXServiceClient client = new WcfWixService.WIXServiceClient("CustomBinding_ITwoWayAsync");
 
                 //TODO: populate Request object.
                 //WcfWixService.AIBPCanonical req = new WcfWixService.AIBPCanonical();
