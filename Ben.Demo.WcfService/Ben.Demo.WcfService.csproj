@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DownloadService.svc" />
+    <Content Include="HelloService.svc" />
     <Content Include="UploadService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -75,7 +76,11 @@
     <Compile Include="DownloadService.svc.cs">
       <DependentUpon>DownloadService.svc</DependentUpon>
     </Compile>
+    <Compile Include="HelloService.svc.cs">
+      <DependentUpon>HelloService.svc</DependentUpon>
+    </Compile>
     <Compile Include="IDownloadService.cs" />
+    <Compile Include="IHelloService.cs" />
     <Compile Include="Status.cs" />
     <Compile Include="UploadService.svc.cs">
       <DependentUpon>UploadService.svc</DependentUpon>

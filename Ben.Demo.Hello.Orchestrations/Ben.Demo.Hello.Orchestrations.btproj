@@ -4,12 +4,12 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{72328C14-84FA-4302-BBCD-37422A922BC8}</ProjectGuid>
+    <ProjectGuid>{DDEC7543-21A8-4A15-8DDB-73ADA3E9F16C}</ProjectGuid>
     <ProjectTypeGuids>{EF7E3281-CD33-11D4-8326-00C04FA0CE8D};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>library</OutputType>
     <GenericProcessing>true</GenericProcessing>
-    <RootNamespace>Ben.Demo.BizTalk.Orchestrations</RootNamespace>
-    <AssemblyName>Ben.Demo.BizTalk.Orchestrations</AssemblyName>
+    <RootNamespace>Ben.Demo.Hello.Orchestrations</RootNamespace>
+    <AssemblyName>Ben.Demo.Hello.Orchestrations</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <BpelCompliance>True</BpelCompliance>
     <TargetFrameworkProfile />
@@ -40,14 +40,6 @@
     <AssemblyOriginatorKeyFile>Ben.Demo.BizTalk.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Windows\assembly\GAC_MSIL\log4net\1.2.10.0__1b44e1d426115821\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net.Ext.Serializable, Version=1.0.0.2, Culture=neutral, PublicKeyToken=02e779351b902449, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Windows\assembly\GAC_MSIL\log4net.Ext.Serializable\1.0.0.2__02e779351b902449\log4net.Ext.Serializable.dll</HintPath>
-    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
@@ -83,19 +75,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Ben.Demo.BizTalk.snk" />
+    <Schema Include="HelloServiceTwo.xsd">
+      <SubType>Task</SubType>
+      <TypeName>HelloServiceTwo</TypeName>
+      <Namespace>Ben.Demo.Hello.Orchestrations</Namespace>
+    </Schema>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ben.Demo.BizTalk.Components\Ben.Demo.BizTalk.Components.csproj">
       <Project>{ebe02b9f-1a35-4012-9668-fb2d6c8633f6}</Project>
       <Name>Ben.Demo.BizTalk.Components</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Ben.Demo.BizTalk.Maps\Ben.Demo.BizTalk.Maps.btproj">
-      <Project>{2bef8e1e-162f-4c16-89e9-d6d87747b24f}</Project>
-      <Name>Ben.Demo.BizTalk.Maps</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Ben.Demo.BizTalk.Pipelines\Ben.Demo.BizTalk.Pipelines.btproj">
-      <Project>{9065c85a-b6f7-4064-be0d-b623c94967dd}</Project>
-      <Name>Ben.Demo.BizTalk.Pipelines</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ben.Demo.BizTalk.Schemas\Ben.Demo.BizTalk.Schemas.btproj">
       <Project>{a484de36-e4ab-460f-a72e-74df1e7df0bb}</Project>
@@ -103,26 +92,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <XLang Include="DocumentUploadDownload.odx">
-      <TypeName>DocumentUploadDownload</TypeName>
-      <Namespace>Ben.Demo.BizTalk.Orchestrations</Namespace>
-      <SubType>Task</SubType>
-    </XLang>
-  </ItemGroup>
-  <ItemGroup>
-    <XLang Include="ArticleUpload.odx">
-      <TypeName>ArticleUpload</TypeName>
-      <Namespace>Ben.Demo.BizTalk.Orchestrations</Namespace>
-      <SubType>Task</SubType>
-    </XLang>
-  </ItemGroup>
-  <ItemGroup>
-    <XLang Include="SayHello.odx">
-      <TypeName>SayHello</TypeName>
-      <Namespace>Ben.Demo.BizTalk.Orchestrations</Namespace>
+    <XLang Include="HelloWorld.odx">
+      <TypeName>HelloWorld</TypeName>
+      <Namespace>Ben.Demo.Hello.Orchestrations</Namespace>
       <SubType>Task</SubType>
     </XLang>
   </ItemGroup>

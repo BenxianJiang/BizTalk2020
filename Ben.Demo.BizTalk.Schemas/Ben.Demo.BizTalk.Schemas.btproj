@@ -81,6 +81,16 @@
     </Schema>
   </ItemGroup>
   <ItemGroup>
+    <Schema Include="WcfService\HelloService_ben_demo_wcf_helloservice.xsd">
+      <Namespace>Ben.Demo.BizTalk.Schemas.WcfService</Namespace>
+      <TypeName>HelloService_ben_demo_wcf_helloservice</TypeName>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="WcfService\HelloService_schemas_microsoft_com_2003_10_Serialization.xsd">
+      <Namespace>Ben.Demo.BizTalk.Schemas.WcfService</Namespace>
+      <TypeName>HelloService_schemas_microsoft_com_2003_10_Serialization</TypeName>
+      <SubType>Task</SubType>
+    </Schema>
     <Schema Include="BizArticle.xsd">
       <TypeName>BizArticle</TypeName>
       <Namespace>Ben.Demo.BizTalk.Schemas</Namespace>
@@ -132,6 +142,8 @@
   <ItemGroup>
     <Content Include="WcfService\DownloadService.BindingInfo.xml" />
     <Content Include="WcfService\DownloadService_Custom.BindingInfo.xml" />
+    <Content Include="WcfService\HelloService.BindingInfo.xml" />
+    <Content Include="WcfService\HelloService_Custom.BindingInfo.xml" />
     <Content Include="WcfService\UploadService.BindingInfo.xml" />
     <Content Include="WcfService\UploadService_Custom.BindingInfo.xml" />
   </ItemGroup>
