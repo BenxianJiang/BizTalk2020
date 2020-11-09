@@ -97,6 +97,13 @@
       <SubType>Task</SubType>
     </Pipeline>
   </ItemGroup>
+  <ItemGroup>
+    <Pipeline Include="SplitMessageReceivePipeline.btp">
+      <TypeName>SplitMessageReceivePipeline</TypeName>
+      <Namespace>Ben.Demo.BizTalk.Pipelines</Namespace>
+      <SubType>Task</SubType>
+    </Pipeline>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\BizTalk\BizTalkC.targets" />
 </Project>

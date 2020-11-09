@@ -126,6 +126,13 @@
       <SubType>Task</SubType>
     </XLang>
   </ItemGroup>
+  <ItemGroup>
+    <XLang Include="SplitMessage.odx">
+      <TypeName>SplitMessage</TypeName>
+      <Namespace>Ben.Demo.BizTalk.Orchestrations</Namespace>
+      <SubType>Task</SubType>
+    </XLang>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\BizTalk\BizTalkC.targets" />
 </Project>
