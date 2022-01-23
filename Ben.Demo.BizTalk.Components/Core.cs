@@ -9,6 +9,12 @@ namespace Ben.Demo.BizTalk.Components
 {
     public class Core
     {
+        /// <summary>
+        /// Comments
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="surName"></param>
+        /// <returns></returns>
         public static string SayWelcome(string firstName, string surName)
         {
             return string.Format("Hello, {0} {1}, Welcome!", firstName, surName);
