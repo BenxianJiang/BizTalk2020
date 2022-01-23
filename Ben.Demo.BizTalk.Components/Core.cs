@@ -20,6 +20,13 @@ namespace Ben.Demo.BizTalk.Components
             return string.Format("Hello, {0} {1}, Welcome!", firstName, surName);
         }
 
+        /// <summary>
+        /// Comments again
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="fromNamespace"></param>
+        /// <param name="toNamespace"></param>
+        /// <returns></returns>
         public static XmlDocument UpdateMessageNamespace(XmlDocument msg, string fromNamespace, string toNamespace)
         {
             string msgXmlString = msg.OuterXml;
