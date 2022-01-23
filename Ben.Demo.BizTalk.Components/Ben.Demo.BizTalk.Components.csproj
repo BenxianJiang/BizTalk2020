@@ -61,14 +61,34 @@
   <ItemGroup>
     <Compile Include="AttachmentExtractor.cs" />
     <Compile Include="AttachmentInjector.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="DocumentExtractorStream.cs" />
     <Compile Include="DocumentInjectorStream.cs" />
+    <Compile Include="PipelineHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SampleCustomPipeline.cs" />
+    <Compile Include="SampleUsingStreamXLangMessage.cs" />
     <Compile Include="SplitMessage.cs" />
+    <Compile Include="SsoReaderHelper.cs" />
+    <Compile Include="XmlHelper.cs" />
+    <Compile Include="XmlSchemaResolver.cs" />
+    <Compile Include="XmlValidator.cs" />
+    <Compile Include="XmlValidatorHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Ben.Demo.BizTalk.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ExternalAssemblies\log4net.dll" />
+    <Content Include="ExternalAssemblies\log4net.Ext.Serializable.dll" />
+    <Content Include="ExternalAssemblies\Microsoft.HostIntegration.SNA.Session.dll" />
+    <Content Include="ExternalAssemblies\Microsoft.Practices.Unity.Configuration.dll" />
+    <Content Include="ExternalAssemblies\Microsoft.Practices.Unity.dll" />
+    <Content Include="ExternalAssemblies\Microsoft.Practices.Unity.RegistrationByConvention.dll" />
+    <Content Include="ExternalAssemblies\Oracle.ManagedDataAccess.dll" />
+    <Content Include="ExternalAssemblies\Readme.txt" />
+    <Content Include="ExternalAssemblies\SSOSettingsFileReader.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
