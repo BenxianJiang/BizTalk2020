@@ -9,7 +9,11 @@ namespace Ben.Demo.BizTalk.Components
     public class Constants
     {
         public const string AIBPValidationErrorNameSpace = "urn:dxc.esb.aibp.validationerrors/v1";
+<<<<<<< HEAD
         public const string ArticleNodeNameSpace = "urn:ben.demo.biztalk/article/v1";
+=======
+
+>>>>>>> 32dfc2ff5079fe2f9baf524789f6ab735e7089ca
         public const string AIBPValidationErrorRootNode = "AIBPValidationErrors";
         public const string AIBPValidationProviderDataNode = "ProviderData";
         public const string AIBPValidationProviderRequestIDNode = "RequestID";
@@ -85,7 +89,11 @@ namespace Ben.Demo.BizTalk.Components
         /// <summary>
         /// Schema fully qualified name
         /// </summary>
+<<<<<<< HEAD
         public const string SchemaFullyQualifiedName = "ES.FS.WG.SAM.Schemas, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b16a69cd15adad04";
         //public const string SchemaFullyQualifiedName = "ES.FS.WG.MSAPI.Schemas, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1637b744db65b335";
+=======
+        public const string SchemaFullyQualifiedName = "ES.FS.WG.MSAPI.Schemas, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1637b744db65b335";
+>>>>>>> 32dfc2ff5079fe2f9baf524789f6ab735e7089ca
     }
 }
