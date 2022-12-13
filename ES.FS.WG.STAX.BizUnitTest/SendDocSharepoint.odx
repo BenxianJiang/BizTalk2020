@@ -1,0 +1,344 @@
+﻿#if __DESIGNER_DATA
+#error Do not define __DESIGNER_DATA.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<om:MetaModel MajorVersion="1" MinorVersion="3" Core="2b131234-7959-458d-834f-2dc0769ce683" ScheduleModel="66366196-361d-448d-976f-cab5e87496d2" xmlns:om="http://schemas.microsoft.com/BizTalk/2003/DesignerData">
+    <om:Element Type="Module" OID="0dbc0c89-32ef-46f8-918f-36ba04424819" LowerBound="1.1" HigherBound="109.1">
+        <om:Property Name="ReportToAnalyst" Value="True" />
+        <om:Property Name="Name" Value="ES.FS.WG.STAX.BizUnitTest" />
+        <om:Property Name="Signal" Value="False" />
+        <om:Element Type="PortType" OID="d2dce5c1-f162-4367-8226-7bb02d9b23a2" ParentLink="Module_PortType" LowerBound="4.1" HigherBound="11.1">
+            <om:Property Name="Synchronous" Value="False" />
+            <om:Property Name="TypeModifier" Value="Internal" />
+            <om:Property Name="ReportToAnalyst" Value="True" />
+            <om:Property Name="Name" Value="PortType_SendDocSharepoint_Receive_Doc" />
+            <om:Property Name="Signal" Value="False" />
+            <om:Element Type="OperationDeclaration" OID="9234f65d-76a4-443d-859d-2f51ca6e8ea3" ParentLink="PortType_OperationDeclaration" LowerBound="6.1" HigherBound="10.1">
+                <om:Property Name="OperationType" Value="OneWay" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="SharepointDoc" />
+                <om:Property Name="Signal" Value="True" />
+                <om:Element Type="MessageRef" OID="3eb0ed0a-6c45-4b4b-85b4-ff6085fbf1ae" ParentLink="OperationDeclaration_RequestMessageRef" LowerBound="8.13" HigherBound="8.25">
+                    <om:Property Name="Ref" Value="ES.FS.WG.STAX.BizUnitTest.InFileSchema" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Request" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+            </om:Element>
+        </om:Element>
+        <om:Element Type="PortType" OID="1548c352-c057-4b52-9992-53015bbdcd48" ParentLink="Module_PortType" LowerBound="11.1" HigherBound="18.1">
+            <om:Property Name="Synchronous" Value="False" />
+            <om:Property Name="TypeModifier" Value="Internal" />
+            <om:Property Name="ReportToAnalyst" Value="True" />
+            <om:Property Name="Name" Value="PortType_SendDocSharepoint_Send_Req" />
+            <om:Property Name="Signal" Value="False" />
+            <om:Element Type="OperationDeclaration" OID="a84cd487-80f7-423e-8221-4de8258d0dff" ParentLink="PortType_OperationDeclaration" LowerBound="13.1" HigherBound="17.1">
+                <om:Property Name="OperationType" Value="OneWay" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="File" />
+                <om:Property Name="Signal" Value="True" />
+                <om:Element Type="MessageRef" OID="ae763296-f3ce-4fca-8337-96ba9a789952" ParentLink="OperationDeclaration_RequestMessageRef" LowerBound="15.13" HigherBound="15.35">
+                    <om:Property Name="Ref" Value="System.Xml.XmlDocument" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Request" />
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+        </om:Element>
+        <om:Element Type="ServiceDeclaration" OID="6c959051-be2d-4821-a210-ac950d67f7bd" ParentLink="Module_ServiceDeclaration" LowerBound="18.1" HigherBound="108.1">
+            <om:Property Name="InitializedTransactionType" Value="False" />
+            <om:Property Name="IsInvokable" Value="False" />
+            <om:Property Name="TypeModifier" Value="Internal" />
+            <om:Property Name="ReportToAnalyst" Value="True" />
+            <om:Property Name="Name" Value="SendDocSharepoint" />
+            <om:Property Name="Signal" Value="False" />
+            <om:Element Type="VariableDeclaration" OID="2a14c3b4-277d-4dfa-b239-304f54df046a" ParentLink="ServiceDeclaration_VariableDeclaration" LowerBound="27.1" HigherBound="28.1">
+                <om:Property Name="UseDefaultConstructor" Value="True" />
+                <om:Property Name="Type" Value="System.Xml.XmlDocument" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="xmlDoc" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="VariableDeclaration" OID="6de2c12b-e149-4351-97ff-bb4efccbb62c" ParentLink="ServiceDeclaration_VariableDeclaration" LowerBound="28.1" HigherBound="29.1">
+                <om:Property Name="UseDefaultConstructor" Value="True" />
+                <om:Property Name="Type" Value="log4net.helpers.PropertiesCollectionEx" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="varLogProps" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="VariableDeclaration" OID="7e138483-73e2-4bff-b88f-9acb7c75b1f4" ParentLink="ServiceDeclaration_VariableDeclaration" LowerBound="29.1" HigherBound="30.1">
+                <om:Property Name="UseDefaultConstructor" Value="False" />
+                <om:Property Name="Type" Value="log4net.Ext.Serializable.SLog" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="varLogger" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="VariableDeclaration" OID="5005dd46-2518-4548-98e3-407620c5db10" ParentLink="ServiceDeclaration_VariableDeclaration" LowerBound="30.1" HigherBound="31.1">
+                <om:Property Name="UseDefaultConstructor" Value="False" />
+                <om:Property Name="Type" Value="System.String" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="varFileName" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="VariableDeclaration" OID="6be48528-5068-4697-b563-e6cbf00d8cbf" ParentLink="ServiceDeclaration_VariableDeclaration" LowerBound="31.1" HigherBound="32.1">
+                <om:Property Name="UseDefaultConstructor" Value="False" />
+                <om:Property Name="Type" Value="System.String" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="varFileFullPath" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="VariableDeclaration" OID="42ff6a19-6430-4bd8-a3ff-aac8079f7ffa" ParentLink="ServiceDeclaration_VariableDeclaration" LowerBound="32.1" HigherBound="33.1">
+                <om:Property Name="UseDefaultConstructor" Value="False" />
+                <om:Property Name="Type" Value="System.String" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="varSharepointUrl" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="VariableDeclaration" OID="c82280ea-b4e6-4a71-81fb-3ce451f1b8fd" ParentLink="ServiceDeclaration_VariableDeclaration" LowerBound="33.1" HigherBound="34.1">
+                <om:Property Name="UseDefaultConstructor" Value="False" />
+                <om:Property Name="Type" Value="System.String" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="varLogMsg" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="MessageDeclaration" OID="b75dd57d-cee8-4690-a1bd-bc36ceec2931" ParentLink="ServiceDeclaration_MessageDeclaration" LowerBound="25.1" HigherBound="26.1">
+                <om:Property Name="Type" Value="System.Xml.XmlDocument" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="msgSharepointDocument" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="MessageDeclaration" OID="f0c6c1c7-0a78-4482-a41c-f07be40acbe2" ParentLink="ServiceDeclaration_MessageDeclaration" LowerBound="26.1" HigherBound="27.1">
+                <om:Property Name="Type" Value="ES.FS.WG.STAX.BizUnitTest.InFileSchema" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="msgIn" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="ServiceBody" OID="877731a0-081b-4ab1-b630-e31de4ceb85a" ParentLink="ServiceDeclaration_ServiceBody">
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="Receive" OID="8dff9536-dc41-4b6a-ad31-fffa3aa12311" ParentLink="ServiceBody_Statement" LowerBound="36.1" HigherBound="44.1">
+                    <om:Property Name="Activate" Value="True" />
+                    <om:Property Name="PortName" Value="Port_SendDocSharepoint_Receive_Doc" />
+                    <om:Property Name="MessageName" Value="msgIn" />
+                    <om:Property Name="OperationName" Value="SharepointDoc" />
+                    <om:Property Name="OperationMessageName" Value="Request" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Rec_SharepointDoc" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+                <om:Element Type="VariableAssignment" OID="6755dcde-b229-43d3-b55e-bb99b9cc10dc" ParentLink="ServiceBody_Statement" LowerBound="44.1" HigherBound="57.1">
+                    <om:Property Name="Expression" Value="varLogger = log4net.Ext.Serializable.SLogManager.GetLogger(@&quot;ES.FS.WG.STAX&quot;, log4net.helpers.CallersTypeName.Name);&#xD;&#xA;varLogger.RegistryConfigurator();&#xD;&#xA;varLogProps.Set(&quot;InstanceId&quot;, SendDocSharepoint(Microsoft.XLANGs.BaseTypes.InstanceId));&#xD;&#xA;varLogger.Info(varLogProps, &quot;== Received SendDocSharepoint request ==&quot;);&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;varFileName = &quot;msgIn.FileName&quot;;&#xD;&#xA;varFileFullPath = &quot;msgIn.SharepointFilePath&quot;;&#xD;&#xA;varSharepointUrl = &quot;wss://aulknpesva139/Sites/STAX/releases/SA10253&quot;;&#xD;&#xA;&#xD;&#xA;varLogMsg = &quot;Receive filename: &quot; + varFileName + &quot; file path: &quot; + varFileFullPath + &quot; SP URL = &quot; + varSharepointUrl;&#xD;&#xA;varLogger.Info(varLogProps, varLogMsg);&#xD;&#xA;" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Log" />
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+                <om:Element Type="Scope" OID="704e030b-8822-41d5-991f-e5a1ea5eef11" ParentLink="ServiceBody_Statement" LowerBound="57.1" HigherBound="104.1">
+                    <om:Property Name="InitializedTransactionType" Value="True" />
+                    <om:Property Name="IsSynchronized" Value="False" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Scope_Send" />
+                    <om:Property Name="Signal" Value="True" />
+                    <om:Element Type="Construct" OID="2c421203-0c88-4533-86ea-63701044e885" ParentLink="ComplexStatement_Statement" LowerBound="62.1" HigherBound="90.1">
+                        <om:Property Name="ReportToAnalyst" Value="True" />
+                        <om:Property Name="Name" Value="Construct_Doc" />
+                        <om:Property Name="Signal" Value="True" />
+                        <om:Element Type="MessageAssignment" OID="c6a768dd-1aab-44ab-a770-ad603260734c" ParentLink="ComplexStatement_Statement" LowerBound="65.1" HigherBound="89.1">
+                            <om:Property Name="Expression" Value="varLogger.Info(varLogProps, &quot;Creating Sharepoint Message&quot;);&#xD;&#xA;&#xD;&#xA;//msgSharepointDocument = new System.Xml.XmlDocument();&#xD;&#xA;&#xD;&#xA;//Get sharepoint request xml&#xD;&#xA;xmlDoc = msgIn;&#xD;&#xA;msgSharepointDocument = xmlDoc;&#xD;&#xA;&#xD;&#xA;//Set Sharepoint Adapter context properties on dynamic send port&#xD;&#xA;msgSharepointDocument(WSS.Filename) = varFileName + &quot;.pdf&quot;;&#xD;&#xA;msgSharepointDocument(WSS.ConfigOverwrite) = &quot;yes&quot;;&#xD;&#xA;&#xD;&#xA;msgSharepointDocument(WSS.ConfigPropertiesXml) = &quot;&lt;ConfigPropertiesXml&gt;&lt;PropertyName1&gt;Document Type&lt;/PropertyName1&gt;&lt;PropertySource1&gt;&quot; + &#xD;&#xA;    varFileName +&#xD;&#xA;    &quot;&lt;/PropertySource1&gt;&lt;PropertyName2&gt;Title&lt;/PropertyName2&gt;&lt;PropertySource2&gt;&quot; +&#xD;&#xA;     varFileName +&#xD;&#xA;    &quot;&lt;/PropertySource2&gt;&lt;/ConfigPropertiesXml&gt;&quot;;&#xD;&#xA;&#xD;&#xA;msgSharepointDocument(BTS.RetryCount) = 3;&#xD;&#xA;msgSharepointDocument(BTS.RetryInterval) = 5;&#xD;&#xA;&#xD;&#xA;//This converts the Sharepoint document library path used by CRM to view the report to a WSS expression&#xD;&#xA;Port_SendDocSharepoint_Send_Req(Microsoft.XLANGs.BaseTypes.Address) = varSharepointUrl;" />
+                            <om:Property Name="ReportToAnalyst" Value="False" />
+                            <om:Property Name="Name" Value="MessageAssignment_1" />
+                            <om:Property Name="Signal" Value="False" />
+                        </om:Element>
+                        <om:Element Type="MessageRef" OID="1ebddb15-48cc-4fef-b883-1cac2d23921a" ParentLink="Construct_MessageRef" LowerBound="63.31" HigherBound="63.52">
+                            <om:Property Name="Ref" Value="msgSharepointDocument" />
+                            <om:Property Name="ReportToAnalyst" Value="True" />
+                            <om:Property Name="Signal" Value="False" />
+                        </om:Element>
+                    </om:Element>
+                    <om:Element Type="Send" OID="0e684577-508d-46f9-977f-18627e39d547" ParentLink="ComplexStatement_Statement" LowerBound="90.1" HigherBound="92.1">
+                        <om:Property Name="PortName" Value="Port_SendDocSharepoint_Send_Req" />
+                        <om:Property Name="MessageName" Value="msgSharepointDocument" />
+                        <om:Property Name="OperationName" Value="File" />
+                        <om:Property Name="OperationMessageName" Value="Request" />
+                        <om:Property Name="ReportToAnalyst" Value="True" />
+                        <om:Property Name="Name" Value="Snd_SharepointPort" />
+                        <om:Property Name="Signal" Value="True" />
+                    </om:Element>
+                    <om:Element Type="Catch" OID="afd825a7-5e79-444c-b8a3-a72330a12d9b" ParentLink="Scope_Catch" LowerBound="95.1" HigherBound="102.1">
+                        <om:Property Name="ExceptionName" Value="sysEx" />
+                        <om:Property Name="ExceptionType" Value="System.Exception" />
+                        <om:Property Name="IsFaultMessage" Value="False" />
+                        <om:Property Name="ReportToAnalyst" Value="True" />
+                        <om:Property Name="Name" Value="CatchException" />
+                        <om:Property Name="Signal" Value="True" />
+                        <om:Element Type="VariableAssignment" OID="23ea24c3-e905-4fe2-b5fe-02192ddb46f2" ParentLink="Catch_Statement" LowerBound="98.1" HigherBound="101.1">
+                            <om:Property Name="Expression" Value="varLogMsg = &quot;GenerateDocuments orchestration failed, SystemException - &quot; + sysEx.Message;&#xD;&#xA;varLogger.Warn(varLogProps, varLogMsg);" />
+                            <om:Property Name="ReportToAnalyst" Value="True" />
+                            <om:Property Name="Name" Value="LogExc" />
+                            <om:Property Name="Signal" Value="False" />
+                        </om:Element>
+                    </om:Element>
+                </om:Element>
+                <om:Element Type="VariableAssignment" OID="7222cb0e-7a13-4013-8308-a94c7c4f3304" ParentLink="ServiceBody_Statement" LowerBound="104.1" HigherBound="106.1">
+                    <om:Property Name="Expression" Value="varLogger.Info(varLogProps, &quot;++ End of SendDocSharepoint Orchestration ++&quot;);&#xD;&#xA;" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Log" />
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+            <om:Element Type="PortDeclaration" OID="31f84127-52e8-44bd-900b-d63fab44294c" ParentLink="ServiceDeclaration_PortDeclaration" LowerBound="21.1" HigherBound="23.1">
+                <om:Property Name="PortModifier" Value="Implements" />
+                <om:Property Name="Orientation" Value="Left" />
+                <om:Property Name="PortIndex" Value="-1" />
+                <om:Property Name="IsWebPort" Value="False" />
+                <om:Property Name="OrderedDelivery" Value="False" />
+                <om:Property Name="DeliveryNotification" Value="None" />
+                <om:Property Name="Type" Value="ES.FS.WG.STAX.BizUnitTest.PortType_SendDocSharepoint_Receive_Doc" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="Port_SendDocSharepoint_Receive_Doc" />
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="LogicalBindingAttribute" OID="f00a9e66-19c3-4749-a1ad-d71a10b64467" ParentLink="PortDeclaration_CLRAttribute" LowerBound="21.1" HigherBound="22.1">
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+            <om:Element Type="PortDeclaration" OID="be17d182-f312-4a5a-bf1b-e3557f143dfb" ParentLink="ServiceDeclaration_PortDeclaration" LowerBound="23.1" HigherBound="25.1">
+                <om:Property Name="PortModifier" Value="Uses" />
+                <om:Property Name="Orientation" Value="Left" />
+                <om:Property Name="PortIndex" Value="-1" />
+                <om:Property Name="IsWebPort" Value="False" />
+                <om:Property Name="OrderedDelivery" Value="False" />
+                <om:Property Name="DeliveryNotification" Value="None" />
+                <om:Property Name="Type" Value="ES.FS.WG.STAX.BizUnitTest.PortType_SendDocSharepoint_Send_Req" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="Port_SendDocSharepoint_Send_Req" />
+                <om:Property Name="Signal" Value="True" />
+                <om:Element Type="PhysicalBindingAttribute" OID="ec9f9f89-b244-4151-adb5-65f9f67ccbfa" ParentLink="PortDeclaration_CLRAttribute" LowerBound="23.1" HigherBound="24.1">
+                    <om:Property Name="InPipeline" Value="Microsoft.BizTalk.DefaultPipelines.XMLReceive" />
+                    <om:Property Name="OutPipeline" Value="Microsoft.BizTalk.DefaultPipelines.XMLTransmit" />
+                    <om:Property Name="TransportType" Value="HTTP" />
+                    <om:Property Name="URI" Value="http://tempURI" />
+                    <om:Property Name="IsDynamic" Value="True" />
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+        </om:Element>
+    </om:Element>
+</om:MetaModel>
+#endif // __DESIGNER_DATA
+[Microsoft.XLANGs.BaseTypes.BPELExportable(false)]
+module ES.FS.WG.STAX.BizUnitTest
+{
+    internal porttype PortType_SendDocSharepoint_Receive_Doc
+    {
+        oneway SharepointDoc
+        {
+            InFileSchema
+        };
+    };
+    internal porttype PortType_SendDocSharepoint_Send_Req
+    {
+        oneway File
+        {
+            System.Xml.XmlDocument
+        };
+    };
+    [Microsoft.XLANGs.BaseTypes.BPELExportable(false)]
+    internal service SendDocSharepoint
+    {
+        [Microsoft.XLANGs.BaseTypes.LogicalBinding()]
+        port implements PortType_SendDocSharepoint_Receive_Doc Port_SendDocSharepoint_Receive_Doc;
+        [Microsoft.XLANGs.BaseTypes.PhysicalBinding(typeof(Microsoft.BizTalk.DefaultPipelines.XMLTransmit))]
+        port uses dynamic PortType_SendDocSharepoint_Send_Req Port_SendDocSharepoint_Send_Req;
+        message System.Xml.XmlDocument msgSharepointDocument;
+        message InFileSchema msgIn;
+        System.Xml.XmlDocument xmlDoc;
+        log4net.helpers.PropertiesCollectionEx varLogProps;
+        log4net.Ext.Serializable.SLog varLogger;
+        System.String varFileName;
+        System.String varFileFullPath;
+        System.String varSharepointUrl;
+        System.String varLogMsg;
+        body ()
+        {
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("8dff9536-dc41-4b6a-ad31-fffa3aa12311")]
+            activate receive (Port_SendDocSharepoint_Receive_Doc.SharepointDoc, msgIn);
+            xmlDoc = new System.Xml.XmlDocument();
+            varLogProps = new log4net.helpers.PropertiesCollectionEx();
+            varFileName = "";
+            varFileFullPath = "";
+            varSharepointUrl = "";
+            varLogMsg = "";
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("6755dcde-b229-43d3-b55e-bb99b9cc10dc")]
+            varLogger = log4net.Ext.Serializable.SLogManager.GetLogger(@"ES.FS.WG.STAX", log4net.helpers.CallersTypeName.Name);
+            varLogger.RegistryConfigurator();
+            varLogProps.Set("InstanceId", SendDocSharepoint(Microsoft.XLANGs.BaseTypes.InstanceId));
+            varLogger.Info(varLogProps, "== Received SendDocSharepoint request ==");
+            
+            
+            varFileName = "msgIn.FileName";
+            varFileFullPath = "msgIn.SharepointFilePath";
+            varSharepointUrl = "wss://aulknpesva139/Sites/STAX/releases/SA10253";
+            
+            varLogMsg = "Receive filename: " + varFileName + " file path: " + varFileFullPath + " SP URL = " + varSharepointUrl;
+            varLogger.Info(varLogProps, varLogMsg);
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("704e030b-8822-41d5-991f-e5a1ea5eef11")]
+            scope
+            {
+                body
+                {
+                    [Microsoft.XLANGs.BaseTypes.DesignerPosition("2c421203-0c88-4533-86ea-63701044e885")]
+                    construct msgSharepointDocument
+                    {
+                        [Microsoft.XLANGs.BaseTypes.DesignerPosition("c6a768dd-1aab-44ab-a770-ad603260734c")]
+                        varLogger.Info(varLogProps, "Creating Sharepoint Message");
+                        
+                        //msgSharepointDocument = new System.Xml.XmlDocument();
+                        
+                        //Get sharepoint request xml
+                        xmlDoc = msgIn;
+                        msgSharepointDocument = xmlDoc;
+                        
+                        //Set Sharepoint Adapter context properties on dynamic send port
+                        msgSharepointDocument(WSS.Filename) = varFileName + ".pdf";
+                        msgSharepointDocument(WSS.ConfigOverwrite) = "yes";
+                        
+                        msgSharepointDocument(WSS.ConfigPropertiesXml) = "<ConfigPropertiesXml><PropertyName1>Document Type</PropertyName1><PropertySource1>" + 
+                            varFileName +
+                            "</PropertySource1><PropertyName2>Title</PropertyName2><PropertySource2>" +
+                             varFileName +
+                            "</PropertySource2></ConfigPropertiesXml>";
+                        
+                        msgSharepointDocument(BTS.RetryCount) = 3;
+                        msgSharepointDocument(BTS.RetryInterval) = 5;
+                        
+                        //This converts the Sharepoint document library path used by CRM to view the report to a WSS expression
+                        Port_SendDocSharepoint_Send_Req(Microsoft.XLANGs.BaseTypes.Address) = varSharepointUrl;
+                    }
+                    [Microsoft.XLANGs.BaseTypes.DesignerPosition("0e684577-508d-46f9-977f-18627e39d547")]
+                    send (Port_SendDocSharepoint_Send_Req.File, msgSharepointDocument);
+                }
+                exceptions
+                {
+                    [Microsoft.XLANGs.BaseTypes.DesignerPosition("afd825a7-5e79-444c-b8a3-a72330a12d9b")]
+                    catch (System.Exception sysEx)
+                    {
+                        [Microsoft.XLANGs.BaseTypes.DesignerPosition("23ea24c3-e905-4fe2-b5fe-02192ddb46f2")]
+                        varLogMsg = "GenerateDocuments orchestration failed, SystemException - " + sysEx.Message;
+                        varLogger.Warn(varLogProps, varLogMsg);
+                    }
+                }
+            }
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("7222cb0e-7a13-4013-8308-a94c7c4f3304")]
+            varLogger.Info(varLogProps, "++ End of SendDocSharepoint Orchestration ++");
+        }
+    }
+}
+
