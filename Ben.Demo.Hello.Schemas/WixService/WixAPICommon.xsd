@@ -1,0 +1,142 @@
+		<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:ES.FS.WG.WIX.API/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cm="urn:ES.FS.WG.WIX.API/v1" xmlns:b="http://schemas.microsoft.com/BizTalk/2003" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">
+			<xs:simpleType name="CaseNumberType">
+				<xs:restriction base="xs:string">
+					<xs:minLength value="12"/>
+					<xs:maxLength value="12"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:complexType name="ArrayofLoan">
+				<xs:sequence maxOccurs="unbounded">
+					<xs:element name="Loan" type="cm:Loan"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ArrayofCustomer">
+				<xs:sequence maxOccurs="unbounded">
+					<xs:element name="Customer" type="cm:Customer"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Loan">
+				<xs:sequence>
+					<xs:element name="AccountNumber" type="cm:AccountNumberType"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Customer">
+				<xs:sequence>
+					<xs:element name="CustomerNumber" type="cm:CustomerNumberType"/>
+					<xs:element minOccurs="0" name="FirstName" type="xs:string"/>
+					<xs:element minOccurs="0" name="SurName" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:simpleType name="CustomerNumberType">
+				<xs:restriction base="xs:string">
+					<xs:minLength value="8"/>
+					<xs:maxLength value="8"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="auStateList">
+				<xs:restriction base="xs:token">
+					<xs:enumeration value="ACT"/>
+					<xs:enumeration value="NSW"/>
+					<xs:enumeration value="NT"/>
+					<xs:enumeration value="QLD"/>
+					<xs:enumeration value="SA"/>
+					<xs:enumeration value="TAS"/>
+					<xs:enumeration value="VIC"/>
+					<xs:enumeration value="WA"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="PriorityType">
+				<xs:restriction base="xs:token">
+					<xs:enumeration value="Standard"/>
+					<xs:enumeration value="Urgent"/>
+					<xs:enumeration value="Private Bank"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:complexType name="ArrayOfErrorType">
+				<xs:sequence maxOccurs="unbounded">
+					<xs:element name="Error" type="cm:ErrorType"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ErrorType">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="Category" type="xs:string"/>
+					<xs:element minOccurs="0" name="Code" type="xs:string"/>
+					<xs:element minOccurs="0" name="Message" type="xs:string"/>
+					<xs:element minOccurs="0" name="Source" type="xs:string"/>
+					<xs:element minOccurs="0" name="TimeOccurred" type="xs:dateTime"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:simpleType name="AccountNumberType">
+				<xs:restriction base="xs:string">
+					<xs:minLength value="12"/>
+					<xs:maxLength value="12"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="GUID">
+				<xs:restriction base="xs:string">
+					<xs:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:complexType name="DocumentImage">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="DRUID" nillable="true" type="xs:string"/>
+					<xs:element name="clientId" nillable="true" type="xs:string"/>
+					<xs:element name="createDate" nillable="true" type="xs:dateTime"/>
+					<xs:element name="createUser" nillable="true" type="xs:string"/>
+					<xs:element name="creditApplicationId" nillable="true" type="xs:long"/>
+					<xs:element name="docSource" nillable="true" type="xs:string"/>
+					<xs:element name="docType" nillable="true" type="xs:string"/>
+					<xs:element name="pageCount" nillable="true" type="xs:int"/>
+					<xs:element name="trxId" nillable="true" type="xs:long"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="InlineImage">
+				<xs:sequence>
+					<xs:element name="imageBLOB" type="xs:base64Binary"/>
+					<xs:element name="imageType" nillable="true" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ArrayOfBusinessFunctionActivityRequest">
+				<xs:sequence maxOccurs="1">
+					<xs:element name="BusinessFunction" type="cm:BusinessFunctionActivityRequest"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="BusinessFunctionActivityRequest">
+				<xs:sequence>
+					<xs:element minOccurs="1" name="BusinessFunctionType" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="Activity" nillable="true" type="cm:ActivityRequest"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ActivityRequest">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="Id" nillable="true" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>To be sent only if an Activity needs to be updated</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="Priority" nillable="true" type="cm:PriorityType"/>
+					<xs:element minOccurs="0" name="Status" nillable="true" type="xs:string"/>
+          <xs:element name="SANumber" type="xs:string" nillable="true" minOccurs="0"/>
+					<xs:element minOccurs="0" name="ActionByDate" type="xs:dateTime"/>
+					<xs:element minOccurs="0" name="BusinessFunctionSubCategory" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="State" nillable="true" type="cm:auStateList"/>
+					<xs:element minOccurs="0" name="ApprovalDate" type="xs:dateTime"/>
+					<xs:element minOccurs="0" name="ProcessGroup" type="xs:string"/>
+					<xs:element minOccurs="0" name="Owner" type="xs:string"/>
+					<xs:element minOccurs="0" name="Notes" nillable="true" type="cm:ArrayOfNoteActivityRequest"/>
+					<xs:element minOccurs="0" name="FileOwnerAlert" type="xs:boolean"/>
+					<xs:element minOccurs="0" name="ElectronicLodgement" type="xs:boolean"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ArrayOfNoteActivityRequest">
+				<xs:sequence>
+					<xs:element maxOccurs="unbounded" name="Note" nillable="true" type="cm:NoteRequest"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="NoteRequest">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="Title" nillable="true" type="xs:string"/>
+					<xs:element minOccurs="0" name="NoteText" nillable="true" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:schema>

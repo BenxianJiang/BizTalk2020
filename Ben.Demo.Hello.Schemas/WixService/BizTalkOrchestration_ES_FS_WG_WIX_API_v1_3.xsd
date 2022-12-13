@@ -1,0 +1,524 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:b="http://schemas.microsoft.com/BizTalk/2003" xmlns:cm="urn:ES.FS.WG.WIX.API/v1" xmlns:ns0="https://ES.FS.WG.AIBP.Schemas.CustomPropertiesSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:ES.FS.WG.WIX.API/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation=".\BizTalkOrchestration_www_w3_org_2005_05_xmlmime_1.xsd" namespace="http://www.w3.org/2005/05/xmlmime" />
+  <xs:include schemaLocation=".\wixapicommon.xsd" />
+  <xs:annotation>
+    <xs:appinfo>
+      <b:references xmlns:b="http://schemas.microsoft.com/BizTalk/2003">
+        <b:reference targetNamespace="http://www.w3.org/2005/05/xmlmime" />
+      </b:references>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="CaseCanonical">
+    <xs:annotation>
+      <xs:appinfo />
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Control" type="cm:Control" />
+        <xs:element minOccurs="0" name="Cases" type="cm:ArrayofCase" />
+        <xs:element minOccurs="0" name="Response" type="cm:Response" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Status" type="xs:string" />
+      <xs:element minOccurs="0" name="Errors" type="cm:ArrayOfErrorType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Case">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CaseNumber" type="cm:CaseNumberType">
+        <xs:annotation>
+          <xs:documentation>WI-X Case number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CaseType" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>WI-X Case Type</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ApplicationReferenceNumber" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Unique identifier of the Originations application</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Customers" type="cm:ArrayofCustomer" />
+      <xs:element minOccurs="0" name="Loans" type="cm:ArrayofLoan" />
+      <xs:element minOccurs="0" name="Documents" type="cm:ArrayofDocuments" />
+      <xs:element minOccurs="0" name="BusinessFunctions" type="cm:ArrayofBusinessFunction" />
+      <xs:element minOccurs="0" name="Notes" type="cm:ArrayofNote" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayofDocuments">
+    <xs:sequence maxOccurs="unbounded">
+      <xs:element name="Document" type="cm:Document" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Article">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="InlineArticle" type="xmime:base64Binary" />
+        <xs:element name="RepositoryArticle" type="cm:RepositoryArticle" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RepositoryArticle">
+    <xs:sequence>
+      <xs:element name="RepositoryType">
+        <xs:annotation>
+          <xs:documentation>eg. DCMS, WI-X, AWS S3 Bucket, etc.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="SharePoint" />
+            <xs:enumeration value="FilePath" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Location" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>File system path or URI of document image</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DRUID" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Unique identifier of the document (DRUID) in DCMS/WI-X </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ExternalIdentifier" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Unique identifier of the document outside DCMS/WI-X (eg. OBP)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocRSN" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>DOC Record Sequence Number in DCMS/WI-X</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ContentID" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>OWC Content identifier in WI-X</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocCommitAccessChar" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Document suggested index</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocSource" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Source of the document image. eg. FAX, SCAN, MAIL, DCDS, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocType" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Type of document as defined in source system</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocOriginalType" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Indicates whether the scanned image is from an original document or copy.				</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocNumberOfPages" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Total number of pages in the document image</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="PhysicalDocLocationID" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Location of the physical document. This could be either the Vault or a User's Bay.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="SoftDelete" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Indicates if the document image is to be hidden from search results and displaying</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="BatchID" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Indicates the batchID that identifies the batch as high intensity, low intensity, etc.				</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocTitleReferenceVolume" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Document Title Reference Volume</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocTitleReferenceState" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Document Title Reference State</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocTitleReferenceFolio" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Document Title Reference Folio</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocStatus" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Physical document status. eg. HELD, REQUESTED, PENDREL, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocStatusDate" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Document image status date</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ImageStatus" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Document image status. eg. Current, Superseded</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ImageStatusDate" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Document image status date</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocCreationUserID" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Document creation/scanned user ID</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocCreationDate" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Document creation/scanned date</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ModificationDate" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Document modification date</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocModificationUserID" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Document creation/scanned user ID</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocAuditDate" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Document auditing Date</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocAuditUserID" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Document auditing User ID</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocReleaseReason" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Document release reason</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocSuggestedIndex" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Document suggested index</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocQAUser" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Document suggested index</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocResearchUserID" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Document research User ID</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocShelfID" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Document suggested index</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocIndexOverridingReason" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Document overriding reason</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocPendingAnnotation" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Document pending annotation flag. Value of Y/N</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocAnnotationReason" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Document annotation reason</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocIndexingNotes" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Document IndexingNotes</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Location">
+        <xs:annotation>
+          <xs:documentation>Location of document image</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:choice>
+              <xs:element minOccurs="0" name="InlineArticle" type="xmime:base64Binary" />
+              <xs:element minOccurs="0" name="RepositoryArticle" type="cm:RepositoryArticle" />
+            </xs:choice>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocActionRequestID" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>eg. Document Action (Internal Release, External Release, Forwarding, etc. ) request ID</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayofDocument">
+    <xs:sequence maxOccurs="unbounded">
+      <xs:element name="Document" type="cm:Document" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Control">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PayloadIdentifier" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Client unique identifier for request</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="PayloadLocation" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>location of the payload if it is saved elsewhere</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="CorrelationID" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>unique identifier for the message</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="BusinessReferenceIdentifier" type="xs:string" />
+      <xs:element minOccurs="0" name="IndexingLane" type="xs:string" />
+      <xs:element minOccurs="0" name="Provider" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Identifies the entity, system or group making the request. eg. "OBP", "Decipha", "WI-X", etc.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Stream" type="xs:string" />
+      <xs:element minOccurs="0" name="Tenant" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The division within the Westpac Banking Group. eg. "Westpac", "BT", "St. George", etc.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="OrganisationalUnit" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The functional unit within the tenant to which the document relates. eg. "Home Lending", etc.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="LOBSystem" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Identifies the system which owns the document content. Expected valued of OBP, WI-X, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Requestor">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="RequestorID" type="xs:string" />
+            <xs:element minOccurs="0" name="FirstName" type="xs:string" />
+            <xs:element minOccurs="0" name="LastName" type="xs:string" />
+            <xs:element minOccurs="0" name="PrimaryEmailAddress" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="RequestNote" type="xs:string" />
+      <xs:element minOccurs="0" name="Operation">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="OperationName" type="xs:string" />
+            <xs:element minOccurs="0" name="ContextData">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:any processContents="skip" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayofCase">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Case" type="cm:Case" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Activity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActivityID" type="xs:string" />
+      <xs:element minOccurs="0" name="Subject">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="250" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="Status" type="xs:string" />
+      <xs:element minOccurs="0" name="State">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="Division">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="BSB">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="15" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="Location">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="100" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="Priority">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="15" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="ManagerNumber">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="ApprovalDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DueDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Operator">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="CreationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatedByUserID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="ModificationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ModifiedByUserID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="ActivityOwnerID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="Notes" type="cm:ArrayofNote" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayofActivity">
+    <xs:sequence maxOccurs="unbounded">
+      <xs:element name="Activity" type="cm:Activity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BusinessFunction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BusinessFunctionID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="38" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="BusinessFunctionType">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="Status">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="10" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="CreationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatedByUserID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="ModificationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ModifiedByUserID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="ActivityOwnerID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="Activities" type="cm:ArrayofActivity" />
+      <xs:element minOccurs="0" name="Notes" type="cm:ArrayofNote" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayofBusinessFunction">
+    <xs:sequence maxOccurs="unbounded">
+      <xs:element name="BusinessFunction" type="cm:BusinessFunction" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Note">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="NoteID" type="xs:string" />
+      <xs:element minOccurs="0" name="CreationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatedByUserID">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="50" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="Title" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayofNote">
+    <xs:sequence maxOccurs="unbounded">
+      <xs:element name="Note" type="cm:Note" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

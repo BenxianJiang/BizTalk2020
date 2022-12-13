@@ -19,6 +19,7 @@ namespace Ben.Demo.BizTalk.Components
             logProgs = new log4net.helpers.PropertiesCollectionEx();
             logProgs.Set("InstanceId", instanceId);
         }
+
         /// <summary>
         /// Comments
         /// </summary>

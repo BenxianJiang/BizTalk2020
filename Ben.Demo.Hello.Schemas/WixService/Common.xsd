@@ -1,0 +1,364 @@
+		<xs:schema elementFormDefault="qualified" targetNamespace="urn:dxc.esb.aibp.canonical/v1" id="Common" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:b="http://schemas.microsoft.com/BizTalk/2003" xmlns:cal="urn:dxc.esb.aibp.lixi.cal/v1" xmlns="urn:dxc.esb.aibp.canonical/v1">
+			<xs:import schemaLocation=".\BizTalkOrchestration_dxc_esb_aibp_lixi_cal_v1_2.xsd" namespace="urn:dxc.esb.aibp.lixi.cal/v1"/>
+      <xs:include schemaLocation=".\BizTalkOrchestration_dxc_esb_aibp_canonical_v1_3.xsd"/>
+			<xs:complexType name="Collection">
+				<xs:annotation>
+					<xs:documentation>&#xD;
+        Represents a group of articles received at the same time on the same channel and their metadata, eg physical articles in an envelope,&#xD;
+        an email with an email body and a number of attachments, a fax with a cover letter and a number of articles&#xD;
+      </xs:documentation>
+				</xs:annotation>
+				<xs:sequence>
+					<xs:element name="RequestID" type="GUID">
+						<xs:annotation>
+							<xs:documentation>&#xD;
+            A unique identifier for this request/collection, created by the Provider&#xD;
+          </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Provider" type="ProviderEnum">
+						<xs:annotation>
+							<xs:documentation>&#xD;
+            The processing or 3rd part provider, eg Decipha. To bbe populated by the provider&#xD;
+          </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="1" maxOccurs="1" name="Stream" type="StreamEnum">
+						<xs:annotation>
+							<xs:documentation>&#xD;
+            The Stream of activity being requested, either an Origination or Servicing request&#xD;
+          </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" maxOccurs="1" name="Activity" type="ActivityEnum">
+						<xs:annotation>
+							<xs:documentation>&#xD;
+            The activity associated with servicing requests&#xD;
+          </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" maxOccurs="1" name="Priority" type="PriorityEnum"/>
+					<xs:element name="CollectionMeta" type="CollectionMeta"/>
+					<xs:element minOccurs="1" maxOccurs="unbounded" name="Article" type="Article"/>
+					<xs:element minOccurs="1" maxOccurs="1" name="Tenant" type="TenantEnum">
+						<xs:annotation>
+							<xs:documentation>The division within the Westpac Banking Group. eg. "Westpac"</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="1" maxOccurs="1" name="OrganisationalUnit" type="OrganisationalUnitEnum">
+						<xs:annotation>
+							<xs:documentation>The functional unit within the tenant to which the document relates. eg. "Home Lending", etc.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="1" maxOccurs="1" name="LOBSystem" type="LOBSystemEnum">
+						<xs:annotation>
+							<xs:documentation>Line of Business System that the document relates to. Expected values of OBP, MSS, GOE, etc.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="CanonicalCollection">
+				<xs:annotation>
+					<xs:documentation>&#xD;
+				Represents a group of articles received at the same time on the same channel and their metadata, eg physical articles in an envelope,&#xD;
+				an email with an email body and a number of attachments, a fax with a cover letter and a number of articles&#xD;
+			</xs:documentation>
+				</xs:annotation>
+				<xs:sequence>
+					<xs:element name="RequestID" type="GUID">
+						<xs:annotation>
+							<xs:documentation>&#xD;
+						A unique identifier for this request/collection, created by the Provider&#xD;
+					</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Provider" type="ProviderEnum">
+						<xs:annotation>
+							<xs:documentation>&#xD;
+						The processing or 3rd part provider, eg Decipha. To bbe populated by the provider&#xD;
+					</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="1" maxOccurs="1" name="Stream" type="StreamEnum">
+						<xs:annotation>
+							<xs:documentation>&#xD;
+						The Stream of activity being requested, either an Origination or Servicing request&#xD;
+					</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" maxOccurs="1" name="Activity" type="ActivityEnum">
+						<xs:annotation>
+							<xs:documentation>&#xD;
+						The activity associated with servicing requests&#xD;
+					</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" maxOccurs="1" name="Priority" type="PriorityEnum"/>
+					<xs:element minOccurs="0" name="BatchID" type="xs:string"/>
+					<xs:element minOccurs="0" name="BatchCreationDate" type="xs:dateTime"/>
+					<xs:element minOccurs="0" name="Source" type="xs:string"/>
+					<xs:element name="CollectionMeta" type="CollectionMeta"/>
+					<xs:element minOccurs="1" maxOccurs="unbounded" name="Article" type="CanonicalArticle"/>
+					<xs:element minOccurs="1" maxOccurs="1" name="Tenant" type="TenantEnum">
+						<xs:annotation>
+							<xs:documentation>The division within the Westpac Banking Group. eg. "Westpac"</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="1" maxOccurs="1" name="OrganisationalUnit" type="OrganisationalUnitEnum">
+						<xs:annotation>
+							<xs:documentation>The functional unit within the tenant to which the document relates. eg. "Home Lending", etc.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="1" maxOccurs="1" name="LOBSystem" type="LOBSystemEnum">
+						<xs:annotation>
+							<xs:documentation>Line of Business System that the document relates to. Expected values of OBP, MSS, GOE, etc.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="CollectionMeta">
+				<xs:annotation>
+					<xs:documentation>&#xD;
+        The meta data that describes the collection of articles as a whole, not pertaining to individual articles&#xD;
+      </xs:documentation>
+				</xs:annotation>
+				<xs:sequence>
+					<xs:element name="Channel" type="ChannelEnum"/>
+					<xs:element minOccurs="0" name="From" type="xs:string"/>
+					<xs:element minOccurs="0" name="To" type="xs:string"/>
+					<xs:element minOccurs="0" name="Subject" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>&#xD;
+            The subject of the request. In the case of email channel the subject line. For other channels could be omitted&#xD;
+          </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Identity">
+				<xs:annotation>
+					<xs:documentation>&#xD;
+        The identity of an entity in a system.&#xD;
+        Each system may refer to the same entity by a different identifier. Combining a collection of Identitys allows the relationships&#xD;
+        across systems to be communicated between systems.&#xD;
+      </xs:documentation>
+				</xs:annotation>
+				<xs:sequence>
+					<xs:element name="System" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>&#xD;
+            The source system where the entity is maintained/produced. eg DCDS, may be EXT for external&#xD;
+          </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Identifier" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>&#xD;
+            The value of the Identifier in the source system, eg for DCDS TC101, TC102 for DCMS CustCorr00, CredDocs00, Mortgage&#xD;
+          </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Article">
+				<xs:sequence>
+					<xs:element name="FileName" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>&#xD;
+            The file name including path relative to the location of the collection metadata file. In general it is expected that all files in the collection&#xD;
+            will be in the same folder as the collection metadata file.&#xD;
+          </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="NumberOfPages" type="xs:int"/>
+					<xs:element name="ArticleType" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>&#xD;
+            The Article Type is used when indexing the article against the document store to enable article classification and retrieval.&#xD;
+            When indexing to DCMS/WI-X this will be the DCMS/WI-X Document Type&#xD;
+          </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OriginalType" type="OriginalTypeEnum">
+						<xs:annotation>
+							<xs:documentation>&#xD;
+            Indicates whether the scanned image is from an original document or copy.&#xD;
+          </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="UniqueID">
+						<xs:annotation>
+							<xs:documentation>&#xD;
+            The unique identifier of the Article in the indexing system. In DCMS/WI-X this will be the DRUID.&#xD;
+          </xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="8"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element minOccurs="0" name="ExternalDocumentIdentifier">
+						<xs:annotation>
+							<xs:documentation>&#xD;
+            The unique identifier of the document in systems external to WI-X, eg. for OBP, this is generated  by Decipha as an alpha character followed by 14 digits and added as barcode to separator page&#xD;
+          </xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="50"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element minOccurs="0" ref="cal:Package"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="CanonicalArticle">
+				<xs:sequence>
+					<xs:element name="FileName" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>&#xD;
+						The file name including path relative to the location of the collection metadata file. In general it is expected that all files in the collection&#xD;
+						will be in the same folder as the collection metadata file.&#xD;
+					</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="NumberOfPages" type="xs:int"/>
+					<xs:element name="ArticleType" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>&#xD;
+						The Article Type is used when indexing the article against the document store to enable article classification and retrieval.&#xD;
+						When indexing to DCMS this will be the DCMS Document Type&#xD;
+					</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OriginalType" type="OriginalTypeEnum">
+						<xs:annotation>
+							<xs:documentation>&#xD;
+						Indicates whether the scanned image is from an original document or copy.&#xD;
+					</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element minOccurs="0" name="UniqueID">
+						<xs:annotation>
+							<xs:documentation>&#xD;
+						The unique identifier of the Article in the indexing system. In DCMS this will be the DRUID.&#xD;
+					</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="8"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element minOccurs="0" name="Indexing">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element minOccurs="0" name="PrimaryFile" type="xs:string"/>
+								<xs:element minOccurs="0" name="Notes" type="xs:string"/>
+								<xs:element minOccurs="0" name="Annotation" type="xs:string"/>
+								<xs:element minOccurs="0" name="SuggestedIndex" type="xs:string"/>
+								<xs:element minOccurs="0" name="DocumentRSN" type="xs:string"/>
+								<xs:element minOccurs="0" name="IndexingUser" type="xs:string"/>
+								<xs:element minOccurs="0" name="QualityControlUser" type="xs:string"/>
+								<xs:element minOccurs="0" name="ResearchUser" type="xs:string"/>
+								<xs:element minOccurs="0" name="IndexingComplete" type="xs:string"/>
+								<xs:element minOccurs="0" name="CheckInComplete" type="xs:string"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element minOccurs="0" name="ExternalDocumentIdentifier">
+						<xs:annotation>
+							<xs:documentation>&#xD;
+            The unique identifier of the document in systems external to WI-X, eg. for OBP, this is generated  by Decipha as an alpha character followed by 14 digits and added as barcode to separator page&#xD;
+          </xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="50"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element minOccurs="0" name="ContentID" type="xs:string"/>
+					<xs:element minOccurs="0" ref="cal:Package"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="MetaItem">
+				<xs:sequence>
+					<xs:element name="Key" type="xs:string"/>
+					<xs:element name="Value" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="PersonApplicant">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="CustomerKey" type="xs:string"/>
+					<xs:element minOccurs="0" name="CustomerReference" type="xs:string"/>
+					<xs:element minOccurs="0" name="FullName" type="xs:string"/>
+					<xs:element minOccurs="0" name="PersonName" type="PersonName"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="PersonName">
+				<xs:sequence>
+					<xs:element name="NameTitle" type="xs:string"/>
+					<xs:element name="FirstName" type="xs:string"/>
+					<xs:element name="MiddleNames" type="xs:string"/>
+					<xs:element name="SurName" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Loan">
+				<xs:sequence>
+					<xs:element name="AccountNumber" type="AccountNumber"/>
+					<xs:element minOccurs="0" name="Repayment" type="Repayment"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Repayment">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="PaymentOption" type="PaymentOption"/>
+					<xs:element minOccurs="0" name="Amount" type="xs:decimal"/>
+					<xs:element minOccurs="0" name="Frequency" type="Frequency"/>
+					<xs:element minOccurs="0" name="PaymentDate" type="xs:date"/>
+					<xs:element minOccurs="0" name="FromAccount">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="AccountNumber" type="AccountNumber"/>
+								<xs:element name="AccountName" type="xs:string"/>
+								<xs:element name="FinancialInstitution" type="xs:string"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:simpleType name="StatusType">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Success"/>
+					<xs:enumeration value="Error"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:complexType name="ProcessStatusType">
+				<xs:sequence>
+					<xs:element name="Status" type="StatusType"/>
+					<xs:element minOccurs="0" name="MoreInfo" type="xs:string"/>
+					<xs:element minOccurs="0" name="Errors">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element maxOccurs="unbounded" name="Error" type="ErrorType"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ErrorType">
+				<xs:sequence>
+					<xs:element name="Category" type="xs:string"/>
+					<xs:element name="Message" type="xs:string"/>
+					<xs:element name="TimeOccurred" type="xs:dateTime"/>
+					<xs:element name="Source" type="xs:string"/>
+					<xs:element name="Code" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:simpleType name="GUID">
+				<xs:restriction base="xs:string">
+					<xs:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:schema>

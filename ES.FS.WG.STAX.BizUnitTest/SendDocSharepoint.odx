@@ -17,8 +17,8 @@
                 <om:Property Name="ReportToAnalyst" Value="True" />
                 <om:Property Name="Name" Value="SharepointDoc" />
                 <om:Property Name="Signal" Value="True" />
-                <om:Element Type="MessageRef" OID="3eb0ed0a-6c45-4b4b-85b4-ff6085fbf1ae" ParentLink="OperationDeclaration_RequestMessageRef" LowerBound="8.13" HigherBound="8.25">
-                    <om:Property Name="Ref" Value="ES.FS.WG.STAX.BizUnitTest.InFileSchema" />
+                <om:Element Type="MessageRef" OID="3eb0ed0a-6c45-4b4b-85b4-ff6085fbf1ae" ParentLink="OperationDeclaration_RequestMessageRef" LowerBound="8.13" HigherBound="8.24">
+                    <om:Property Name="Ref" Value="ES.FS.WG.STAX.BizUnitTest.InputSchema" />
                     <om:Property Name="ReportToAnalyst" Value="True" />
                     <om:Property Name="Name" Value="Request" />
                     <om:Property Name="Signal" Value="True" />
@@ -115,7 +115,7 @@
                 <om:Property Name="Signal" Value="True" />
             </om:Element>
             <om:Element Type="MessageDeclaration" OID="f0c6c1c7-0a78-4482-a41c-f07be40acbe2" ParentLink="ServiceDeclaration_MessageDeclaration" LowerBound="26.1" HigherBound="27.1">
-                <om:Property Name="Type" Value="ES.FS.WG.STAX.BizUnitTest.InFileSchema" />
+                <om:Property Name="Type" Value="ES.FS.WG.STAX.BizUnitTest.InputSchema" />
                 <om:Property Name="ParamDirection" Value="In" />
                 <om:Property Name="ReportToAnalyst" Value="True" />
                 <om:Property Name="Name" Value="msgIn" />
@@ -134,10 +134,10 @@
                     <om:Property Name="Signal" Value="True" />
                 </om:Element>
                 <om:Element Type="VariableAssignment" OID="6755dcde-b229-43d3-b55e-bb99b9cc10dc" ParentLink="ServiceBody_Statement" LowerBound="44.1" HigherBound="57.1">
-                    <om:Property Name="Expression" Value="varLogger = log4net.Ext.Serializable.SLogManager.GetLogger(@&quot;ES.FS.WG.STAX&quot;, log4net.helpers.CallersTypeName.Name);&#xD;&#xA;varLogger.RegistryConfigurator();&#xD;&#xA;varLogProps.Set(&quot;InstanceId&quot;, SendDocSharepoint(Microsoft.XLANGs.BaseTypes.InstanceId));&#xD;&#xA;varLogger.Info(varLogProps, &quot;== Received SendDocSharepoint request ==&quot;);&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;varFileName = &quot;msgIn.FileName&quot;;&#xD;&#xA;varFileFullPath = &quot;msgIn.SharepointFilePath&quot;;&#xD;&#xA;varSharepointUrl = &quot;wss://aulknpesva139/Sites/STAX/releases/SA10253&quot;;&#xD;&#xA;&#xD;&#xA;varLogMsg = &quot;Receive filename: &quot; + varFileName + &quot; file path: &quot; + varFileFullPath + &quot; SP URL = &quot; + varSharepointUrl;&#xD;&#xA;varLogger.Info(varLogProps, varLogMsg);&#xD;&#xA;" />
+                    <om:Property Name="Expression" Value="varLogger = log4net.Ext.Serializable.SLogManager.GetLogger(@&quot;ES.FS.WG.STAX&quot;, log4net.helpers.CallersTypeName.Name);&#xD;&#xA;varLogger.RegistryConfigurator();&#xD;&#xA;varLogProps.Set(&quot;InstanceId&quot;, SendDocSharepoint(Microsoft.XLANGs.BaseTypes.InstanceId));&#xD;&#xA;varLogger.Info(varLogProps, &quot;== Received SendDocSharepoint request ==&quot;);&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;varFileName = msgIn(ES.FS.WG.STAX.BizUnitTest.PropertySchema.FileName);&#xD;&#xA;varFileFullPath = &quot;&quot;;&#xD;&#xA;varSharepointUrl = msgIn(ES.FS.WG.STAX.BizUnitTest.PropertySchema.SharepointUrl); &#xD;&#xA;&#xD;&#xA;varLogMsg = &quot;Receive filename: &quot; + varFileName + &quot; SP URL = &quot; + varSharepointUrl;&#xD;&#xA;varLogger.Info(varLogProps, varLogMsg);&#xD;&#xA;" />
                     <om:Property Name="ReportToAnalyst" Value="True" />
                     <om:Property Name="Name" Value="Log" />
-                    <om:Property Name="Signal" Value="False" />
+                    <om:Property Name="Signal" Value="True" />
                 </om:Element>
                 <om:Element Type="Scope" OID="704e030b-8822-41d5-991f-e5a1ea5eef11" ParentLink="ServiceBody_Statement" LowerBound="57.1" HigherBound="104.1">
                     <om:Property Name="InitializedTransactionType" Value="True" />
@@ -240,7 +240,7 @@ module ES.FS.WG.STAX.BizUnitTest
     {
         oneway SharepointDoc
         {
-            InFileSchema
+            InputSchema
         };
     };
     internal porttype PortType_SendDocSharepoint_Send_Req
@@ -258,7 +258,7 @@ module ES.FS.WG.STAX.BizUnitTest
         [Microsoft.XLANGs.BaseTypes.PhysicalBinding(typeof(Microsoft.BizTalk.DefaultPipelines.XMLTransmit))]
         port uses dynamic PortType_SendDocSharepoint_Send_Req Port_SendDocSharepoint_Send_Req;
         message System.Xml.XmlDocument msgSharepointDocument;
-        message InFileSchema msgIn;
+        message InputSchema msgIn;
         System.Xml.XmlDocument xmlDoc;
         log4net.helpers.PropertiesCollectionEx varLogProps;
         log4net.Ext.Serializable.SLog varLogger;
@@ -283,11 +283,11 @@ module ES.FS.WG.STAX.BizUnitTest
             varLogger.Info(varLogProps, "== Received SendDocSharepoint request ==");
             
             
-            varFileName = "msgIn.FileName";
-            varFileFullPath = "msgIn.SharepointFilePath";
-            varSharepointUrl = "wss://aulknpesva139/Sites/STAX/releases/SA10253";
+            varFileName = msgIn(ES.FS.WG.STAX.BizUnitTest.PropertySchema.FileName);
+            varFileFullPath = "";
+            varSharepointUrl = msgIn(ES.FS.WG.STAX.BizUnitTest.PropertySchema.SharepointUrl); 
             
-            varLogMsg = "Receive filename: " + varFileName + " file path: " + varFileFullPath + " SP URL = " + varSharepointUrl;
+            varLogMsg = "Receive filename: " + varFileName + " SP URL = " + varSharepointUrl;
             varLogger.Info(varLogProps, varLogMsg);
             [Microsoft.XLANGs.BaseTypes.DesignerPosition("704e030b-8822-41d5-991f-e5a1ea5eef11")]
             scope

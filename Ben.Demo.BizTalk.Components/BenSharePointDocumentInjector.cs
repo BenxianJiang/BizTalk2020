@@ -101,7 +101,12 @@ namespace Ben.Demo.BizTalk.Components
         #endregion
         #region Icomponent
 
-        ///
+        /// <summary>
+        /// Entry point
+        /// </summary>
+        /// <param name="pContext"></param>
+        /// <param name="pInMsg"></param>
+        /// <returns></returns>
         public IBaseMessage Execute(IPipelineContext pContext, IBaseMessage pInMsg)
         {
             //get ben logger
@@ -126,7 +131,7 @@ namespace Ben.Demo.BizTalk.Components
                 bLogger.Debug(bLogProgs, "Node value is " + docFileValue);
                 resultBytes = File.ReadAllBytes(docFileValue);    // Get the text value    
 
-                File.WriteAllBytes(@"c:\temp\newTest.pdf", resultBytes);
+                //File.WriteAllBytes(@"c:\temp\newTest.pdf", resultBytes);
             }
             else
             {
@@ -148,7 +153,11 @@ namespace Ben.Demo.BizTalk.Components
             return message; 
         }
 
-        ///
+        /// <summary>
+        /// Get node string value decoded from Base64
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
         private string GetNodeValue(XmlTextReader reader)
         {
             string pathDecoded = string.Empty;

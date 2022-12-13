@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{88DDF1F6-3DE2-49D2-BD8E-9DC29E9A086F}</ProjectGuid>
+    <ProjectTypeGuids>{EF7E3281-CD33-11D4-8326-00C04FA0CE8D};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>library</OutputType>
+    <GenericProcessing>true</GenericProcessing>
+    <RootNamespace>Ben.Demo.Hello.Schemas</RootNamespace>
+    <AssemblyName>Ben.Demo.Hello.Schemas</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <BpelCompliance>True</BpelCompliance>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Ben.Demo.BizTalk.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Name>System.Configuration</Name>
+    </Reference>
+    <Reference Include="Microsoft.BizTalk.Pipeline">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.BizTalk.DefaultPipelines">
+      <Name>Microsoft.BizTalk.DefaultPipelines</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.BizTalk.GlobalPropertySchemas">
+      <Name>Microsoft.BizTalk.GlobalPropertySchemas</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.BizTalk.TestTools">
+      <Name>Microsoft.BizTalk.TestTools</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.XLANGs.BaseTypes">
+      <Name>Microsoft.XLANGs.BaseTypes</Name>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Schema Include="WcfService\HelloService_ben_demo_wcf_helloservice.xsd">
+      <Namespace>Ben.Demo.Hello.Schemas.WcfService</Namespace>
+      <TypeName>HelloService_ben_demo_wcf_helloservice</TypeName>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="WcfService\HelloService_schemas_microsoft_com_2003_10_Serialization.xsd">
+      <Namespace>Ben.Demo.Hello.Schemas.WcfService</Namespace>
+      <TypeName>HelloService_schemas_microsoft_com_2003_10_Serialization</TypeName>
+      <SubType>Task</SubType>
+    </Schema>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="WcfService\HelloService.BindingInfo.xml" />
+    <Content Include="WcfService\HelloService_Custom.BindingInfo.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ben.Demo.BizTalk.snk" />
+    <Schema Include="WixService\WixIn.xsd">
+      <TypeName>WixIn</TypeName>
+      <Namespace>Ben.Demo.Hello.Schemas.WixService</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="WixService\BizTalkOrchestration_dxc_esb_aibp_canonical_v1_3.xsd">
+      <TypeName>BizTalkOrchestration_dxc_esb_aibp_canonical_v1_3</TypeName>
+      <Namespace>Ben.Demo.Hello.Schemas.WixService</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="WixService\BizTalkOrchestration_dxc_esb_aibp_lixi_cal_v1_2.xsd">
+      <TypeName>BizTalkOrchestration_dxc_esb_aibp_lixi_cal_v1_2</TypeName>
+      <Namespace>Ben.Demo.Hello.Schemas.WixService</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="WixService\BizTalkOrchestration_ES_FS_WG_AIBP_Schemas_Services_BiztalkWIXServiceTypes_v1_1.xsd">
+      <TypeName>BizTalkOrchestration_ES_FS_WG_AIBP_Schemas_Services_BiztalkWIXServiceTypes_v1_1</TypeName>
+      <Namespace>Ben.Demo.Hello.Schemas.WixService</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="WixService\BizTalkOrchestration_ES_FS_WG_WIX_API_v1_3.xsd">
+      <TypeName>BizTalkOrchestration_ES_FS_WG_WIX_API_v1_3</TypeName>
+      <Namespace>Ben.Demo.Hello.Schemas.WixService</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="WixService\BizTalkOrchestration_www_w3_org_2005_05_xmlmime_1.xsd">
+      <TypeName>BizTalkOrchestration_www_w3_org_2005_05_xmlmime_1</TypeName>
+      <Namespace>Ben.Demo.Hello.Schemas.WixService</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="WixService\Common.xsd">
+      <TypeName>Common</TypeName>
+      <Namespace>Ben.Demo.Hello.Schemas.WixService</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="WixService\SimpleTypes.xsd">
+      <TypeName>SimpleTypes</TypeName>
+      <Namespace>Ben.Demo.Hello.Schemas.WixService</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="WixService\WixAPICommon.xsd">
+      <TypeName>WixAPICommon</TypeName>
+      <Namespace>Ben.Demo.Hello.Schemas.WixService</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SoapService\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\BizTalk\BizTalkC.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>"C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\gacutil.exe" -i $(TargetFileName) /f</PostBuildEvent>
+  </PropertyGroup>
+</Project>

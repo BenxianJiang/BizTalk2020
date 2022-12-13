@@ -1,0 +1,156 @@
+		<xs:schema elementFormDefault="qualified" targetNamespace="urn:dxc.esb.aibp.canonical/v1" id="SimpleTypes" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:b="http://schemas.microsoft.com/BizTalk/2003" xmlns="urn:dxc.esb.aibp.canonical/v1">
+			<xs:simpleType name="ProviderEnum">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Decipha"/>
+					<xs:enumeration value="NextGen"/>
+					<xs:enumeration value="Westpac Live"/>
+					<xs:enumeration value="DXC"/>
+					<xs:enumeration value="OBP"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="StreamEnum">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Origination"/>
+					<xs:enumeration value="Servicing"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="OriginationTypeEnum">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="NewApplication"/>
+					<xs:enumeration value="TopupApplication"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="ServicingTypeEnum">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Releases"/>
+					<xs:enumeration value="Portabilities"/>
+					<xs:enumeration value="LMI"/>
+					<xs:enumeration value="Consents"/>
+					<xs:enumeration value="Progress Draw"/>
+					<xs:enumeration value="Product Switch"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="ChannelEnum">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Attach"/>
+					<xs:enumeration value="Mail"/>
+					<xs:enumeration value="NextGen"/>
+					<xs:enumeration value="Email"/>
+					<xs:enumeration value="Fax"/>
+					<xs:enumeration value="FileNet"/>
+					<xs:enumeration value="OutFax"/>
+					<xs:enumeration value="Scan"/>
+					<xs:enumeration value="DCDS"/>
+					<xs:enumeration value="WEB"/>
+					<xs:enumeration value="Pronto"/>
+					<xs:enumeration value="STA-X"/>
+					<xs:enumeration value="AO-X"/>
+					<xs:enumeration value="OBP"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="EmailChannelItemEnum">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Body"/>
+					<xs:enumeration value="Attachment"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="PhysicalChannelItemEnum">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="PhysicalDocument"/>
+					<xs:enumeration value="Envelope"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="AccountNumber">
+				<xs:restriction base="xs:string">
+					<xs:pattern value="\d{12}"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="PaymentOption">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Minimum"/>
+					<xs:enumeration value="MinimumFortnightly"/>
+					<xs:enumeration value="MinimumPlusFixed"/>
+					<xs:enumeration value="Fixed"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="Frequency">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Weekly"/>
+					<xs:enumeration value="Fortnightly"/>
+					<xs:enumeration value="Monthly"/>
+					<xs:enumeration value="Fixed"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="OriginalTypeEnum">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="F">
+						<xs:annotation>
+							<xs:documentation>FAX</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="N">
+						<xs:annotation>
+							<xs:documentation>FNETCONV</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="O">
+						<xs:annotation>
+							<xs:documentation>ORIGINAL</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="E">
+						<xs:annotation>
+							<xs:documentation>ELECTRONIC</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="C">
+						<xs:annotation>
+							<xs:documentation>COPY</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="ActivityEnum">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Releases"/>
+					<xs:enumeration value="Portabilities"/>
+					<xs:enumeration value="LMI"/>
+					<xs:enumeration value="Consents"/>
+					<xs:enumeration value="Progress Draw"/>
+					<xs:enumeration value="Product Switch"/>
+					<xs:enumeration value="New Loan"/>
+					<xs:enumeration value="Top Up"/>
+					<xs:enumeration value="Private Bank Servicing"/>
+					<xs:enumeration value="Credit Referral"/>
+					<xs:enumeration value="Document Capture"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="PriorityEnum">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Urgent"/>
+					<xs:enumeration value="Private Bank"/>
+					<xs:enumeration value="Standard"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="TenantEnum">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Westpac"/>
+					<xs:enumeration value="Unknown"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="OrganisationalUnitEnum">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Home Lending"/>
+					<xs:enumeration value="Unknown"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="LOBSystemEnum">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="MSS"/>
+					<xs:enumeration value="OBP"/>
+					<xs:enumeration value="GOE"/>
+					<xs:enumeration value="SAM"/>
+					<xs:enumeration value="Unknown"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:schema>
