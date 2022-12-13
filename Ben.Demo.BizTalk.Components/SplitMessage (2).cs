@@ -10,7 +10,7 @@ using System.Xml;
 namespace Ben.Demo.BizTalk.Components
 {
 	/// <summary>
-	/// Disassembler Component to split incoming message
+	/// Disassembler Component to split incoming message - comments
 	/// </summary>
 	[ComponentCategory(CategoryTypes.CATID_PipelineComponent)]
 	[ComponentCategory(CategoryTypes.CATID_DisassemblingParser)]
@@ -153,3 +153,4 @@ namespace Ben.Demo.BizTalk.Components
         }
     }
 }
+
