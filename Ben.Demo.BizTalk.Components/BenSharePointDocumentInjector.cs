@@ -101,6 +101,7 @@ namespace Ben.Demo.BizTalk.Components
         #endregion
         #region Icomponent
 
+        ///
         public IBaseMessage Execute(IPipelineContext pContext, IBaseMessage pInMsg)
         {
             //get ben logger
@@ -147,6 +148,7 @@ namespace Ben.Demo.BizTalk.Components
             return message; 
         }
 
+        ///
         private string GetNodeValue(XmlTextReader reader)
         {
             string pathDecoded = string.Empty;
@@ -177,8 +179,5 @@ namespace Ben.Demo.BizTalk.Components
             return pathDecoded;
         }
         #endregion
-
-
-
     }
 }
