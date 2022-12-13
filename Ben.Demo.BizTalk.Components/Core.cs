@@ -9,7 +9,6 @@ namespace Ben.Demo.BizTalk.Components
 {
     public class Core
     {
-<<<<<<< HEAD
         public static void GetBenLogger(string instanceId, 
                                         string callerName,
                                         out log4net.Ext.Serializable.SLog logger, 
@@ -20,9 +19,6 @@ namespace Ben.Demo.BizTalk.Components
             logProgs = new log4net.helpers.PropertiesCollectionEx();
             logProgs.Set("InstanceId", instanceId);
         }
-
-=======
->>>>>>> 32dfc2ff5079fe2f9baf524789f6ab735e7089ca
         /// <summary>
         /// Comments
         /// </summary>

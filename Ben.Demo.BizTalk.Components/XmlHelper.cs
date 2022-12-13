@@ -38,7 +38,6 @@ namespace Ben.Demo.BizTalk.Components
         }
 
         /// <summary>
-<<<<<<< HEAD
         /// Change xml document from old namespace to new namespace.
         /// </summary>
         /// <param name="request"></param>
@@ -66,8 +65,6 @@ namespace Ben.Demo.BizTalk.Components
 
 
         /// <summary>
-=======
->>>>>>> 32dfc2ff5079fe2f9baf524789f6ab735e7089ca
         /// Use XmlDocument to replace the root name.
         /// </summary>
         /// <param name="requestProvider">XmlDocument with root name "RequestProvider"</param>

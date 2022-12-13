@@ -9,11 +9,7 @@ namespace Ben.Demo.BizTalk.Components
     public class Constants
     {
         public const string AIBPValidationErrorNameSpace = "urn:dxc.esb.aibp.validationerrors/v1";
-<<<<<<< HEAD
         public const string ArticleNodeNameSpace = "urn:ben.demo.biztalk/article/v1";
-=======
-
->>>>>>> 32dfc2ff5079fe2f9baf524789f6ab735e7089ca
         public const string AIBPValidationErrorRootNode = "AIBPValidationErrors";
         public const string AIBPValidationProviderDataNode = "ProviderData";
         public const string AIBPValidationProviderRequestIDNode = "RequestID";
