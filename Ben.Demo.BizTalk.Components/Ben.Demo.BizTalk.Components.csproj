@@ -101,17 +101,6 @@
   <ItemGroup>
     <None Include="Ben.Demo.BizTalk.snk" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="ExternalAssemblies\log4net.dll" />
-    <Content Include="ExternalAssemblies\log4net.Ext.Serializable.dll" />
-    <Content Include="ExternalAssemblies\Microsoft.HostIntegration.SNA.Session.dll" />
-    <Content Include="ExternalAssemblies\Microsoft.Practices.Unity.Configuration.dll" />
-    <Content Include="ExternalAssemblies\Microsoft.Practices.Unity.dll" />
-    <Content Include="ExternalAssemblies\Microsoft.Practices.Unity.RegistrationByConvention.dll" />
-    <Content Include="ExternalAssemblies\Oracle.ManagedDataAccess.dll" />
-    <Content Include="ExternalAssemblies\Readme.txt" />
-    <Content Include="ExternalAssemblies\SSOSettingsFileReader.dll" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>"C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\gacutil.exe" -i $(TargetFileName) /f</PostBuildEvent>

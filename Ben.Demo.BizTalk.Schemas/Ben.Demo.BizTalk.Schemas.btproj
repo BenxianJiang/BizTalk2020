@@ -81,6 +81,16 @@
     </Schema>
   </ItemGroup>
   <ItemGroup>
+    <Schema Include="PropertySchema.xsd">
+      <TypeName>PropertySchema</TypeName>
+      <Namespace>Ben.Demo.BizTalk.Schemas.PropertySchema</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="SftpInput.xsd">
+      <TypeName>SftpInput</TypeName>
+      <Namespace>Ben.Demo.BizTalk.Schemas</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
     <Schema Include="WcfService\HelloService_ben_demo_wcf_helloservice.xsd">
       <Namespace>Ben.Demo.BizTalk.Schemas.WcfService</Namespace>
       <TypeName>HelloService_ben_demo_wcf_helloservice</TypeName>

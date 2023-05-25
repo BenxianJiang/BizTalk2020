@@ -14,17 +14,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ben.Demo.BizTalk.Deployment", "Ben.Demo.BizTalk.Deployment", "{2F44CB20-E1FF-481F-9E82-E7B034B96DA7}"
 	ProjectSection(SolutionItems) = preProject
 		Ben.Demo.BizTalk.Deployment\Ben.Demo.BizTalk.BindingInfo.xml = Ben.Demo.BizTalk.Deployment\Ben.Demo.BizTalk.BindingInfo.xml
+		Ben.Demo.BizTalk.log4net = Ben.Demo.BizTalk.log4net
 		Ben.Demo.BizTalk.Deployment\Deployment.btdfproj = Ben.Demo.BizTalk.Deployment\Deployment.btdfproj
 		Ben.Demo.BizTalk.Deployment\InstallWizard.xml = Ben.Demo.BizTalk.Deployment\InstallWizard.xml
 		Ben.Demo.BizTalk.Deployment\License.rtf = Ben.Demo.BizTalk.Deployment\License.rtf
 		Ben.Demo.BizTalk.Deployment\PortBindingsMaster.xml = Ben.Demo.BizTalk.Deployment\PortBindingsMaster.xml
-		Ben.Demo.BizTalk.Deployment\SettingsFileGenerator.xml = Ben.Demo.BizTalk.Deployment\SettingsFileGenerator.xml
 		Ben.Demo.BizTalk.Deployment\UnInstallWizard.xml = Ben.Demo.BizTalk.Deployment\UnInstallWizard.xml
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFiles", "SolutionFiles", "{8FE61CE8-34F3-46A3-A781-6FB6F59D341E}"
-	ProjectSection(SolutionItems) = preProject
-		SolutionFiles\Build_BTDF_BenDemoBizTalk.bat = SolutionFiles\Build_BTDF_BenDemoBizTalk.bat
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ben.Demo.BizTalk.Pipelines", "Ben.Demo.BizTalk.Pipelines\Ben.Demo.BizTalk.Pipelines.btproj", "{9065C85A-B6F7-4064-BE0D-B623C94967DD}"
@@ -42,6 +37,35 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ben.Demo.Hello.Pipelines", "Ben.Demo.Hello.Pipelines\Ben.Demo.Hello.Pipelines.btproj", "{88891A14-11BF-4649-9A1B-D9D9D9252110}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ben.Demo.Hello.Schemas", "Ben.Demo.Hello.Schemas\Ben.Demo.Hello.Schemas.btproj", "{88DDF1F6-3DE2-49D2-BD8E-9DC29E9A086F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{6E346762-4A25-4888-9C1C-0074452B9CDF}"
+	ProjectSection(SolutionItems) = preProject
+		Ben.Demo.BizTalk.Deployment\Scripts\Build_BTDF_BenDemoBizTalk.bat = Ben.Demo.BizTalk.Deployment\Scripts\Build_BTDF_BenDemoBizTalk.bat
+		Ben.Demo.BizTalk.Deployment\Scripts\RegisterBenDemoSourceToEventLog.ps1 = Ben.Demo.BizTalk.Deployment\Scripts\RegisterBenDemoSourceToEventLog.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EnvironmentSettings", "EnvironmentSettings", "{9D998F7C-7437-4275-83B4-6DC55FEB3546}"
+	ProjectSection(SolutionItems) = preProject
+		Ben.Demo.BizTalk.Deployment\EnvironmentSettings\SettingsFileGenerator.xml = Ben.Demo.BizTalk.Deployment\EnvironmentSettings\SettingsFileGenerator.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SSOEnvironmentSettings", "SSOEnvironmentSettings", "{FFA64B8E-ED99-4B2E-B33B-F25A4E89773C}"
+	ProjectSection(SolutionItems) = preProject
+		Ben.Demo.BizTalk.Deployment\SSOEnvironmentSettings\SettingsFileGenerator.xml = Ben.Demo.BizTalk.Deployment\SSOEnvironmentSettings\SettingsFileGenerator.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternalRef", "ExternalRef", "{4DEE0AE7-735B-4001-9E49-6BD11A3A6170}"
+	ProjectSection(SolutionItems) = preProject
+		ExternalRef\ExternalAssemblies\log4net.dll = ExternalRef\ExternalAssemblies\log4net.dll
+		ExternalRef\ExternalAssemblies\log4net.Ext.Serializable.dll = ExternalRef\ExternalAssemblies\log4net.Ext.Serializable.dll
+		ExternalRef\ExternalAssemblies\Microsoft.HostIntegration.SNA.Session.dll = ExternalRef\ExternalAssemblies\Microsoft.HostIntegration.SNA.Session.dll
+		ExternalRef\ExternalAssemblies\Microsoft.Practices.Unity.Configuration.dll = ExternalRef\ExternalAssemblies\Microsoft.Practices.Unity.Configuration.dll
+		ExternalRef\ExternalAssemblies\Microsoft.Practices.Unity.dll = ExternalRef\ExternalAssemblies\Microsoft.Practices.Unity.dll
+		ExternalRef\ExternalAssemblies\Microsoft.Practices.Unity.RegistrationByConvention.dll = ExternalRef\ExternalAssemblies\Microsoft.Practices.Unity.RegistrationByConvention.dll
+		ExternalRef\ExternalAssemblies\Oracle.ManagedDataAccess.dll = ExternalRef\ExternalAssemblies\Oracle.ManagedDataAccess.dll
+		ExternalRef\ExternalAssemblies\Readme.txt = ExternalRef\ExternalAssemblies\Readme.txt
+		ExternalRef\ExternalAssemblies\SSOSettingsFileReader.dll = ExternalRef\ExternalAssemblies\SSOSettingsFileReader.dll
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -116,6 +140,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6E346762-4A25-4888-9C1C-0074452B9CDF} = {2F44CB20-E1FF-481F-9E82-E7B034B96DA7}
+		{9D998F7C-7437-4275-83B4-6DC55FEB3546} = {2F44CB20-E1FF-481F-9E82-E7B034B96DA7}
+		{FFA64B8E-ED99-4B2E-B33B-F25A4E89773C} = {2F44CB20-E1FF-481F-9E82-E7B034B96DA7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5614A6A4-D57F-469D-9F17-A84EE723641B}

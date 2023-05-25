@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <configSections>
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net" />
+  </configSections>
+  <connectionStrings>
+    <!--SQL Server instance-->
+    <add name="BenDemoDatabase" connectionString="Data Source=localhost;Initial Catalog=CCMeDocs;Integrated Security=SSPI;Max Pool Size=1000;Timeout=300;MultipleActiveResultSets=true;" providerName="System.Data.SqlClient"/>
+  </connectionStrings>
+  <appSettings>
+    <add key="GenerateJobDescription" value="eDocs-Empower-LIXI" />
+  </appSettings>
+  <log4net debug="true">
+    <root>
+      <level value="*" />
+      <appender-ref ref="EventLogAppender" />  
+    </root>
+	  <logger name="Ben.Demo.BizTalk">
+		  <level value="INFO" />
+		  <appender-ref ref="ApplicationRollingFileAppender"/>
+	  </logger>
+	  <appender name="ApplicationRollingFileAppender" type="log4net.Appender.RollingFileAppender">
+		  <file value="C:\Logs\Ben.Demo.BizTalk.Log" />
+		  <appendToFile value="true" />
+		  <DatePattern value="yyyy-MM-dd" />
+		  <maxSizeRollBackups value="10" />
+		  <maximumFileSize value="10MB" />
+		  <staticLogFileName value="true" />
+		  <layout type="log4net.Layout.PatternLayout">
+			  <conversionPattern value="%date [%thread] %-5level %logger [%property{InstanceId}] [%property{ProcessName}] [RequestId: %property{RequestId}] - %message%newline" />
+		  </layout>
+	  </appender>
+
+	  <appender name="EventLogAppender" type="log4net.Appender.EventLogAppender">
+		  <!--This event source must be registered in window register database-->
+		  <applicationName value="BizTalk Ben Demo" />
+		  <layout type="log4net.Layout.PatternLayout">
+			  <conversionPattern value="%date %-5level RequestId: %property{RequestId} %logger Message: %message%newline" />
+		  </layout>
+		  <securitycontext type="log4net.Util.WindowsSecurityContext">
+			  <credentials value="Process">
+			  </credentials>
+		  </securitycontext>
+		  <!--one of values: DEBUG, INFO, WARN, ERROR, FATAL-->
+		  <filter type="log4net.Filter.LevelRangeFilter">
+			  <levelMin value="ERROR" />
+			  <levelMax value="FATAL" />
+		  </filter>
+	  </appender>
+  </log4net>
+</configuration>

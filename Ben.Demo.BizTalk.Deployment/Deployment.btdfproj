@@ -1,106 +1,343 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<!-- 
+<!--
   Deployment Framework for BizTalk
   Copyright (C) 2008-14 Thomas F. Abraham, 2004-08 Scott Colestock
 -->
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Installer" ToolsVersion="4.0">
-  <PropertyGroup>
-    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
-    <Platform Condition="'$(Platform)' == ''">x86</Platform>
-    <SchemaVersion>1.0</SchemaVersion>
-    <ProjectName>Ben.Demo.BizTalk</ProjectName>
-    <ProjectVersion>1.0</ProjectVersion>
-    <IncludeSSO>True</IncludeSSO>
-    <IncludeOrchestrations>True</IncludeOrchestrations>
-    <IncludeTransforms>True</IncludeTransforms>
-    <IncludeComponents>True</IncludeComponents>
-    <IncludePipelines>True</IncludePipelines>
-	<!-- Deploying log4net and log4net.Ext.Serializable from External Assemblies -->
-	<!-- Leaving this True so that the regkeys are created?-->
-    <Includelog4net>False</Includelog4net>
-    <UsingMasterBindings>True</UsingMasterBindings>
-    <RequireXmlPreprocessDirectives>False</RequireXmlPreprocessDirectives>
-    <ApplyXmlEscape>True</ApplyXmlEscape>
-    <SkipIISReset>True</SkipIISReset>
-    <IISResetTime>120</IISResetTime>
-    <IncludeVocabAndRules>False</IncludeVocabAndRules>
-    <BizTalkAppDescription>BizTalk Application For Ben Demo Release 1.0</BizTalkAppDescription>
-  </PropertyGroup>
-  <PropertyGroup>
-    <!-- Properties related to building an MSI for server deployments -->
-    <!-- BizTalk App Version Upgrade -->
-    <!--   For each new product release to be deployed to your BizTalk servers: -->
-    <!--     1) Increment ProductVersion -->
-    <!--     2) Generate a new GUID and update ProductId with the new GUID -->
-    <!--   This allows the new MSI to automatically uninstall (not undeploy!) the old MSI and install the new one. -->
-    <ProductVersion>1.1.03</ProductVersion>
-    <ProductId>36D6A30F-995D-47A7-9AD4-86AF03FEEE9C</ProductId>
-    <!-- BizTalk App Version Upgrade -->
-    <ProductName>Ben.Demo.BizTalk for BizTalk</ProductName>
-    <Manufacturer>Deployment Framework User</Manufacturer>
-    <PackageDescription>Ben.Demo.BizTalk</PackageDescription>
-    <PackageComments>Ben.Demo.BizTalk</PackageComments>
-    <!-- NEVER change the ProductUpgradeCode. -->
-    <ProductUpgradeCode>F80B6CED-7648-4062-9817-6941B4D5E3FA</ProductUpgradeCode>
-  </PropertyGroup>
-  <!-- Under TFS Team Build, set CustomizableOutDir property to true in TFS 2005/2008/2010 UpgradeTemplate. -->
-  <!-- With a workflow build, copy the default template then modify the MSBuild task for the solution build. Set OutDir to blank and -->
-  <!-- CommandLineArguments to String.Format("/p:SkipInvalidConfigurations=true;TeamBuildOutDir=""{0}"" {1}", BinariesDirectory, MSBuildArguments). -->
-  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <DeploymentFrameworkTargetsPath>$(MSBuildExtensionsPath)\DeploymentFrameworkForBizTalk\5.0\</DeploymentFrameworkTargetsPath>
-    <OutputPath Condition="'$(TeamBuildOutDir)' == ''">bin\Debug\</OutputPath>
-    <OutputPath Condition="'$(TeamBuildOutDir)' != ''">$(TeamBuildOutDir)</OutputPath>
-    <DeployPDBsToGac>false</DeployPDBsToGac>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-    <DeploymentFrameworkTargetsPath>$(MSBuildExtensionsPath)\DeploymentFrameworkForBizTalk\5.0\</DeploymentFrameworkTargetsPath>
-    <OutputPath Condition="'$(TeamBuildOutDir)' == ''">bin\Release\</OutputPath>
-    <OutputPath Condition="'$(TeamBuildOutDir)' != ''">$(TeamBuildOutDir)</OutputPath>
-    <DeployPDBsToGac>false</DeployPDBsToGac>
-    <Includelog4net>True</Includelog4net>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)' == 'Server'">
-    <DeploymentFrameworkTargetsPath>Framework\</DeploymentFrameworkTargetsPath>
-    <!-- Get our PDBs into the GAC so we get file/line number information in stack traces. -->
-    <DeployPDBsToGac>true</DeployPDBsToGac>
-  </PropertyGroup>
-  <PropertyGroup>
-    <CustomProperty_IntegratedManagemendPipeline>True</CustomProperty_IntegratedManagemendPipeline>
-  </PropertyGroup>
-  
-  <!-- !!! TODO !!! -->
-  <!-- Add ItemGroup elements that contain one or more Schemas, Orchestrations, Transforms, etc. elements that describe -->
-  <!-- the specific artifacts in your solution that need to be deployed. Use IntelliSense as a guide. -->
-  <ItemGroup>
-    <Schemas Include="Ben.Demo.BizTalk.Schemas.dll">
-      <LocationPath>..\$(ProjectName).Schemas\bin\$(Configuration)</LocationPath>
-    </Schemas>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Transforms Include="Ben.Demo.BizTalk.Maps.dll">
-      <LocationPath>..\$(ProjectName).Maps\bin\$(Configuration)</LocationPath>
-    </Transforms>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Orchestrations Include="Ben.Demo.BizTalk.Orchestrations.dll">
-      <LocationPath>..\$(ProjectName).Orchestrations\bin\$(Configuration)</LocationPath>
-    </Orchestrations>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Components Include="Ben.Demo.BizTalk.Components.dll">
-      <LocationPath>..\$(ProjectName).Components\bin\$(Configuration)</LocationPath>
-    </Components>
- </ItemGroup>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+		 DefaultTargets="Installer"
+		 ToolsVersion="4.0">
+	<PropertyGroup>
+		<Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+		<Platform Condition="'$(Platform)' == ''">x86</Platform>
+		<SchemaVersion>1.0</SchemaVersion>
+		<ProjectName>Ben.Demo.BizTalk</ProjectName>
+		<ProjectVersion>1.0</ProjectVersion>
+		<IncludeSSO>True</IncludeSSO>
+		<IncludeOrchestrations>True</IncludeOrchestrations>
+		<IncludeTransforms>False</IncludeTransforms>
+		<IncludeComponents>True</IncludeComponents>
+		<IncludePipelines>True</IncludePipelines>
+		<!-- Deploying log4net and log4net.Ext.Serializable as a one off step for all applications, not to ge deployed for individual -->
+		<!-- appliations.  Setting to False means we will need to manually create the 32 bit regKeys (as per 64 bit)-->
+		<Includelog4net>False</Includelog4net>
+		<UsingMasterBindings>True</UsingMasterBindings>
+		<RequireXmlPreprocessDirectives>False</RequireXmlPreprocessDirectives>
+		<ApplyXmlEscape>True</ApplyXmlEscape>
+		<SkipIISReset>True</SkipIISReset>
+		<IISResetTime>120</IISResetTime>
+		<IncludeVocabAndRules>True</IncludeVocabAndRules>
+		<BizTalkAppDescription>BizTalk Application For Ben Demo Release 1.0</BizTalkAppDescription>
+	</PropertyGroup>
+	<PropertyGroup>
+		<!-- Properties related to building an MSI for server deployments -->
+		<!-- BizTalk App Version Upgrade -->
+		<!--   For each new product release to be deployed to your BizTalk servers: -->
+		<!--     1) Increment ProductVersion -->
+		<!--     2) Generate a new GUID and update ProductId with the new GUID -->
+		<!--   This allows the new MSI to automatically uninstall (not undeploy!) the old MSI and install the new one. -->
+		<ProductVersion>1.0.01</ProductVersion>
+		<ProductId>EDF78E76-842D-49EE-83D9-9402443B11F6</ProductId>
+		<!-- BizTalk App Version Upgrade -->
+		<ProductName>Ben.Demo.BizTalk for BizTalk</ProductName>
+		<Manufacturer>Deployment Framework User</Manufacturer>
+		<PackageDescription>Ben.Demo.BizTalk</PackageDescription>
+		<PackageComments>Ben.Demo.BizTalk</PackageComments>
+		<!-- NEVER change the ProductUpgradeCode. -->
+		<ProductUpgradeCode>3B874824-0B72-4FDF-B886-88674BBB6D49</ProductUpgradeCode>
+	</PropertyGroup>
+	<!-- Under TFS Team Build, set CustomizableOutDir property to true in TFS 2005/2008/2010 UpgradeTemplate. -->
+	<!-- With a workflow build, copy the default template then modify the MSBuild task for the solution build. Set OutDir to blank and -->
+	<!-- CommandLineArguments to String.Format("/p:SkipInvalidConfigurations=true;TeamBuildOutDir=""{0}"" {1}", BinariesDirectory, MSBuildArguments). -->
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+		<DeploymentFrameworkTargetsPath>$(MSBuildExtensionsPath)\DeploymentFrameworkForBizTalk\5.0\</DeploymentFrameworkTargetsPath>
+		<OutputPath Condition="'$(TeamBuildOutDir)' == ''">bin\Debug\</OutputPath>
+		<OutputPath Condition="'$(TeamBuildOutDir)' != ''">$(TeamBuildOutDir)</OutputPath>
+		<DeployPDBsToGac>false</DeployPDBsToGac>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+		<DeploymentFrameworkTargetsPath>$(MSBuildExtensionsPath)\DeploymentFrameworkForBizTalk\5.0\</DeploymentFrameworkTargetsPath>
+		<OutputPath Condition="'$(TeamBuildOutDir)' == ''">bin\Release\</OutputPath>
+		<OutputPath Condition="'$(TeamBuildOutDir)' != ''">$(TeamBuildOutDir)</OutputPath>
+		<DeployPDBsToGac>false</DeployPDBsToGac>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)' == 'Server'">
+		<DeploymentFrameworkTargetsPath>Framework\</DeploymentFrameworkTargetsPath>
+		<!-- Get our PDBs into the GAC so we get file/line number information in stack traces. -->
+		<DeployPDBsToGac>true</DeployPDBsToGac>
+	</PropertyGroup>
+	<PropertyGroup>
+		<CustomProperty_IntegratedManagemendPipeline>True</CustomProperty_IntegratedManagemendPipeline>
+	</PropertyGroup>
+	<PropertyGroup>
+		<Vdir>Ben.Demo.WcfService</Vdir>
+		<Physdir>..\Ben.Demo.WcfService</Physdir>
+		<AppPool>Ben.Demo.WcfService</AppPool>
+		<AppPoolNetVersion>v4.0</AppPoolNetVersion>
+		<CustomProperty_WebRootDir>c:\inetpub\wwwroot</CustomProperty_WebRootDir>
+		<CustomProperty_ServerPhysDirName>Ben.Demo.WcfService</CustomProperty_ServerPhysDirName>
+		<CustomProperty_IntegratedManagemendPipeline>True</CustomProperty_IntegratedManagemendPipeline>
+	</PropertyGroup>
 
 	<ItemGroup>
-		<Components Include="Ben.Demo.BizTalk.Pipelines.dll">
-			<LocationPath>..\$(ProjectName).Pipelines\bin\$(Configuration)</LocationPath>
-		</Components>
+		<PropsFromEnvSettings Include="SsoAppUserGroup;SsoAppAdminGroup" />
 	</ItemGroup>
 
-  <!-- !!! TODO !!! -->
-  <Import Project="$(DeploymentFrameworkTargetsPath)BizTalkDeploymentFramework.targets" />
+	<!-- !!! TODO !!! -->
+	<!-- Add ItemGroup elements that contain one or more Schemas, Orchestrations, Transforms, etc. elements that describe -->
+	<!-- the specific artifacts in your solution that need to be deployed. Use IntelliSense as a guide. -->
+	<ItemGroup>
+		<Schemas Include="Ben.Demo.BizTalk.Schemas.dll">
+			<LocationPath>..\$(ProjectName).Schemas\bin\$(Configuration)</LocationPath>
+		</Schemas>
+	</ItemGroup>
+	
+	<ItemGroup>
+		<Schemas Include="Ben.Demo.BizTalk.Maps.dll">
+			<LocationPath>..\$(ProjectName).Maps\bin\$(Configuration)</LocationPath>
+		</Schemas>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Orchestrations Include="Ben.Demo.BizTalk.Orchestrations.dll">
+			<LocationPath>..\$(ProjectName).Orchestrations\bin\$(Configuration)</LocationPath>
+		</Orchestrations>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Components Include="Ben.Demo.BizTalk.Components.dll">
+			<LocationPath>..\$(ProjectName).Components\bin\$(Configuration)</LocationPath>
+		</Components>
+	</ItemGroup>
+	<ItemGroup>
+		<Pipelines Include="Ben.Demo.BizTalk.Pipelines.dll">
+			<LocationPath>..\$(ProjectName).Pipelines\bin\$(Configuration)</LocationPath>
+		</Pipelines>
+	</ItemGroup>
+	<ItemGroup>
+		<AdditionalFiles Include="Ben.Demo.BizTalk.log4net">
+			<LocationPath>..\</LocationPath>
+		</AdditionalFiles>
+	</ItemGroup>
+	<ItemGroup>
+		<FilesToXmlPreprocess Include="$(ProjectName).log4net"
+							  Condition="'$(Configuration)' == 'Server'">
+			<LocationPath>.</LocationPath>
+		</FilesToXmlPreprocess>
+	</ItemGroup>
+	<ItemGroup>
+		<BizTalkHosts Include="BizTalkServerApplication"/>
+	</ItemGroup>
+
+	<!-- !!! TODO !!! -->
+	<Import Project="$(DeploymentFrameworkTargetsPath)BizTalkDeploymentFramework.targets" />
+	<!--
+    The Deployment Framework automatically packages most files into the server install MSI.
+    However, if there are special folders that you need to include in the MSI, you can
+    copy them to the folder $(RedistDir) in the CustomRedist target.
+    To include individual files, add an ItemGroup with AdditionalFiles elements.
+  -->
+	<Target Name="CustomRedist">
+		<MakeDir Directories="$(RedistDir)\Deployment\SSOEnvironmentSettings" />
+		<!-- Force MSBuild to expand the item spec into physical file specs -->
+		<CreateItem Include=".\SSOEnvironmentSettings\*.xml">
+			<Output TaskParameter="Include"
+					ItemName="SSOEnvironmentSettingsFiles" />
+		</CreateItem>
+		<Copy DestinationFolder="$(RedistDir)\Deployment\SSOEnvironmentSettings\"
+			  SourceFiles="@(SSOEnvironmentSettingsFiles)"/>
+
+		<MakeDir Directories="$(RedistDir)\Ben.Demo.WcfService" />
+		<!-- Force MSBuild to expand the item spec into physical file specs -->
+		<CreateItem Include="$(Physdir)\**\*.*">
+			<Output TaskParameter="Include"
+					ItemName="BenDemoServicesGroup" />
+		</CreateItem>
+		<Copy DestinationFolder="$(RedistDir)\Ben.Demo.WcfService\%(RecursiveDir)"
+			  SourceFiles="@(BenDemoServicesGroup)"/>
+
+	</Target>
+
+	<Target Name="CustomDeployTarget">
+		<ItemGroup>
+			<SSOFile Include="$(SettingsFilePath)"></SSOFile>
+		</ItemGroup>
+		<PropertyGroup>
+			<CustomSSOEnvironmentSettingsFilePath>%(SSOFile.RelativeDir)..\SSOEnvironmentSettings</CustomSSOEnvironmentSettingsFilePath>
+		</PropertyGroup>
+
+		<!-- Generate SSO settings files, to be used by the custom sso deployment logic below -->
+		<Exec Command="&quot;$(DeployTools)\EnvironmentSettingsExporter.exe&quot; &quot;$(CustomSSOEnvironmentSettingsFilePath)\SettingsFileGenerator.xml&quot; &quot;$(CustomSSOEnvironmentSettingsFilePath)&quot;" />
+	</Target>
+
+	<Target Name="CustomPostUndeployTarget">
+		<CallTarget Targets="CustomSSOUnDeployment"/>
+		<CallTarget Targets="Custom_UndeployVirtualDirectoryPhysicalPath"/>
+
+	</Target>
+
+	<Target Name="CustomPostDeployTarget">
+		<CallTarget Targets="CustomSSODeployment"/>
+		<CallTarget Targets="Custom_VirtualDirectoryPhysicalPath"/>
+		<CallTarget Targets="CustomWriteLog4NetRegKey"/>
+		<!--<CallTarget Targets="CustomWriteLogger24NetRegKey"/>-->
+	</Target>
+
+	<!-- Overridden to prevent default SSO behaviour -->
+	<Target Name="DeploySSO">
+		<Message Text="Overriding default BTDF DeploySSO target"/>
+	</Target>
+
+	<!-- Overridden to prevent default SSO behaviour -->
+	<Target Name="UndeploySSO">
+		<Message Text="Overriding default BTDF UndeploySSO target"/>
+	</Target>
+
+	<Target Name="CustomSSODeployment"
+			Condition="'$(IncludeSSO)' == 'True'">
+		<ItemGroup>
+			<SSOFile Include="$(SettingsFilePath)"></SSOFile>
+		</ItemGroup>
+		<PropertyGroup>
+			<CustomSSOApplicationName>Ben.Demo.BizTalk</CustomSSOApplicationName>
+			<CustomSSOEnvironmentSettingsFilePath>%(SSOFile.RelativeDir)..\SSOEnvironmentSettings</CustomSSOEnvironmentSettingsFilePath>
+			<CustomSSOEnvironmentSettingsFile>$(CustomSSOEnvironmentSettingsFilePath)\%(SSOFile.FileName)%(SSOFile.Extension)</CustomSSOEnvironmentSettingsFile>
+		</PropertyGroup>
+
+		<!-- Create affiliate application and import settings file into SSO -->
+		<Exec Command="&quot;$(DeployTools)\SSOSettingsFileImport.exe&quot; &quot;$(CustomSSOApplicationName)&quot; /settingsFile:&quot;$(CustomSSOEnvironmentSettingsFile)&quot; /userGroupName:&quot;$(SsoAppUserGroup)&quot; /adminGroupName:&quot;$(SsoAppAdminGroup)&quot;" />
+
+		<!--  Make sure to always access the project (and install path) at run time -->
+		<UpdateSSOConfigItem BizTalkAppName="$(CustomSSOApplicationName)"
+							 SSOItemName="ProjectPath"
+							 SSOItemValue="$(MSBuildProjectDirectoryParent)" />
+		<UpdateSSOConfigItem BizTalkAppName="$(CustomSSOApplicationName)"
+							 SSOItemName="SourceSettingsFile"
+							 SSOItemValue="$(CustomSSOEnvironmentSettingsFile)" />
+	</Target>
+
+	<Target Name="CustomSSOUnDeployment"
+			Condition="'$(IncludeSSO)' == 'True'">
+		<PropertyGroup>
+			<CustomSSOApplicationName>Ben.Demo.BizTalk</CustomSSOApplicationName>
+		</PropertyGroup>
+
+		<!-- Delete affiliate application and associated settings. -->
+		<Exec Command="&quot;$(DeployTools)\SSOSettingsFileImport.exe&quot; &quot;$(CustomSSOApplicationName)&quot; /deleteApp" />
+
+	</Target>
+
+	<Target Name="CustomGenerateSSOFilesForInstaller">
+
+		<Exec Command="&quot;$(MSBuildProjectDirectory)\..\..\ExternalReferences\BTDF_5_5\Framework\DeployTools\EnvironmentSettingsExporter.exe&quot; &quot;$(MSBuildProjectDirectory)\SSOEnvironmentSettings\SettingsFileGenerator.xml&quot; &quot;$(MSBuildProjectDirectory)\SSOEnvironmentSettings&quot;" />
+
+	</Target>
+
+	<Target Name="InitTargetDir">
+		<!-- 
+        These CreateProperty calls are required because TargetDir and TargetPath are defined 
+        to contain an item list. We want that item list to be expanded so that it can be used
+        as a regular property value and not as an item-list-with-transform.
+        -->
+		<Message Text="Overriding standard InitTargetDir Target"/>
+		<CreateProperty Value="$(TargetDir)">
+			<Output TaskParameter="Value"
+					PropertyName="TargetDir" />
+		</CreateProperty>
+	</Target>
+
+	<Target Name="Custom_VirtualDirectory_ManagedPipelineMode"
+			Condition="'$(IncludeVirtualDirectories)' == 'True'">
+
+		<Message Text="Running on Windows V$(OSVersion)"/>
+
+		<!-- Set the ManagedPipelineMode if AppPoolNetVersion was specified; IIS 7.0+ only -->
+		<Exec Command="&quot;$(AppCmd)&quot; set apppool /apppool.name:&quot;$(AppPool)&quot; /managedPipelineMode:Integrated"
+			  Condition="'$(IisMajorVersion)' == '7' and '$(Configuration)' == 'Server' and '$(AppPoolNetVersion)' != '' and '$(CustomProperty_IntegratedManagemendPipeline)' == 'True'" />
+
+	</Target>
+
+	<Target Name="Custom_VirtualDirectoryPhysicalPath"
+			DependsOnTargets="StopApplicationPools">
+
+		<!--Attempt to delete virtual directories, applications and files in case they already exist-->
+		<Message Text="Attempt to delete virtual directories, applications and files in case they already exist"/>
+		<Exec Command="&quot;$(AppCmd)&quot; DELETE app &quot;Default Web Site/Ben.Demo.WcfService&quot;"
+			  ContinueOnError="true"  />
+		<!--<Exec Command="&quot;$(AppCmd)&quot; DELETE VDir &quot;Default Web Site/WestpacServices/MortgageService&quot;"
+			  ContinueOnError="true"   />-->
+
+		<!--Deploy virtual directories, applications and files-->
+		<Message Text="Deploy virtual directories, applications and files"/>
+
+		<!-- Copy Physdir to ServerPhysDir-->
+		<!-- robocopy parameters:
+          Note that security permissions are NOT being copied, read and execute permissions only required
+          and will be inherited from the parent directory (c:\inetpub\wwwroot)
+          Note also that robocopy returns non-zero exit code if files were copied, so IgnoreExitCode parameter of Exec
+          task has been set to true
+          /E = Copies directories and subdirectories, including empty ones. AIBPe as /S /E. May be used to modify /T.
+          /COPY:DAT = Copies data, attributes and timestamps.
+          /R:3 retry 3 times if fails (added only to override default of one million retries)
+          /W:5 wait 5 seconds between retries (default is 30 seconds)
+          /XF = Exclude files, configured to exclude executables and command files (.cmd, .bat)-->
+
+		<Exec Command="robocopy &quot;$(MSBuildProjectDirectory)\$(Physdir)&quot; &quot;$(CustomProperty_WebRootDir)\$(CustomProperty_ServerPhysDirName)&quot; /E /COPY:DAT /R:3 /W:5 /XF *.exe *.bat *.cmd"
+			  IgnoreExitCode="true"/>
+		<Exec Command="robocopy &quot;$(MSBuildProjectDirectory)\..\Ben.Demo.WcfService&quot; &quot;C:\inetpub\wwwroot\Ben.Demo.WcfService&quot; /E /COPY:DAT /R:3 /W:5 /XF *.exe *.bat *.cmd"
+			  IgnoreExitCode="true"/>
+
+		<!--<Exec Command="&quot;$(AppCmd)&quot; ADD VDir /app.name:&quot;Default Web Site/&quot; /path:/WestpacServices -physicalPath:C:\inetpub\wwwroot\WestpacServices" />-->
+		<Exec Command="&quot;$(AppCmd)&quot; ADD app /site.name:&quot;Default Web Site&quot; /path:/Ben.Demo.WcfService -physicalPath:C:\inetpub\wwwroot\Ben.Demo.WcfService" />
+		<Exec Command="&quot;$(AppCmd)&quot; ADD  apppool /name:&quot;Ben.Demo.WcfService&quot; /managedRuntimeVersion:v4.0"
+			  ContinueOnError="true" />
+		<Exec Command="&quot;$(AppCmd)&quot; set app &quot;Default Web Site/Ben.Demo.WcfService&quot; /applicationpool:Ben.Demo.WcfService" />
+		<Exec Command="&quot;$(AppCmd)&quot; set config /section:applicationPools /[name='Ben.Demo.WcfService'].processModel.identityType:SpecificUser /[name='Ben.Demo.WcfService'].processModel.userName:$(VDIR_UserName)  /[name='Ben.Demo.WcfService'].processModel.password:&quot;$(VDIR_UserPass)&quot;"
+			  Condition="'$(Configuration)' == 'Server'" />
+		<Exec Command="&quot;$(AppCmd)&quot; set config &quot;Default Web Site/Ben.Demo.WcfService&quot; /section:anonymousAuthentication /enabled:false /commit:apphost" />
+		<Exec Command="&quot;$(AppCmd)&quot; set config &quot;Default Web Site/Ben.Demo.WcfService&quot; /section:basicAuthentication /enabled:true /commit:apphost" />
+		<Exec Command="&quot;$(AppCmd)&quot; set config &quot;Default Web Site/Ben.Demo.WcfService&quot; /section:windowsAuthentication /enabled:true /commit:apphost" />
+
+	</Target>
+
+	<Target Name="StopApplicationPools" >
+		<!-- stop the application pools serving the apps being undeployed -->
+		<Message Text="Stopping application pools "/>
+
+		<Exec Command="&quot;$(AppCmd)&quot; stop apppool /apppool.name:Ben.Demo.WcfService"
+			  ContinueOnError="true" />
+	</Target>
+
+	<Target Name="Custom_UndeployVirtualDirectoryPhysicalPath"
+			DependsOnTargets="StopApplicationPools">
+
+		<!--Delete virtual directories, applications and files-->
+		<Message Text="Delete virtual directories, applications and files"/>
+		<Exec Command="&quot;$(AppCmd)&quot; DELETE app &quot;Default Web Site/Ben.Demo.WcfService&quot;" />
+		<Exec Command="rmdir /S/Q &quot;c:\inetpub\wwwroot\WestpacServices\Ben.Demo.WcfService&quot;" />
+		<Exec Command="&quot;$(AppCmd)&quot; delete apppool /apppool.name:Ben.Demo.WcfService"
+				  Condition="'$(Configuration)' == 'Server'" />
+	</Target>
+
+	<Target Name="CustomWriteLog4NetRegKey"
+			Condition="'$(Is64bitOS)' == 'true'">
+
+		<!-- Need to manually create the registry key because Includelog4net has been set to False-->
+		<SetRegistryValue KeyName="HKEY_LOCAL_MACHINE\SOFTWARE\$(ProjectName)"
+						  ValueName="log4netConfig"
+						  Value="$(MSBuildProjectDirectoryParent)\$(ProjectName).log4net" />
+		<!--Need to make use of 'Sysnative' special directory to ensure that we get the 64 bit version cscript and hence the right registry key-->
+		<Exec Command="&quot;$(SystemRoot)\Sysnative\cscript.exe&quot; /nologo &quot;$(DeployTools)\WriteRegValue.vbs&quot; $(Log4netRegKey) &quot;@(Log4netFile)&quot;"
+			  Condition="'$(Is64bitOS)' == 'true'"/>
+
+	</Target>
+
+	<!--<Target Name="CustomWriteLogger24NetRegKey">
+
+		<SetRegistryValue KeyName="HKEY_LOCAL_MACHINE\SOFTWARE\$(ProjectName)\Receive"
+						  ValueName="log4netConfig"
+						  Value="$(MSBuildProjectDirectoryParent)\$(ProjectName).Receive.log4net" />
+		<Exec Command="&quot;$(SystemRoot)\Sysnative\cscript.exe&quot; /nologo &quot;$(DeployTools)\WriteRegValue.vbs&quot; &quot;HKEY_LOCAL_MACHINE\SOFTWARE\$(ProjectName)\Receive\log4netConfig&quot; &quot;$(MSBuildProjectDirectoryParent)\$(ProjectName).Receive.log4net&quot;"
+			  Condition="'$(Is64bitOS)' == 'true'"/>
+
+	</Target>-->
 </Project>
