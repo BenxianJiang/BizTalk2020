@@ -558,7 +558,7 @@
 			<Description xsi:nil="true" />
 			<TransmitPipeline Name="Microsoft.BizTalk.DefaultPipelines.PassThruTransmit" FullyQualifiedName="Microsoft.BizTalk.DefaultPipelines.PassThruTransmit, Microsoft.BizTalk.DefaultPipelines, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Type="2" TrackingOption="None" Description="" />
 			<PrimaryTransport>
-				<Address>sftp://9.0.23.82:22/%MessageID%.xml</Address>
+				<Address>sftp://9.0.23.82:22/BenJiang/%MessageID%.xml</Address>
 				<TransportType Name="SFTP" Capabilities="523" ConfigurationClsid="f75aeff5-ebc7-4e7c-a753-fdd68ab45c95" />
 				<TransportTypeData>&lt;CustomProps&gt;&lt;ConnectionLimit vt="3"&gt;5&lt;/ConnectionLimit&gt;&lt;UserName vt="8"&gt;lzzt6l&lt;/UserName&gt;&lt;EncryptionCipher vt="8"&gt;Auto&lt;/EncryptionCipher&gt;&lt;TargetFileName vt="8"&gt;%MessageID%.xml&lt;/TargetFileName&gt;&lt;Port vt="3"&gt;22&lt;/Port&gt;&lt;ClientAuthenticationMode vt="8"&gt;Password&lt;/ClientAuthenticationMode&gt;&lt;Password vt="1" /&gt;&lt;ProxyPort vt="3"&gt;1080&lt;/ProxyPort&gt;&lt;ServerAddress vt="8"&gt;9.0.23.82&lt;/ServerAddress&gt;&lt;MaxConnectionReuseTimeInSeconds vt="3"&gt;0&lt;/MaxConnectionReuseTimeInSeconds&gt;&lt;AccessAnySSHServerHostKey vt="11"&gt;-1&lt;/AccessAnySSHServerHostKey&gt;&lt;AppendIfExists vt="11"&gt;0&lt;/AppendIfExists&gt;&lt;ProxyType vt="8"&gt;None&lt;/ProxyType&gt;&lt;/CustomProps&gt;</TransportTypeData>
 				<RetryCount>3</RetryCount>
